@@ -1,0 +1,107 @@
+.fondo{
+    background-image: url("../../../assets/FOndo2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+    min-height: 100%;
+    width: 60%;
+}
+
+.login{
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(266deg,var(--main-green), #679032);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login .main{
+    background-color: var(--main-white);
+    border-radius: 10px;
+    width: 71%;
+    box-shadow: black 2px 2px 11px 0px;
+    max-width: 452px;
+}
+
+.login .title{
+    color: var(--main-black);
+    font-size: 2.5em;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    margin-top: 46px;
+    margin-bottom: 61px;
+}
+
+.login .registro{
+    background: var(--main-brown);
+    padding: 10px;
+    margin-top: 10px;
+    display: block;
+    width: 40%;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: #0000009c 2px 2px 5px 0px;
+    cursor: pointer;
+}
+
+
+#access #user, #access #password{
+    display: block;
+    width: 79%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 14px 10px;
+    border-radius: 5px;
+    background-color: #e8e8e8;
+    font-size: 1.2em;
+    margin-bottom: 26px;
+    border:none;
+    box-shadow: #0000009c 2px 2px 5px 0px;
+}
+
+#access #submit{
+    width: 80%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    background: var(--main-brown);
+    color: var(--main-white);
+    border-radius: 5px;
+    font-size: 1.4em;
+    padding: 13px 14px;
+    border: none;
+    cursor: pointer;
+    box-shadow: #0000009c 2px 2px 5px 0px;
+    margin-top: 30px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-size: 3em;
+    color: var(--main-white);
+    text-shadow: #000000a6 2px 2px 3px;
+    cursor: pointer;
+}
+
+.logo img{
+    width: 80px;
+    border-radius: 100%;
+    margin-right: 16px;
+    image-rendering: -webkit-optimize-contrast;
+    box-shadow: #000000b0 1px 1px 11px -2px;
+}
+
+.logo p{
+    color: var(--main-black);
+}

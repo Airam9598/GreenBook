@@ -1,0 +1,29 @@
+
+<form [formGroup]="FormularioRuta" (ngSubmit)="enviar_Datos()" style="padding: 24px;">
+  <p>RUTA</p>
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" style="text-align:center" id="nombre" formControlName="Name">
+    </div>
+    <div class="mb-3">
+      <label for="descrip" class="form-label">Descripción</label>
+      <input type="text" class="form-control" style="text-align:center" formControlName="Description" id="descrip">
+    </div>
+      <p>Flor</p>
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre de la Flor</label>
+        <input type="text" class="form-control" style="text-align:center" id="nombre" formControlName="FlowerName">
+      </div>
+      <div class="mb-3">
+        <label for="descrip" class="form-label">Descripción de la Flor</label>
+        <input type="text" class="form-control" style="text-align:center" formControlName="FlowerDescription" id="descrip">
+      </div>
+      <div class="mb-3">
+        <label for="files" class="form-label">Imagen de la flor</label>
+        <input multiple #foto type="file" id="files" name="files" formControlName="Files" accept="image/*">
+    </div>
+    <button type="submit" class="btn btn-primary" style="margin-right:15px">Crear</button>
+    <button  class="btn btn-danger">Cancelar</button>
+</form>
+
+<div *ngIf="db.subiendo===true" style="background-color:black;    height: 100px;"></div>

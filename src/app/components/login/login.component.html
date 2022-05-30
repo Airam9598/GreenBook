@@ -1,0 +1,17 @@
+<div class="login">
+    <div (click)="gohome()" class="logo"> 
+        <img src="../../../assets/logonew.png">
+        Green<p>Book</p>
+    </div>
+    <div class="main">
+        <p class="title">Inicio de Sesión</p>
+        <form [formGroup]="Formulariologin" (ngSubmit)="enviar_Datos()" id="access">
+            <input required type="text" id="user"  formControlName="Email" placeholder="Correo Electrónico">
+            <input required type="password" id="password" formControlName="Pass" placeholder="Contraseña">
+            <input type="submit" id="submit" value="Iniciar Sesión">
+        </form>
+        <a class="registro" routerLink="/Registro" routerLinkActive="active">Registrarse</a>
+    </div>
+</div>
+
+<div class="fondo"></div>

@@ -1,0 +1,19 @@
+<navbar></navbar>
+<div class="fondo">
+    <div class="filtro">
+        <select>
+            <option>oPCION </option>
+        </select>
+        <button>Filtrar</button>
+    </div>
+    <div class="block">
+        <p class="title"> RUTAS DE SENDEROS</p>
+        <div class="box">
+            <div class="item" *ngFor="let item of rutas; let i = index">
+                <img src="{{item.Flora[0].Img[0].Img}}">
+                <p>{{item.Name}}</p>
+                <a href="/Route/{{item.id}}"></a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+.fondo{
+    background-image: url("../../../assets/fondo3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+    min-height: 100%;
+}

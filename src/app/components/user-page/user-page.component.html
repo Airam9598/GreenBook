@@ -1,0 +1,33 @@
+<navbar></navbar>
+<div class="fondo">
+    <nav class="secondnav" *ngIf="admin==true && eID ==null">
+        <ul>
+            <li class="right">
+                <a routerLink="/Create-route" routerLinkActive="active">Crear Ruta</a>
+            </li>
+        </ul>
+    </nav>
+    <div *ngIf="eID==null" class="user-block">
+        <img src="../../../assets/usuario.png">
+        <div class="info">
+            <strong>Correo Electrónico:</strong> {{email}}
+            <br><br>
+            <strong>Usuario:</strong> {{username}}
+            <form>
+                <p>Cambiar Contraseña</p>
+                <input type="password" placeholder="Contraseña actual">
+                <input type="password" placeholder="Contraseña nueva">
+                <input type="password" placeholder="Repetir contraseña nueva">
+                <input type="submit" value="Cambiar">
+            </form>
+        </div>
+        <button (click)="closesession()">Cerrar Sesión</button>
+    </div>
+    <p class="usuario" *ngIf="eID != null">{{eID}}</p>
+    <div class="box">
+        <div class="item" *ngFor="let item of images; let i = index">
+            <img src="{{item.Img}}">
+            <p>♡ {{item.Like}}</p>
+        </div>
+    </div>
+</div>  

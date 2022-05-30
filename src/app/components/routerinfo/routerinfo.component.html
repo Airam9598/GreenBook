@@ -1,0 +1,28 @@
+<navbar></navbar>
+<div class="fondo">
+    <div class="site">
+        <p class="title">{{ruta.Name}}</p>
+        <p class="text">{{ruta.Description}}</p>
+    </div>
+    <div class="box">
+        <p>FLORA</p>
+        <div id="{{item.id}}" class="item" *ngFor="let item of ruta.Flora; let i = index" (click)="showflower(item)">
+            <img src="{{item.Img[0].Img}}">
+            <p>{{item.Name}}</p>
+        </div>
+    </div>
+    <div class="blockimagen">
+      <img class="imagen" src="{{actimage}}"> 
+      <span class="likes">♡</span>
+      <span class="user">{{actuser}}</span>
+      <span class="derecha" (click)="changeImg(1)">➜</span>
+      <span class="izquierda" (click)="changeImg(-1)">➜</span>
+    </div>
+    
+    <div class="descripcion">
+        <p class="title">{{Name}}</p>
+        <p class="text">{{Description}}</p>
+        <a class="read">Leer más -></a>
+    </div>
+</div>
+<div *ngIf="loading==true" class="loading"> Loading</div>
