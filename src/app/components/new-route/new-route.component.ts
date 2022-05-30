@@ -24,9 +24,12 @@ export class NewRouteComponent implements OnInit {
   files!:File;
   subiendo:any=false;
   username!:string;
+  router:Router;
+  Error:boolean=false;
   constructor(public formulario:FormBuilder,private db2:DBconectService,router:Router) { 
     this.FormularioRuta=this.formulario.group({Name:[''],Description:[''],Files:[''],FlowerName:[''],FlowerDescription:['']});
     this.db=db2;
+    this.router=router;
     Promise.resolve(this.db.GetUser(this.db.getToken())).then(item=>{
       if(item ==null){
         this.db.deleteToken();
@@ -40,13 +43,22 @@ export class NewRouteComponent implements OnInit {
   ngOnInit(): void {
   }
   enviar_Datos():any{
-    let ruta= new Ruta("",{Name:this.FormularioRuta.value["Name"],Description:this.FormularioRuta.value["Description"],flora:[]});
-    let flor= new Flor("",{Name:this.FormularioRuta.value["FlowerName"],Description:this.FormularioRuta.value["FlowerDescription"]},[]);
-    var fileList = this.files=this.foto.nativeElement.files;
-    const random = Math.floor(Math.random() * 200);
-    this.db.AgregarRuta(ruta,flor,fileList,random,this.username);
-    if(fileList.length>0){
-      this.db.Subirrchivo(fileList,random);
+    if(this.FormularioRuta.value["Name"] !="" && this.FormularioRuta.value["Description"] !="" && this.FormularioRuta.value["FlowerName"] !="" && this.FormularioRuta.value["FlowerDescription"] !="" && this.foto.nativeElement.files.length>0){
+      this.Error=false;
+      let ruta= new Ruta("",{Name:this.FormularioRuta.value["Name"],Description:this.FormularioRuta.value["Description"],flora:[]});
+      let flor= new Flor("",{Name:this.FormularioRuta.value["FlowerName"],Description:this.FormularioRuta.value["FlowerDescription"]},[]);
+      var fileList = this.files=this.foto.nativeElement.files;
+      const random = Math.floor(Math.random() * 200);
+      this.db.AgregarRuta(ruta,flor,fileList,random,this.username);
+      if(fileList.length>0){
+        this.db.Subirrchivo(fileList,random);
+      }
+    }else{
+      this.Error=true;
     }
+  }
+
+  cancel(){
+    this.router.navigate(["/User"]);
   }
 }
