@@ -16,7 +16,7 @@ export class RoutesComponent implements OnInit {
     Promise.resolve(db.ObtenerRutas()).then(items=>{
       setTimeout(() => {
         this.rutas=items;
-        },500);
+      },500);
     });
   }
 

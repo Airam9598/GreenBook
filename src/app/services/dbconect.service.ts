@@ -8,9 +8,7 @@ import { Ruta } from './Ruta';
 import { Flor } from './Flor';
 import { FLowerImage } from './FlowerImges';
 import { CookieService } from "ngx-cookie-service";
-import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
-import { elementAt } from 'rxjs';
-import { ConditionalExpr } from '@angular/compiler';
+import{User}  from './User';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCrrUzGAXswtU-0X-sHbk2UFcIkR3hZQM",
@@ -333,6 +331,17 @@ async ObtenerRutas(){
     } catch (e) {
       return "";
     }
+  }
+
+  async getUsers(){
+    const querySnapshot = await getDocs(collection(db, "Usuarios"));
+    let users:Array<User>=[];
+    await querySnapshot.forEach(async (doc) => {
+      await Promise.resolve(this.getUserImages(doc.data()["UserName"])).then(items=>{
+        users.push(new User(doc.id,doc.data()["UserName"],items[0]));
+      })
+    });
+    return users;
   }
 
 

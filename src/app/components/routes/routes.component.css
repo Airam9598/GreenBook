@@ -44,7 +44,13 @@
     flex-direction: column;
     box-shadow: #131212 2px 3px 6px 0px;
     position: relative;
+    animation-name: apear;
 }
+
+@keyframes apear {
+    from {transform: scale(0); }
+    to {transform: scale(1); }
+  }
 
 .box .item a{
     position: absolute;

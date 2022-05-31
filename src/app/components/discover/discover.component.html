@@ -1,24 +1,25 @@
 <navbar></navbar>
 <div class="fondo">
-    <div class="principal">
-        <img src="../../../assets/fondo3.jpg">
+    <div class="buscador"><input [(ngModel)]="busqueda" (ngModelChange)="Discover()" type="text" placeholder="Buscar Usuarios 🔍"></div>
+    <div *ngIf="busqueda==''" class="principal">
+        <img src="{{MainImg}}">
         <div>
-            <p class="title">Título del texto</p>
-            <p class="description">Descripción del texto que hay que poner para qeu se vea la descripción del texto</p>
-            <a>Leer más -></a>
+            <p class="title">{{MainUser}}</p>
+            <!--<p class="description">Descripción del texto que hay que poner para qeu se vea la descripción del texto</p>-->
+            <a href="User/{{MainUser}}">Descubrir más ➜</a>
         </div>
     </div>
     <div class="block">
-        <div class="item">
-            <img src="../../../assets/FOnfo.jpg">
+        <div *ngFor="let item of Users" class="item">
+            <a href="User/{{item.UserName}}"></a>
+            <img src="{{item.Img.Img}}">
             <div class="text">
                 <p class="username">
-                    @UserName
+                    {{item["UserName"]}}
                 </p>
-                <a>
-                    Leer más ->
-                </a>
             </div>
         </div>
     </div>
 </div>
+
+<div *ngIf="loading==true" class="loading"> <p class="icon">🍃</p><p class="load">Cargando...</p></div>

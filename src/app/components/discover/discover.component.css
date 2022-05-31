@@ -3,7 +3,7 @@
 }
 
 .principal{
-    margin-top:95px;
+    margin-top:60px;
     background-color: var(--main-brown);
     width: 80%;
     margin-left: auto;
@@ -41,6 +41,8 @@
 
 .principal div a{
     font-size: 1.5em;
+    color: white;
+    text-decoration: none;
 }
 
 
@@ -72,13 +74,13 @@
 }
 
 .item .text{
-    background: linear-gradient(45deg, #ffffffe8, #fff0f021);
+    background: linear-gradient(45deg, #ffffffe8, #fff0f05c);
     color: black;
     position: absolute;
     z-index: 2;
-    top: 58px;
-    height: 128px;
-    width: 190px;
+    top: 10px;
+    height: 31px;
+    width: max-content;
     border-radius: 0 10px 10px 0;
     padding: 5px;
     padding-left: 10px;
@@ -91,11 +93,64 @@
     font-size: 1.3em;
     font-weight: bold;
     margin-top:5px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
+    margin-right: 10px;
 }
 
-.item .text a{
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-top: 23px;
+.item a{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 7;
+}
+
+.buscador{
+    width: max-content;
+    margin-top: 120px;
+    margin: auto;
+    margin-top: 120px;
+    display: block;
+}
+
+.buscador input{
+    font-size: 1.3em;
+    padding: 10px;
+    border-radius: 10px;
+    border: gray 3px inset;
+    text-align: center;
+}
+
+.loading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-brown);
+    z-index: 9;
+}
+
+.loading .icon{
+    font-size: 6em;
+    position: absolute;
+    left: 44%;
+    top: 28%;
+    animation: infinite-rotate 2s linear infinite;
+    z-index: 10;
+}
+.loading .load{
+    position: absolute;
+    left: 41%;
+    top: 52%;
+    z-index: 10;
+    animation: none;
+    font-size: 3em;
+
+}
+
+@keyframes infinite-rotate {  
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
 }

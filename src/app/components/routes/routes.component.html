@@ -9,7 +9,7 @@
     <div class="block">
         <p class="title"> RUTAS DE SENDEROS</p>
         <div class="box">
-            <div class="item" *ngFor="let item of rutas; let i = index">
+            <div class="item" style="animation-duration: 2s;" *ngFor="let item of rutas; let i = index">
                 <img src="{{item.Flora[0].Img[0].Img}}">
                 <p>{{item.Name}}</p>
                 <a href="/Route/{{item.id}}"></a>

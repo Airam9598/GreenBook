@@ -168,3 +168,27 @@
     font-weight: bold;
     margin-bottom: 6px;
 }
+
+
+.loading .icon{
+    font-size: 6em;
+    position: absolute;
+    left: 44%;
+    top: 28%;
+    animation: infinite-rotate 2s linear infinite;
+    z-index: 10;
+}
+.loading .load{
+    position: absolute;
+    left: 41%;
+    top: 52%;
+    z-index: 10;
+    animation: none;
+    font-size: 3em;
+
+}
+
+@keyframes infinite-rotate {  
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
