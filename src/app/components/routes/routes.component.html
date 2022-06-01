@@ -1,10 +1,7 @@
 <navbar></navbar>
 <div class="fondo">
     <div class="filtro">
-        <select>
-            <option>oPCION </option>
-        </select>
-        <button>Filtrar</button>
+        <input [(ngModel)]="busqueda" (ngModelChange)="Discover()" type="text" placeholder="Buscar Rutas 🔍">
     </div>
     <div class="block">
         <p class="title"> RUTAS DE SENDEROS</p>

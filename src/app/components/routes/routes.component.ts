@@ -11,10 +11,13 @@ export class RoutesComponent implements OnInit {
   ruta:any;
   db:any;
   rutas:Array<Ruta> = [];
+  rutasAlt:Array<Ruta> = [];
+  busqueda:string="";
   constructor(db:DBconectService) { 
     this.db=db;
     Promise.resolve(db.ObtenerRutas()).then(items=>{
       setTimeout(() => {
+        items.forEach(data=>{ this.rutasAlt.push(data); });
         this.rutas=items;
       },500);
     });
@@ -22,6 +25,21 @@ export class RoutesComponent implements OnInit {
 
   ngOnInit(): void {
    // console.log(this.rutas);
+  }
+
+  Discover(){
+    this.rutas=[];
+    if(this.busqueda==""){
+      this.rutasAlt.forEach(User=>{
+          this.rutas.push(User);
+      });
+    }else{
+      this.rutasAlt.forEach(User=>{
+        if(User.Name.toLocaleLowerCase().includes(this.busqueda.toLocaleLowerCase())){
+          this.rutas.push(User);
+        }
+      });
+    }
   }
 
 }

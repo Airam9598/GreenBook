@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DBconectService} from 'src/app/services/dbconect.service';
 import { Router} from '@angular/router';
+import * as crypto from 'crypto-js';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnInit {
   }
 
  async enviar_Datos(){
-  this.resolv=await this.db.RegistrarUsuario(this.Formularioregister.value["Email"],this.Formularioregister.value["Pass"],this.Formularioregister.value["User"]);
+  let pass= crypto.SHA3(this.Formularioregister.value["Pass"]);
+  this.resolv=await this.db.RegistrarUsuario(this.Formularioregister.value["Email"],pass.toString(crypto.enc.Hex),this.Formularioregister.value["User"]);
    if( this.resolv =="true"){
     this.router.navigate(["/User"]);
    }

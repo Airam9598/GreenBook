@@ -85,6 +85,7 @@ nav ul li:hover{
 
 .logo p{
     color: var(--main-black);
+    text-shadow: #ffffffa6 2px 2px 3px;
 }
 
 .right{

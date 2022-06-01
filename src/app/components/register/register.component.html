@@ -6,7 +6,7 @@
     <div class="main">
         <p class="title">Registro</p>
         <form [formGroup]="Formularioregister" (ngSubmit)="enviar_Datos()" id="access">
-            <input required type="text" id="email"  formControlName="Email" placeholder="Correo Electrónico">
+            <input required type="email" id="email"  formControlName="Email" placeholder="Correo Electrónico">
             <input required type="text" id="user" formControlName="User" placeholder="Usuario">
             <input required type="password" id="password" formControlName="Pass" placeholder="Contraseña">
             <input type="submit" id="submit" value="Registrarse">

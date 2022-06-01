@@ -321,7 +321,7 @@ async ObtenerRutas(){
   RegistrarUsuario(email:string,pass:string,user:string){
     try {
       const docRef = addDoc(collection(db, "Usuarios") , {
-          UserName: user,
+          UserName: "@"+user,
           Email: email,
           Password:pass,
           Admin:false,

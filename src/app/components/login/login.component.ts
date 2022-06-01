@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DBconectService } from 'src/app/services/dbconect.service';
 import { Router } from '@angular/router';
+import * as crypto from 'crypto-js'; 
+
 
 @Component({
   selector: 'app-login',
@@ -16,6 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(public formulario:FormBuilder,private db2:DBconectService,router:Router) { 
     this.Formulariologin=this.formulario.group({Email:[''],Pass:['']});
     this.db=db2;
+    crypto
     this.router=router
     if(this.db.getToken()!=""){
       router.navigate(["/User"]);
@@ -25,7 +28,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
  async enviar_Datos(){
-  this.resolv=await this.db.CheckUsuarios(this.Formulariologin.value["Email"],this.Formulariologin.value["Pass"]);
+  let pass= crypto.SHA3(this.Formulariologin.value["Pass"]);
+  this.resolv=await this.db.CheckUsuarios(this.Formulariologin.value["Email"],pass.toString(crypto.enc.Hex));
    if( this.resolv =="true"){
     this.router.navigate(["/User"]);
    }

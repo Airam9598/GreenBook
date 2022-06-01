@@ -27,7 +27,6 @@ export class DiscoverComponent implements OnInit {
         setTimeout(()=>{
           this.loading=false;
         },100);
-        console.log(this.loading);
       },800)
       
     })

@@ -1,9 +1,12 @@
 .fondo{
     min-height: 100%;
+    height: auto;
+    background-color: var(--main-brown);
+    width: 100%;
 }
 
 .filtro{
-    margin-top: 115px;
+    margin-top: 100px;
     height: 94px;
     display: flex;
     justify-content: center;
@@ -15,14 +18,20 @@
     border-radius: 10px;
 }
 
-.filtro select{
-    width: 200px;
-    height: 43px;
-    font-size: 1.2em;
-    text-align: center;
+.buscador{
+    width: max-content;
+    margin-top: 120px;
+    margin: auto;
+    margin-top: 120px;
+    display: block;
+}
+
+.filtro input{
+    font-size: 1.3em;
+    padding: 10px;
     border-radius: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    border: gray 3px inset;
+    text-align: center;
 }
 
 .block .title{
@@ -30,21 +39,29 @@
     margin-left: auto;
     width: 95%;
     margin-right: auto;
-    margin-top: 55px;
+    margin-top: 20px;
     font-weight: bold;
+    text-shadow: -1px -2px 0 black,1px -2px 0 var(--main-black),1px 0px 0 var(--main-black),-1px 0px 0 var(--main-black);
+   color: var(--main-white);
+   box-shadow: var(--main-green) 0px 0px 0px 0px,var(--main-green) 0px 0px 0px 0px,var(--main-green) 0px 0px 0px 0px,var(--main-green) 0px 4px 0px 0px;
 }
 
 .box .item{
-    background-color: var(--main-brown);
     width: 320px;
     height: 227px;
     margin: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    box-shadow: #131212 2px 3px 6px 0px;
     position: relative;
     animation-name: apear;
+    background: linear-gradient(43deg, var(--main-green), #4c6b23);
+    box-shadow: 1px 1px 0px #999,
+                2px 2px 0px #999,
+                3px 3px 0px #999,
+                4px 4px 0px #999,
+                5px 5px 0px #999,
+                6px 6px 0px #999;
 }
 
 @keyframes apear {
@@ -62,18 +79,26 @@
 
 .box .item img{
     image-rendering: -webkit-optimize-contrast;
-    height: 75%;
-    border-radius: 10px 10px 0 0;
+    height: 100%;
+    border-radius: 5px 5px 0 0;
     object-fit: cover;
-    box-shadow: #000000db 0px 2px 6px -2px;
+    box-shadow: #5d7f31 0px 5px 5px -2px;
+    width: 100%;
 }
 
 .box .item p{
     color: var(--main-white);
     font-size: 1.3em;
-    margin-left: 15px;
+    margin: 0;
     font-weight: bold;
-    text-shadow: #000000b3 2px 2px 3px;
+    text-shadow: #000000ed 1px 1px 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #84ba3ebd;
+    padding: 10px;
+    border-radius: 5px 0px 25px 0px;
+    box-shadow: black 2px 2px 5px -1px;
 }
 
 .box{
