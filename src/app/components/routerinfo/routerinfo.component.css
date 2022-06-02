@@ -48,6 +48,19 @@
     color: red;
     text-shadow: black 0px 1px 3px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blockimagen .likes p{
+    margin: 0;
+    font-size: 0.7em;
+    height: 100;
+    margin-top: 5px;
+    margin-left: 9px;
+    color: #ff4747;
+    text-shadow: -1px -1px 0 black,1px -1px 0 var(--main-black),1px 1px 0 var(--main-black),-1px 1px 0 var(--main-black);
 }
 
 .blockimagen .user{

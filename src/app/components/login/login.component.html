@@ -8,6 +8,7 @@
         <form [formGroup]="Formulariologin" (ngSubmit)="enviar_Datos()" id="access">
             <input required type="email" id="user"  formControlName="Email" placeholder="Correo Electrónico">
             <input required type="password" id="password" formControlName="Pass" placeholder="Contraseña">
+            <p *ngIf="errormsg!=''" class="error">{{errormsg}}</p>
             <input type="submit" id="submit" value="Iniciar Sesión">
         </form>
         <a class="registro" routerLink="/Registro" routerLinkActive="active">Registrarse</a>

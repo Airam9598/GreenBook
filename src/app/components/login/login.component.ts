@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   db:DBconectService;
   resolv:string="";
   router:Router;
+  errormsg:string="";
   constructor(public formulario:FormBuilder,private db2:DBconectService,router:Router) { 
     this.Formulariologin=this.formulario.group({Email:[''],Pass:['']});
     this.db=db2;
@@ -27,12 +28,20 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
- async enviar_Datos(){
-  let pass= crypto.SHA3(this.Formulariologin.value["Pass"]);
-  this.resolv=await this.db.CheckUsuarios(this.Formulariologin.value["Email"],pass.toString(crypto.enc.Hex));
-   if( this.resolv =="true"){
-    this.router.navigate(["/User"]);
-   }
+  async enviar_Datos(){
+    this.errormsg="";
+    if(this.Formulariologin.value["Email"]!= "" && this.Formulariologin.value["Pass"]!= ""){
+      let pass= crypto.SHA3(this.Formulariologin.value["Pass"]);
+      Promise.resolve(this.db.CheckUsuarios(this.Formulariologin.value["Email"],pass.toString(crypto.enc.Hex))).then(item=>{
+        if(item=="true"){
+          this.router.navigate(["/User"]);
+        }else{
+          this.errormsg="🚫 "+item;
+        }
+      });
+    }else{
+      this.errormsg="🚫 Faltan datos";
+    }
   }
   gohome(){
     this.router.navigate(["/"]);

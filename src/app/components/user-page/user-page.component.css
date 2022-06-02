@@ -7,12 +7,13 @@
 .user-block{
     width: 85%;
     max-width: 1000px;
-    height: 440px;
+    height: 497px;
     background-color: var(--main-brown);
     border-radius: 5px;
     margin-left: auto;
     margin-right: auto;
     min-height: 200px;
+    position: relative;
 }
 
 .user-block img{
@@ -25,7 +26,7 @@
 .info{
     width: 60%;
     float: right;
-    margin-top: 43px;
+    margin-top: 65px;
     color: black;
     font-size: 1.2em;
 }
@@ -132,4 +133,51 @@
 .secondnav li a{
     color: white;
     text-decoration: none;
+}
+
+.error{
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 0.7em;
+    width: max-content;
+    border-radius: 5px;
+    background: #e92e2e;
+    padding: 5px 10px;
+    box-shadow: black 1px 1px 3px -1px;
+    color: white;
+    text-shadow: black 1px 1px 4px;
+}
+
+.correct{
+    margin: 0;
+    margin-bottom: -15px;
+    font-size: 0.7em;
+    margin-top: 16px;
+    width: max-content;
+    border-radius: 5px;
+    background: #2ee94a;
+    padding: 5px 10px;
+    box-shadow: black 1px 1px 3px -1px;
+    color: white;
+    text-shadow: black 1px 1px 4px;
+}
+
+.closeses{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: no-repeat;
+    border: none;
+    font-size: 1.05em;
+    color: white;
+    background: #ea4949;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.closeses span{
+    font-size: 1.4em;
 }

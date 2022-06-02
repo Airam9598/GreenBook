@@ -318,18 +318,33 @@ async ObtenerRutas(){
         return images;
   }
 
-  RegistrarUsuario(email:string,pass:string,user:string){
+  async RegistrarUsuario(email:string,pass:string,user:string){
+
     try {
-      const docRef = addDoc(collection(db, "Usuarios") , {
-          UserName: "@"+user,
-          Email: email,
-          Password:pass,
-          Admin:false,
-          Token:''
+      const querySnapshot = await getDocs(collection(db, "Usuarios"));
+      let find="";
+      await querySnapshot.forEach((doc) => {
+        if(doc.data()["Email"].trim().toLowerCase()==email.trim().toLowerCase()){
+            find="El correo ya existe";
+        }else if(doc.data()["UserName"].trim().toLowerCase()==("@"+user.trim()).toLowerCase()){
+          find="El usuario ya existe";
+        }
       });
-      return "true";
+      if (find==""){
+        const docRef = addDoc(collection(db, "Usuarios") , {
+            UserName: "@"+user,
+            Email: email,
+            Password:pass,
+            Admin:false,
+            Token:'',
+            Likes:{}
+        });
+        return "true";
+      }else{
+        return find;
+      }
     } catch (e) {
-      return "";
+      return "Error al registrar";
     }
   }
 
@@ -338,11 +353,68 @@ async ObtenerRutas(){
     let users:Array<User>=[];
     await querySnapshot.forEach(async (doc) => {
       await Promise.resolve(this.getUserImages(doc.data()["UserName"])).then(items=>{
-        users.push(new User(doc.id,doc.data()["UserName"],items[0]));
+        users.push(new User(doc.id,doc.data()["UserName"],items[0],doc.data()["Likes"]));
       })
     });
     return users;
   }
+
+  async LikeImage(iduser:string,idimage:string,number:number){
+    const querySnapshot = await getDocs(collection(db, "Usuarios"));
+    await querySnapshot.forEach(async (doc2) => {
+      if(doc2.data()["Email"]==iduser){
+        let numlike=doc2.data()["Likes"];
+        if(numlike[Object.keys(numlike).length-1]==""){
+          numlike[Object.keys(numlike).length-1]=idimage;
+        }else{
+          numlike[Object.keys(numlike).length]=idimage;
+        }
+        await setDoc(doc(db, "Imagenes", idimage), {
+          Likes: number
+        }, { merge: true });
+        await setDoc(doc(db, "Usuarios", doc2.id), {
+          Likes: numlike
+        }, { merge: true });
+      }
+    });
+  }
+
+
+  async UnLikeImage(iduser:string,idimage:string,key:string,number:number){
+    const querySnapshot = await getDocs(collection(db, "Usuarios"));
+    await querySnapshot.forEach(async (doc2) => {
+      if(doc2.data()["Email"]==iduser){
+        let numlike=doc2.data()["Likes"];
+        numlike[key]="";
+        await setDoc(doc(db, "Usuarios", doc2.id), {
+          Likes: numlike
+        }, { merge: true });
+
+        await setDoc(doc(db, "Imagenes", idimage), {
+          Likes: number
+        }, { merge: true });
+      }
+    });
+  }
+
+
+  async Changepass(iduser:string,pass:any){
+    try {
+      const querySnapshot = await getDocs(collection(db, "Usuarios"));
+      await querySnapshot.forEach(async (doc2) => {
+        if(doc2.data()["Email"]==iduser){
+          await setDoc(doc(db, "Usuarios",doc2.id), {
+            Password: pass
+          }, { merge: true });
+        }
+      });
+      return true;
+    } catch (error) {
+      return false;
+    }
+  }
+
+
 
 
 

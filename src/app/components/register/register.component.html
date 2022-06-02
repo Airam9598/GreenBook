@@ -9,6 +9,7 @@
             <input required type="email" id="email"  formControlName="Email" placeholder="Correo Electrónico">
             <input required type="text" id="user" formControlName="User" placeholder="Usuario">
             <input required type="password" id="password" formControlName="Pass" placeholder="Contraseña">
+            <p *ngIf="errormsg!=''" class="error">{{errormsg}}</p>
             <input type="submit" id="submit" value="Registrarse">
         </form>
     </div>

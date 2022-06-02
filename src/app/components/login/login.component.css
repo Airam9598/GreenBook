@@ -106,3 +106,15 @@
 .logo p{
     color: var(--main-black);
 }
+
+.error{
+    margin: auto;
+    font-size: 1.2em;
+    width: max-content;
+    border-radius: 5px;
+    background: #e92e2e;
+    padding: 5px 10px;
+    box-shadow: black 1px 1px 3px -1px;
+    color: white;
+    text-shadow: black 1px 1px 4px;
+}

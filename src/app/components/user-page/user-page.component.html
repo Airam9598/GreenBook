@@ -13,15 +13,17 @@
             <strong>Correo Electrónico:</strong> {{email}}
             <br><br>
             <strong>Usuario:</strong> {{username}}
-            <form>
+            <form [formGroup]="Changepass" (ngSubmit)="enviar_Datos()">
+                <p *ngIf="correctmsg==true" class="correct">Contraseña Cambiada correctamente</p>
                 <p>Cambiar Contraseña</p>
-                <input type="password" placeholder="Contraseña actual">
-                <input type="password" placeholder="Contraseña nueva">
-                <input type="password" placeholder="Repetir contraseña nueva">
+                <input formControlName="oldpass" type="password" placeholder="Contraseña actual">
+                <input formControlName="newpass1" type="password" placeholder="Contraseña nueva">
+                <input formControlName="newpass2" type="password" placeholder="Repetir contraseña nueva">
+                <p *ngIf="errormsg!=''" class="error">{{errormsg}}</p>
                 <input type="submit" value="Cambiar">
             </form>
         </div>
-        <button (click)="closesession()">Cerrar Sesión</button>
+        <button class="closeses" (click)="closesession()"><span>🚪</span> Cerrar Sesión</button>
     </div>
     <p class="usuario" *ngIf="eID != null">{{eID}}</p>
     <div class="box">

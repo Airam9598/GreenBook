@@ -13,10 +13,14 @@
     </div>
     <div class="blockimagen">
       <img class="imagen" src="{{actimage}}"> 
-      <span class="likes">♡</span>
+      <span class="likes">
+        <a (click)="likes()" *ngIf="UserId != null">♡</a>
+        <a *ngIf="UserId == null">♡</a>
+          <p>{{actlike}}</p>
+        </span>
       <span class="user">{{actuser}}</span>
-      <span class="derecha" (click)="changeImg(1)">➜</span>
-      <span class="izquierda" (click)="changeImg(-1)">➜</span>
+      <span *ngIf="actid<Imagelenght-1;" class="derecha" (click)="changeImg(1)">➜</span>
+      <span *ngIf="actid>0" class="izquierda" (click)="changeImg(-1)">➜</span>
     </div>
     
     <div class="descripcion">
