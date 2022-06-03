@@ -9,6 +9,8 @@ import { Flor } from './Flor';
 import { FLowerImage } from './FlowerImges';
 import { CookieService } from "ngx-cookie-service";
 import{User}  from './User';
+import { isObject } from 'util';
+import { isNgTemplate } from '@angular/compiler';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCrrUzGAXswtU-0X-sHbk2UFcIkR3hZQM",
@@ -91,6 +93,67 @@ async AgregarRuta(ruta:Ruta,flor:Flor,files:any,random:any,user:any){
   });
 }
 
+async getFlowerid(id:any){
+  const querySnapshot = await getDocs(collection(db, "Rutas"));
+  let idf="";
+  querySnapshot.forEach(async (doc) => {
+    if(doc.id==id){
+      idf=doc.data()["Flora"];
+    }
+  });
+  return idf;
+}
+
+async getFlowerkey(id:any,name:any){
+  const querySnapshot = await getDocs(collection(db, "Flora"));
+  let idf="";
+  await querySnapshot.forEach((doc) => {
+    if(doc.id==id){
+      for (let index of Object.keys(doc.data())){
+        if(doc.data()[index].Name==name){
+          idf=index;
+        }
+      }
+      /*data.forEach((item,key)=>{
+        if(item.Name==name){
+          idf=key;
+        }
+      })*/
+    }
+  });
+  return idf;
+}
+async Addflower2(id:string,flower:any){
+  const querySnapshot = await getDocs(collection(db, "Flora"));
+    await querySnapshot.forEach(async (doc2) => {
+      if(doc2.id==id){
+        let numflow=Object.keys(doc2.data()).length;
+        let data:any="Flora"+numflow;
+        let object:any= {};
+        let flores:any={}
+        for(let flor of flower.Img){
+          flores[Object.keys(flores).length]=flor.id;
+        }
+        object[data]={Name:flower.Name,Description:flower.Description,Img:flores};
+        await setDoc(doc(db, "Flora", doc2.id.toString()),object, { merge: true });
+      }
+    });
+}
+
+async Addimagen(id:string,flower:any,pos:any){
+  const querySnapshot = await getDocs(collection(db, "Flora"));
+    await querySnapshot.forEach(async (doc2) => {
+      if(doc2.id==id){
+        let object:any= doc2.data();
+        let flores=object[pos].Img;
+        for(let flor of flower){
+          flores[Object.keys(flores).length]=flor.id;
+        }
+        object[pos].Img=flores;
+        await setDoc(doc(db, "Flora", doc2.id.toString()),object, { merge: true });
+      }
+    });
+}
 AgregarFlor(flor:Flor){
   let names:any ={};
   let i=0;
@@ -100,7 +163,7 @@ AgregarFlor(flor:Flor){
   }
     try {
       const docRef = addDoc(collection(db, "Flora") , {
-      Flora1 : {
+      Flora0 : {
           Name: flor.Name,
           Description: flor.Description,
           Img:names
@@ -231,11 +294,12 @@ async ObtenerRutas(){
 
     const querySnapshot = await getDocs(collection(db, "Usuarios"));
     let find="";
+    let user="";
     querySnapshot.forEach((doc) => {
       if(doc.data()["Email"].trim().toLowerCase()==email.trim().toLowerCase()){
         if(doc.data()["Password"]==pass){
           find="true";
-          this.user.push(doc.id);
+          user=doc.id;
         }else{
           find="Contraseña Incorrecta";
         }
@@ -243,9 +307,9 @@ async ObtenerRutas(){
     });
     if (find=="") find="Usuario no encontrado";
     if(find=="true"){
-      let token=this.generateToken(32)
+      let token=this.generateToken(32);
           this.setToken(token);
-          await setDoc(doc(db, "Usuarios", this.user[0].toString()), {
+          await setDoc(doc(db, "Usuarios", user.toString()), {
             Token: token
           }, { merge: true });
     }
@@ -353,7 +417,7 @@ async ObtenerRutas(){
     let users:Array<User>=[];
     await querySnapshot.forEach(async (doc) => {
       await Promise.resolve(this.getUserImages(doc.data()["UserName"])).then(items=>{
-        users.push(new User(doc.id,doc.data()["UserName"],items[0],doc.data()["Likes"]));
+        users.push(new User(doc.id,doc.data()["UserName"],items[0],doc.data()["Likes"],doc.data()["Admin"]));
       })
     });
     return users;

@@ -8,9 +8,11 @@ import { RouterinfoComponent } from './components/routerinfo/routerinfo.componen
 import { NewRouteComponent } from './components/new-route/new-route.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { RegisterComponent } from './components/register/register.component';
+import { NewFlowerComponent } from './components/new-flower/new-flower.component';
+import { NewImageflowerComponent } from './components/new-imageflower/new-imageflower.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
   { path: 'Discover', component: DiscoverComponent },
   { path: 'Routes', component: RoutesComponent },
@@ -19,7 +21,9 @@ const routes: Routes = [
   { path: 'Create-route', component: NewRouteComponent },
   { path: 'User', component: UserPageComponent },
   { path: 'User/:id', component: UserPageComponent },
-  { path: 'Registro', component: RegisterComponent }
+  { path: 'Registro', component: RegisterComponent },
+  { path: 'NewFlower/:id', component: NewFlowerComponent },
+  { path: 'NewImageFlower/:id/:pos', component: NewImageflowerComponent },
 ];
 
 @NgModule({

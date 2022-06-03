@@ -14,6 +14,8 @@ import{FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { CookieService } from 'ngx-cookie-service';
 import { RegisterComponent } from './components/register/register.component';
+import { NewFlowerComponent } from './components/new-flower/new-flower.component';
+import { NewImageflowerComponent } from './components/new-imageflower/new-imageflower.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { RegisterComponent } from './components/register/register.component';
     RouterinfoComponent,
     NewRouteComponent,
     UserPageComponent,
-    RegisterComponent
+    RegisterComponent,
+    NewFlowerComponent,
+    NewImageflowerComponent
   ],
   imports: [
     BrowserModule,

@@ -33,13 +33,17 @@ export class RouterinfoComponent implements OnInit {
     Promise.resolve(db.ObtenerRuta(this.eID)).then(item => {
       setTimeout(() => {
         this.ruta=item;
-        this.Image=item.Flora[0].Img;
-        this.Imagelenght=Object.keys(this.Image).length;
-        this.Description=item.Flora[0].Description;
-        this.Name=item.Flora[0].Name;
-        this.actimage=this.Image[this.actid].Img;
-        this.actuser=this.Image[this.actid].User;
-        this.actlike=this.Image[this.actid].Like;
+        try {
+          this.Image=item.Flora[0].Img;
+          this.Imagelenght=Object.keys(this.Image).length;
+          this.Description=item.Flora[0].Description;
+          this.Name=item.Flora[0].Name;
+          this.actimage=this.Image[this.actid].Img;
+          this.actuser=this.Image[this.actid].User;
+          this.actlike=this.Image[this.actid].Like;
+        } catch (error) {
+          window.location.reload();
+        }
         setTimeout(() => {
           this.loading=false;
         },300);
@@ -49,11 +53,9 @@ export class RouterinfoComponent implements OnInit {
           if(db.getToken() !=""){
             Promise.resolve(db.GetUser(db.getToken())).then(item=>{
               if(item !=null){
-                console.log(item);
                 this.Useradmin=item["Admin"];
                 this.UserId=item["Email"];
                 this.Userlikes=item["Likes"];
-                console.log(this.Userlikes);
               }
             });
           }

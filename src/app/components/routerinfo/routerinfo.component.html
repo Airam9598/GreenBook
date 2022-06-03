@@ -5,6 +5,7 @@
         <p class="text">{{ruta.Description}}</p>
     </div>
     <div class="box">
+      <a class="add" routerLink="/NewFlower/{{ruta.id}}" routerLinkActive="active">+</a>
         <p>FLORA</p>
         <div id="{{item.id}}" class="item" *ngFor="let item of ruta.Flora; let i = index" (click)="showflower(item)">
             <img src="{{item.Img[0].Img}}">
@@ -12,6 +13,7 @@
         </div>
     </div>
     <div class="blockimagen">
+      <a class="add" routerLink="/NewImageFlower/{{ruta.id}}/{{Name}}" routerLinkActive="active">+</a>
       <img class="imagen" src="{{actimage}}"> 
       <span class="likes">
         <a (click)="likes()" *ngIf="UserId != null">♡</a>

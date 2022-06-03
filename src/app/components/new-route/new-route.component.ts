@@ -5,7 +5,6 @@ import { DBconectService } from 'src/app/services/dbconect.service';
 import { ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Flor } from 'src/app/services/Flor';
-import { FLowerImage } from 'src/app/services/FlowerImges';
 
 
 @Component({

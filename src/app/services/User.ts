@@ -5,11 +5,13 @@ export class User{
     UserName!:String;
     Img!:FLowerImage;
     Likes!:Object;
-    constructor(id:any,UserName:any,images:any,likes:any){
+    Admin!:boolean
+    constructor(id:any,UserName:any,images:any,likes:any,admin:boolean){
         this.id=id;
         this.UserName =UserName;
         this.Img=images;
         this.Likes=likes;
+        this.Admin=admin;
         if(images==null){
             this.Img=new FLowerImage("",{Img:"defaut.jpg",Likes:"",User:UserName})
         }

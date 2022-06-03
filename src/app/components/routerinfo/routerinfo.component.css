@@ -21,6 +21,20 @@
     position: relative;
 }
 
+.blockimagen .add{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border: none;
+    font-size: 1.6em;
+    color: white;
+    background-color: #18ab18;
+    padding: 0px 6px;
+    border-radius: 5px;
+    box-shadow: #00000073 2px 2px 5px -1px;
+    cursor: pointer;
+}
+
 .blockimagen .derecha{
     position: absolute;
     top: 45%;
@@ -128,7 +142,7 @@
 
 .box .item{
     background-color: var(--main-green);
-    width: 200px;
+    width: calc(100% - 50px);
     height: 130px;
     margin: 20px;
     border-radius: 10px;
@@ -141,12 +155,11 @@
     image-rendering: -webkit-optimize-contrast;
     height: 75%;
     border-radius: 10px 10px 0 0;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .box .item p{
     font-size: 1.1em;
-    margin-left: -32px;
     font-weight: bold;
     margin-top: 5px;
     color: var(--main-black);
@@ -163,6 +176,22 @@
     border-radius: 10px;
     margin-top: 35px;
     margin-left: 20px;
+    position: relative;
+    max-width: 275px;
+}
+
+.box .add{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    font-size: 1.6em;
+    color: white;
+    background-color: #18ab18;
+    padding: 0px 6px;
+    border-radius: 5px;
+    box-shadow: #00000073 2px 2px 5px -1px;
+    cursor: pointer;
 }
 .site{
     margin-top: 103px;

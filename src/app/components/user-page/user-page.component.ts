@@ -27,6 +27,7 @@ correctmsg:boolean=false;
     this.eID=this.activateroute.snapshot.paramMap.get("id");
     this.Changepass=this.formulario.group({oldpass:[''],newpass1:[''],newpass2:['']});
     if(this.eID ==null){
+      console.log(this.db.getToken());
       Promise.resolve(this.db.GetUser(this.db.getToken())).then(item=>{
         if(item !=null){
           this.username=item["UserName"];

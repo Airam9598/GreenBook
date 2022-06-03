@@ -55,6 +55,7 @@
     flex-direction: column;
     position: relative;
     animation-name: apear;
+    overflow: hidden;
     background: linear-gradient(43deg, var(--main-green), #4c6b23);
     box-shadow: 1px 1px 0px #999,
                 2px 2px 0px #999,
@@ -62,6 +63,11 @@
                 4px 4px 0px #999,
                 5px 5px 0px #999,
                 6px 6px 0px #999;
+}
+
+.box .item:hover img{
+    transition: 0.5s;
+    transform: scale(1.2);
 }
 
 @keyframes apear {
@@ -95,10 +101,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #84ba3ebd;
+    background: #84ba3ede;
     padding: 10px;
     border-radius: 5px 0px 25px 0px;
     box-shadow: black 2px 2px 5px -1px;
+    max-width: 215px;
 }
 
 .box{

@@ -1,0 +1,103 @@
+.fondo{
+    min-height: 100%;
+    background-color: var(--main-brown);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    background: var(--main-green);
+    border-radius: 10px;
+}
+
+form p{
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 10px;
+    box-shadow: black 0px 1px 0px 0px;
+}
+form div{
+    margin-bottom: 20px;
+}
+form div label{
+    font-size: 1.1em;
+    margin-left: 10px;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+form input{
+    text-align: center;
+    font-size: 1.1em;
+    padding: 5px;
+    border-radius: 10px;
+    border-radius: 5px;
+    background-color: #e8e8e8;
+    box-shadow: #0000009c 2px 2px 5px 0px;
+}
+
+#create,#cancel{
+    width: 46%;
+    display: inline-block;
+    margin-right: 19px;
+    margin-left: auto;
+    background: var(--main-brown);
+    color: var(--main-white);
+    border-radius: 5px;
+    font-size: 1.4em;
+    padding: 13px 14px;
+    border: none;
+    cursor: pointer;
+    box-shadow: #0000009c 2px 2px 5px 0px;
+    margin-top: 30px;
+}
+
+#cancel{
+    background-color: #dd4646;
+}
+
+.error{
+    width: max-content;
+    border-radius: 5px;
+    background: #e92e2e;
+    padding: 5px 10px;
+    margin: auto;
+    box-shadow: black 1px 1px 3px -1px;
+    color: white;
+    text-shadow: black 1px 1px 4px;
+}
+
+.loading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-brown);
+    z-index: 9;
+}
+
+.loading .icon{
+    font-size: 6em;
+    position: absolute;
+    left: 44%;
+    top: 28%;
+    animation: infinite-rotate 2s linear infinite;
+    z-index: 10;
+}
+.loading .load{
+    position: absolute;
+    left: 41%;
+    top: 52%;
+    z-index: 10;
+    animation: none;
+    font-size: 3em;
+
+}
+
+@keyframes infinite-rotate {  
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}

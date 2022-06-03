@@ -9,7 +9,7 @@
             <div class="item" style="animation-duration: 2s;" *ngFor="let item of rutas; let i = index">
                 <img src="{{item.Flora[0].Img[0].Img}}">
                 <p>{{item.Name}}</p>
-                <a href="/Route/{{item.id}}"></a>
+                <a routerLink="/Route/{{item.id}}" routerLinkActive="active"></a>
             </div>
         </div>
     </div>
