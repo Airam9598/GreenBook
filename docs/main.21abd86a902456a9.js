@@ -33841,7 +33841,7 @@ let LoginComponent = /*#__PURE__*/(() => {
     selectors: [["app-login"]],
     decls: 17,
     vars: 2,
-    consts: [[1, "login"], [1, "logo", 3, "click"], ["src", "/assets/logonew.png"], [1, "main"], [1, "title"], ["id", "access", 3, "formGroup", "ngSubmit"], ["required", "", "type", "email", "id", "user", "formControlName", "Email", "placeholder", "Correo Electr\u00F3nico"], ["required", "", "type", "password", "id", "password", "formControlName", "Pass", "placeholder", "Contrase\u00F1a"], ["class", "error", 4, "ngIf"], ["type", "submit", "id", "submit", "value", "Iniciar Sesi\u00F3n"], ["routerLink", "/Registro", "routerLinkActive", "active", 1, "registro"], [1, "fondo"], [1, "error"]],
+    consts: [[1, "login"], [1, "logo", 3, "click"], ["src", "./assets/logonew.png"], [1, "main"], [1, "title"], ["id", "access", 3, "formGroup", "ngSubmit"], ["required", "", "type", "email", "id", "user", "formControlName", "Email", "placeholder", "Correo Electr\u00F3nico"], ["required", "", "type", "password", "id", "password", "formControlName", "Pass", "placeholder", "Contrase\u00F1a"], ["class", "error", 4, "ngIf"], ["type", "submit", "id", "submit", "value", "Iniciar Sesi\u00F3n"], ["routerLink", "/Registro", "routerLinkActive", "active", 1, "registro"], [1, "fondo"], [1, "error"]],
     template: function LoginComponent_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 0)(1, "div", 1);
@@ -33917,7 +33917,7 @@ let NavbarComponent = /*#__PURE__*/(() => {
     selectors: [["navbar"]],
     decls: 23,
     vars: 0,
-    consts: [[1, "logo"], ["routerLink", "/Home", "routerLinkActive", "active"], ["src", "/assets/logonew.png"], [1, "right"], ["routerLink", "/Login", "routerLinkActive", "active"], ["src", "/assets/usuario.png", 1, "menuIcon", "increaseIcon"], ["routerLink", "/Routes", "routerLinkActive", "active"], ["src", "/assets/route.png", 1, "menuIcon", "increaseRoutes"], ["routerLink", "/Discover", "routerLinkActive", "active"], ["src", "/assets/discover.png", 1, "menuIcon", "increaseDiscover"], ["src", "/assets/home.png", 1, "menuIcon"]],
+    consts: [[1, "logo"], ["routerLink", "/Home", "routerLinkActive", "active"], ["src", "./assets/logonew.png"], [1, "right"], ["routerLink", "/Login", "routerLinkActive", "active"], ["src", "./assets/usuario.png", 1, "menuIcon", "increaseIcon"], ["routerLink", "/Routes", "routerLinkActive", "active"], ["src", "./assets/route.png", 1, "menuIcon", "increaseRoutes"], ["routerLink", "/Discover", "routerLinkActive", "active"], ["src", "./assets/discover.png", 1, "menuIcon", "increaseDiscover"], ["src", "./assets/home.png", 1, "menuIcon"]],
     template: function NavbarComponent_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nav")(1, "ul")(2, "li", 0);
