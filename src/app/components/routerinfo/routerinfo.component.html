@@ -5,15 +5,17 @@
         <p class="text">{{ruta.Description}}</p>
     </div>
     <div class="box">
-      <a class="add" routerLink="/NewFlower/{{ruta.id}}" routerLinkActive="active">+</a>
+      <a *ngIf="Useradmin==true" class="add" routerLink="/NewFlower/{{ruta.id}}" routerLinkActive="active">+</a>
         <p>FLORA</p>
         <div id="{{item.id}}" class="item" *ngFor="let item of ruta.Flora; let i = index" (click)="showflower(item)">
+          <a *ngIf="Useradmin==true" class="delete" (click)="Deleteflor()" >X</a>
             <img src="{{item.Img[0].Img}}">
             <p>{{item.Name}}</p>
         </div>
     </div>
     <div class="blockimagen">
       <a class="add" routerLink="/NewImageFlower/{{ruta.id}}/{{Name}}" routerLinkActive="active">+</a>
+      <a *ngIf="actuser==UserName" class="delete" (click)="Deleteimage()" >X</a>
       <img class="imagen" src="{{actimage}}"> 
       <span class="likes">
         <a (click)="likes()" *ngIf="UserId != null">♡</a>
@@ -32,3 +34,4 @@
     </div>
 </div>
 <div *ngIf="loading==true" class="loading"> <p class="icon">🍃</p><p class="load">Cargando...</p></div>
+<app-footer></app-footer>

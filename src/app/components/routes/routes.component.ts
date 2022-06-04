@@ -13,6 +13,8 @@ export class RoutesComponent implements OnInit {
   rutas:Array<Ruta> = [];
   rutasAlt:Array<Ruta> = [];
   busqueda:string="";
+  UserId:any;
+  Useradmin!:any;
   constructor(db:DBconectService) { 
     this.db=db;
     Promise.resolve(db.ObtenerRutas()).then(items=>{
@@ -21,6 +23,16 @@ export class RoutesComponent implements OnInit {
         this.rutas=items;
       },500);
     });
+    if(this.UserId ==null){
+      if(db.getToken() !=""){
+        Promise.resolve(db.GetUser(db.getToken())).then(item=>{
+          if(item !=null){
+            this.Useradmin=item["Admin"];
+            this.UserId=item["Email"];
+          }
+        });
+      }
+    }
   }
 
   ngOnInit(): void {
@@ -40,6 +52,14 @@ export class RoutesComponent implements OnInit {
         }
       });
     }
+  }
+
+  Deleteroute(id:any){
+    this.db.DeleteRuta(id).then(()=>{
+      setTimeout(()=>{
+        window.location.reload();
+      },1000)
+    });
   }
 
 }

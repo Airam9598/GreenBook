@@ -1,0 +1,20 @@
+footer{
+    background-color: rgb(61, 60, 60);
+    display: flex;
+    margin-bottom: 0;
+    margin-top: auto;
+    color:var(--main-white);
+    min-height: 60px;
+    padding: 10px;
+    align-items: center;
+}
+footer div{
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1.1em;
+    text-align: center;
+}

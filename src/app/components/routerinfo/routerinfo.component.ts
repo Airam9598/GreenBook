@@ -26,6 +26,8 @@ export class RouterinfoComponent implements OnInit {
   UserId:any;
   Useradmin:any;
   db:any;
+  flowid:any;
+  UserName!:any;
   wait:boolean=false;
   constructor(private activateroute: ActivatedRoute,db:DBconectService) { 
     this.eID=this.activateroute.snapshot.paramMap.get("id");
@@ -34,6 +36,7 @@ export class RouterinfoComponent implements OnInit {
       setTimeout(() => {
         this.ruta=item;
         try {
+          this.flowid=item.Flora[0].id;
           this.Image=item.Flora[0].Img;
           this.Imagelenght=Object.keys(this.Image).length;
           this.Description=item.Flora[0].Description;
@@ -56,6 +59,7 @@ export class RouterinfoComponent implements OnInit {
                 this.Useradmin=item["Admin"];
                 this.UserId=item["Email"];
                 this.Userlikes=item["Likes"];
+                this.UserName=item["UserName"];
               }
             });
           }
@@ -73,6 +77,7 @@ export class RouterinfoComponent implements OnInit {
         this.actid=0;
         this.Image=item.Img;
         this.Imagelenght=Object.keys(this.Image).length;
+        this.flowid=item.id;
         this.actimage=this.Image[this.actid].Img;
         this.actuser=this.Image[this.actid].User;
         this.actlike=this.Image[this.actid].Like;
@@ -113,6 +118,22 @@ export class RouterinfoComponent implements OnInit {
       setTimeout(()=>{
         this.wait=false;
       },2000);
+    }
+  }
+
+  Deleteimage(){
+    if(this.Image.length>1){
+      Promise.resolve(this.db.Deleteimage(this.Image[this.actid].id,this.flowid,this.Name)).then(()=>{
+        window.location.reload();
+      });
+    }
+  }
+
+  Deleteflor(){
+    if(this.ruta.Flora.length>1){
+      Promise.resolve(this.db.DeleteFlor(this.flowid,this.Name)).then(()=>{
+        window.location.reload();
+      });
     }
   }
 }

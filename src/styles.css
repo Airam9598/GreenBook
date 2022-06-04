@@ -32,7 +32,7 @@
   app-routes{
     min-height: 100%;
     height: auto;
-    display: flex;
+    display: block;
   }
 
   app-home{
@@ -49,7 +49,8 @@
 
   app-routerinfo{
     min-height: 100%;
-    display: flex;
+    display: block;
+    height: auto;
   }
 
   app-app-user-page{

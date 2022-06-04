@@ -16,6 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { RegisterComponent } from './components/register/register.component';
 import { NewFlowerComponent } from './components/new-flower/new-flower.component';
 import { NewImageflowerComponent } from './components/new-imageflower/new-imageflower.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NewImageflowerComponent } from './components/new-imageflower/new-imagef
     UserPageComponent,
     RegisterComponent,
     NewFlowerComponent,
-    NewImageflowerComponent
+    NewImageflowerComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -3,10 +3,11 @@
     height: auto;
     background-color: var(--main-brown);
     width: 100%;
+    padding-top: 100px;
+    padding-bottom: 20px;
 }
 
 .filtro{
-    margin-top: 100px;
     height: 94px;
     display: flex;
     justify-content: center;
@@ -63,6 +64,24 @@
                 4px 4px 0px #999,
                 5px 5px 0px #999,
                 6px 6px 0px #999;
+}
+
+.box .delete{
+    position: absolute;
+    top: 10px !important;
+    width: max-content !important;
+    height: max-content !important;
+    right: 10px !important;
+    left: auto !important;
+    border: none;
+    font-size: 1.6em;
+    color: white;
+    background-color: #c81d1d;
+    padding: 0px 6px;
+    border-radius: 5px;
+    box-shadow: #00000073 2px 2px 5px -1px;
+    cursor: pointer;
+    z-index: 9;
 }
 
 .box .item:hover img{

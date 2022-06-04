@@ -2,7 +2,7 @@ import { TEMPORARY_NAME } from '@angular/compiler/src/render3/view/util';
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, getDocs, addDoc,setDoc,doc, deleteDoc, query } from "firebase/firestore";
+import { collection,getDoc, getDocs, addDoc,setDoc,doc, deleteDoc, query } from "firebase/firestore";
 import { getStorage, ref, listAll , uploadString} from "firebase/storage";
 import { Ruta } from './Ruta';
 import { Flor } from './Flor';
@@ -478,6 +478,66 @@ async ObtenerRutas(){
     }
   }
 
+  async Deleteimage(id:any,idflow:any,name:any){
+    await deleteDoc(doc(db, "Imagenes", id));
+    getDoc(doc(db, 'Flora', idflow)).then((item:any)=>{
+      let data=item.data();
+      Object.keys(data).forEach((key2:any)=>{
+        if(data[key2]["Name"]==name){
+          //data[key]="";
+          let data2=data[key2]["Img"];
+          Object.keys(data2).forEach((key:any)=>{
+            if(data2[key]==id){
+              console.log("entra");
+              data2[key]="";
+            }
+          });
+          let result:any={};
+          result[key2]={Img:data2};
+          setDoc(doc(db, "Flora", idflow), result, { merge: true });
+        }
+      });
+    })
+    
+  }
+
+  async DeleteFlor(idflow:any,name:any){
+    getDoc(doc(db, 'Flora', idflow)).then((item:any)=>{
+      let data=item.data();
+      Object.keys(data).forEach((key2:any)=>{
+        if(data[key2]["Name"]==name){
+          Object.values(data[key2]["Img"]).forEach((val:any)=>{
+            deleteDoc(doc(db, "Imagenes", val));
+          });
+          let result:any={};
+          result[key2]="";
+          setDoc(doc(db, "Flora", idflow), result, { merge: true });
+        }
+      });
+    })
+    
+  }
+
+  async DeleteRuta(idrut:any){
+    try {
+      getDoc(doc(db, 'Rutas', idrut)).then((item:any)=>{
+        let data=item.data();
+        getDoc(doc(db, 'Flora', data["Flora"])).then((item2:any)=>{
+          let data2=item2.data();
+          if(data2!=null){
+            Object.keys(data2).forEach(elem=>{
+              Promise.resolve(this.DeleteFlor(data["Flora"],data2[elem]["Name"]));
+            });
+          }
+        });
+        deleteDoc(doc(db, "Flora", data["Flora"]));
+      });
+      deleteDoc(doc(db, "Rutas", idrut));
+    } catch (error) {
+      deleteDoc(doc(db, "Rutas", idrut));
+    }
+    
+  }
 
 
 
