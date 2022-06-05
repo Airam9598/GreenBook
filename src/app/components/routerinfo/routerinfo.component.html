@@ -7,11 +7,12 @@
     <div class="box">
       <a *ngIf="Useradmin==true" class="add" routerLink="/NewFlower/{{ruta.id}}" routerLinkActive="active">+</a>
         <p>FLORA</p>
-        <div id="{{item.id}}" class="item" *ngFor="let item of ruta.Flora; let i = index" (click)="showflower(item)">
+        <div id="{{item.id}}" class="item" *ngFor="let item of ruta.Flora | paginate: {itemsPerPage: 3, currentPage: page}" (click)="showflower(item)">
           <a *ngIf="Useradmin==true" class="delete" (click)="Deleteflor()" >X</a>
             <img src="{{item.Img[0].Img}}">
             <p>{{item.Name}}</p>
         </div>
+        <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
     </div>
     <div class="blockimagen">
       <a class="add" routerLink="/NewImageFlower/{{ruta.id}}/{{Name}}" routerLinkActive="active">+</a>

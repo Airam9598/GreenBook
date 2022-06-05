@@ -17,6 +17,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { NewFlowerComponent } from './components/new-flower/new-flower.component';
 import { NewImageflowerComponent } from './components/new-imageflower/new-imageflower.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NgxPaginationModule } from "ngx-pagination";
+import { UsersListComponent } from './users-list/users-list.component';
+import { UserseditComponent } from './usersedit/usersedit.component'
 
 @NgModule({
   declarations: [
@@ -32,13 +35,16 @@ import { FooterComponent } from './components/footer/footer.component';
     RegisterComponent,
     NewFlowerComponent,
     NewImageflowerComponent,
-    FooterComponent
+    FooterComponent,
+    UsersListComponent,
+    UserseditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

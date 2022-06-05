@@ -107,6 +107,8 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 ngx-cookie-service
 MIT
 
+ngx-pagination
+
 rxjs
 Apache-2.0
                                Apache License

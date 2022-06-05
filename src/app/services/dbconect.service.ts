@@ -412,6 +412,16 @@ async ObtenerRutas(){
     }
   }
 
+  async ModificarUsuario(email:string,pass:string,user:string,admin:any,id:any){
+    let data:any={};
+    if(user!="") data["UserName"]=user;
+    if(email!="") data["Email"]=email;
+    if(pass!="") data["Password"]=pass;
+    if(admin!="") data["Admin"]=admin;
+    await setDoc(doc(db, "Usuarios", id), data, { merge: true }); 
+    return true;
+  }
+
   async getUsers(){
     const querySnapshot = await getDocs(collection(db, "Usuarios"));
     let users:Array<User>=[];
@@ -539,7 +549,11 @@ async ObtenerRutas(){
     
   }
 
+  async DeleteUser(id:any){
+    await deleteDoc(doc(db, "Usuarios", id));
+  }
 
-
-
+  async GetUserData(id:any){
+    return await (await getDoc(doc(db, 'Usuarios', id))).data();
+  }
 }

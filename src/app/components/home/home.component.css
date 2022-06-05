@@ -4,4 +4,62 @@
     background-size: cover;
     image-rendering: -webkit-optimize-contrast;
     min-height: 100%;
+    position: relative;
+}
+
+.ticket{
+    position: absolute;
+    background-color: var(--main-brown);
+    color: white;
+    text-align: center;
+    display: block;
+    width: 126px;
+    height: 76px;
+    top: 70px;
+    left: 38px;
+    z-index: 9;
+    padding-top: 20px;
+    font-size: 1.9em;
+        
+}
+
+.ticket::after{
+    content: "";
+    width: 0px;
+    height: 0px;
+    background: transparent;
+    display: block;
+    margin-top: -113px;
+    border: 41px solid var(--main-brown);
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-width: 0px 37px 80px;
+    transform: rotate(205deg);
+    margin-left: -19px;
+    position: absolute;
+    top: 186px;
+    left: -1px;
+}
+
+.ticket::before{
+    content: "";
+    width: 0px;
+    height: 0px;
+    background: transparent;
+    display: block;
+    margin-top: -113px;
+    border: 41px solid var(--main-brown);
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-width: 0px 37px 80px;
+    transform: rotate(515deg);
+    margin-left: -19px;
+    position: absolute;
+    top: 186px;
+    left: 91px;
+}
+
+.ticket a{
+    text-decoration: none;
+    color: white;
 }

@@ -1,0 +1,22 @@
+<div class="login">
+    <div (click)="gohome()" class="logo"> 
+        <img src="../../../assets/logonew.png">
+        Green<p>Book</p>
+    </div>
+    <div class="main">
+        <p class="title">Modificar Usuario {{UserData["UserName"]}}</p>
+        <form [formGroup]="Formularioregister" (ngSubmit)="enviar_Datos()" id="access">
+            <input required type="email" id="email"  formControlName="Email" placeholder="Correo Electrónico" value="{{UserData['Email']}}">
+            <input required type="text" id="user" formControlName="User" placeholder="Usuario" value="{{UserData['UserName']}}">
+            <input required type="password" id="password" formControlName="Pass" placeholder="Contraseña">
+            <label>Administrador:</label>
+            <select formControlName="Admin" value="{{UserData['Admin']}}">
+                <option value="true">Si</option>
+                <option value="false">No</option>
+            </select>
+            <p *ngIf="errormsg!=''" class="error">{{errormsg}}</p>
+            <input type="submit" id="submit" value="Modificar">
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>

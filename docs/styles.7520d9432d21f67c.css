@@ -63,3 +63,36 @@
     height: 100%;
     display: block;
   }
+
+  .ngx-pagination {
+    padding-left: 0px !important;
+  }
+
+  .ngx-pagination .current,
+  .btn-info {
+    background: var(--main-green) !important;
+    border: transparent !important;
+    border-radius: 5px !important;
+  }
+
+  .ngx-pagination .current:hover {
+    background: var(--main-green) !important;
+    border-radius: 5px !important; 
+    border: transparent !important;
+  }
+
+  .ngx-pagination .pagination-previous {
+    display: none !important;
+  }
+
+  .ngx-pagination .pagination-next {
+    display: none !important;
+  }
+
+  .ngx-pagination a:hover {
+    background: var(--main-green) !important;
+    border-radius: 5px !important; 
+    border: transparent !important;
+    color: var(--main-white);
+    
+  }

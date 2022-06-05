@@ -1,0 +1,19 @@
+<navbar></navbar>
+<div class="fondo">
+    <div class="buscador"><input [(ngModel)]="busqueda" (ngModelChange)="Discover()" type="text" placeholder="Buscar Usuarios 🔍"></div>
+    <table>
+        <tr class="table-header">
+            <td>Nombres de Usuarios</td>
+            <td>Admin</td>
+            <td></td>
+        </tr>
+        <tr *ngFor="let item of Users" >
+            <td>{{item.UserName}}</td>
+            <td>{{item.Admin}}</td>
+            <td><a routerLink="/UsersEdit/{{item.id}}" routerLinkActive="active">✏️</a> <a (click)="DeleteUser(item.id)">❌</a></td>
+        </tr>
+    </table>
+</div>
+
+<div *ngIf="loading==true" class="loading"> <p class="icon">🍃</p><p class="load">Cargando...</p></div>
+<app-footer></app-footer>

@@ -10,6 +10,8 @@ import { UserPageComponent } from './components/user-page/user-page.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NewFlowerComponent } from './components/new-flower/new-flower.component';
 import { NewImageflowerComponent } from './components/new-imageflower/new-imageflower.component';
+import { UsersListComponent } from './users-list/users-list.component';
+import { UserseditComponent } from './usersedit/usersedit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'Registro', component: RegisterComponent },
   { path: 'NewFlower/:id', component: NewFlowerComponent },
   { path: 'NewImageFlower/:id/:pos', component: NewImageflowerComponent },
+  { path: 'UsersList', component: UsersListComponent },
+  { path: 'UsersEdit/:id', component: UserseditComponent },
 ];
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ruta } from 'src/app/services/Ruta';
 import { DBconectService } from 'src/app/services/dbconect.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-routes',
   templateUrl: './routes.component.html',
@@ -15,8 +15,10 @@ export class RoutesComponent implements OnInit {
   busqueda:string="";
   UserId:any;
   Useradmin!:any;
-  constructor(db:DBconectService) { 
+  router!:Router;
+  constructor(db:DBconectService,router:Router) { 
     this.db=db;
+    this.router=router;
     Promise.resolve(db.ObtenerRutas()).then(items=>{
       setTimeout(() => {
         items.forEach(data=>{ this.rutasAlt.push(data); });
@@ -57,7 +59,7 @@ export class RoutesComponent implements OnInit {
   Deleteroute(id:any){
     this.db.DeleteRuta(id).then(()=>{
       setTimeout(()=>{
-        window.location.reload();
+        this.router.navigate(["/Routes/"]);
       },1000)
     });
   }

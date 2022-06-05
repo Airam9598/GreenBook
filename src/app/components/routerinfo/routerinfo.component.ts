@@ -4,6 +4,7 @@ import { DBconectService } from 'src/app/services/dbconect.service';
 import { Ruta } from 'src/app/services/Ruta';
 import { Flor } from 'src/app/services/Flor';
 import { FLowerImage } from 'src/app/services/FlowerImges';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-routerinfo',
@@ -29,9 +30,12 @@ export class RouterinfoComponent implements OnInit {
   flowid:any;
   UserName!:any;
   wait:boolean=false;
-  constructor(private activateroute: ActivatedRoute,db:DBconectService) { 
+  page!:number;
+  router!:Router;
+  constructor(private activateroute: ActivatedRoute,db:DBconectService,router:Router) { 
     this.eID=this.activateroute.snapshot.paramMap.get("id");
     this.db=db;
+    this.router=router;
     Promise.resolve(db.ObtenerRuta(this.eID)).then(item => {
       setTimeout(() => {
         this.ruta=item;
@@ -124,7 +128,7 @@ export class RouterinfoComponent implements OnInit {
   Deleteimage(){
     if(this.Image.length>1){
       Promise.resolve(this.db.Deleteimage(this.Image[this.actid].id,this.flowid,this.Name)).then(()=>{
-        window.location.reload();
+        this.router.navigate(["/Route/"+this.eID]);
       });
     }
   }
@@ -132,7 +136,7 @@ export class RouterinfoComponent implements OnInit {
   Deleteflor(){
     if(this.ruta.Flora.length>1){
       Promise.resolve(this.db.DeleteFlor(this.flowid,this.Name)).then(()=>{
-        window.location.reload();
+        this.router.navigate(["/Route/"+this.eID]);
       });
     }
   }
