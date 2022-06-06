@@ -6,12 +6,12 @@
         <div>
             <p class="title">{{MainUser}}</p>
             <!--<p class="description">Descripción del texto que hay que poner para qeu se vea la descripción del texto</p>-->
-            <a routerLink="User/{{MainUser}}" routerLinkActive="active">Descubrir más ➜</a>
+            <a routerLink="./User/{{MainUser}}" routerLinkActive="active">Descubrir más ➜</a>
         </div>
     </div>
     <div class="block">
         <div *ngFor="let item of Users" class="item">
-            <a routerLink="User/{{item.UserName}}" routerLinkActive="active"></a>
+            <a routerLink="./User/{{item.UserName}}" routerLinkActive="active"></a>
             <img src="{{item.Img.Img}}">
             <div class="text">
                 <p class="username">
