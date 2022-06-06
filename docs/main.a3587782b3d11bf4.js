@@ -33526,15 +33526,15 @@ function DiscoverComponent_div_4_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](ctx_r0.MainUser);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpropertyInterpolate1"]("href", "User/", ctx_r0.MainUser, "", _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵsanitizeUrl"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpropertyInterpolate1"]("routerLink", "User/", ctx_r0.MainUser, "");
   }
 }
 
 function DiscoverComponent_div_6_Template(rf, ctx) {
   if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](1, "a", 13)(2, "img", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "div", 14)(4, "p", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](1, "a", 11)(2, "img", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "div", 13)(4, "p", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()()();
   }
@@ -33552,7 +33552,7 @@ function DiscoverComponent_div_6_Template(rf, ctx) {
 
 function DiscoverComponent_div_7_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](1, "No se ha encontrado ning\u00FAn usuario");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
   }
@@ -33560,10 +33560,10 @@ function DiscoverComponent_div_7_Template(rf, ctx) {
 
 function DiscoverComponent_div_8_Template(rf, ctx) {
   if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 17)(1, "p", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](0, "div", 16)(1, "p", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](2, "\uD83C\uDF43");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "p", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](3, "p", 18);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](4, "Cargando...");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]()();
   }
@@ -33624,7 +33624,7 @@ let DiscoverComponent = /*#__PURE__*/(() => {
     selectors: [["app-discover"]],
     decls: 10,
     vars: 5,
-    consts: [[1, "fondo"], [1, "buscador"], ["type", "text", "placeholder", "Buscar Usuarios \uD83D\uDD0D", 3, "ngModel", "ngModelChange"], ["class", "principal", 4, "ngIf"], [1, "block"], ["class", "item", 4, "ngFor", "ngForOf"], ["class", "nousers", 4, "ngIf"], ["class", "loading", 4, "ngIf"], [1, "principal"], [3, "src"], [1, "title"], [3, "href"], [1, "item"], ["routerLinkActive", "active", 3, "routerLink"], [1, "text"], [1, "username"], [1, "nousers"], [1, "loading"], [1, "icon"], [1, "load"]],
+    consts: [[1, "fondo"], [1, "buscador"], ["type", "text", "placeholder", "Buscar Usuarios \uD83D\uDD0D", 3, "ngModel", "ngModelChange"], ["class", "principal", 4, "ngIf"], [1, "block"], ["class", "item", 4, "ngFor", "ngForOf"], ["class", "nousers", 4, "ngIf"], ["class", "loading", 4, "ngIf"], [1, "principal"], [3, "src"], [1, "title"], ["routerLinkActive", "active", 3, "routerLink"], [1, "item"], [1, "text"], [1, "username"], [1, "nousers"], [1, "loading"], [1, "icon"], [1, "load"]],
     template: function DiscoverComponent_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](0, "navbar");
@@ -33658,7 +33658,7 @@ let DiscoverComponent = /*#__PURE__*/(() => {
         _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("ngIf", ctx.loading == true);
       }
     },
-    directives: [_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_1__.NavbarComponent, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgModel, _angular_common__WEBPACK_IMPORTED_MODULE_5__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_5__.NgForOf, _angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterLinkWithHref, _angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterLinkActive, _footer_footer_component__WEBPACK_IMPORTED_MODULE_2__.FooterComponent],
+    directives: [_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_1__.NavbarComponent, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_4__.NgModel, _angular_common__WEBPACK_IMPORTED_MODULE_5__.NgIf, _angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterLinkWithHref, _angular_router__WEBPACK_IMPORTED_MODULE_6__.RouterLinkActive, _angular_common__WEBPACK_IMPORTED_MODULE_5__.NgForOf, _footer_footer_component__WEBPACK_IMPORTED_MODULE_2__.FooterComponent],
     styles: [".fondo[_ngcontent-%COMP%]{\r\n    min-height: calc(100% - 232px);\r\n    padding-bottom: 20px;\r\n    height: auto;\r\n    background-color: var(--main-brown);\r\n    padding-top: 120px;\r\n}\r\n\r\n.principal[_ngcontent-%COMP%]{\r\n    margin-top: 60px;\r\n    background-color: var(--main-green);\r\n    width: 80%;\r\n    margin-left: auto;\r\n    margin-right: auto;\r\n    height: 400px;\r\n    border-radius: 5px;\r\n    display: flex;\r\n    color: var(--main-white);\r\n    text-shadow: black 1px 1px 4px;\r\n    box-shadow: #131212 2px 3px 6px 0px;\r\n}\r\n\r\n.principal[_ngcontent-%COMP%]   img[_ngcontent-%COMP%]{\r\n    width: 50%;\r\n    height: 100%;\r\n    border-radius:  5px 0 0 5px ;\r\n    image-rendering: -webkit-optimize-contrast;\r\n    object-fit: cover\r\n}\r\n\r\n.principal[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]{\r\n    width: 50%;\r\n    margin-left: 57px;\r\n    margin-top: 27px;\r\n}\r\n\r\n.principal[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]   .title[_ngcontent-%COMP%]{\r\n    font-size: 2em;\r\n}\r\n\r\n.principal[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]   .description[_ngcontent-%COMP%]{\r\n    font-size: 1.3em;\r\n}\r\n\r\n.principal[_ngcontent-%COMP%]   div[_ngcontent-%COMP%]   a[_ngcontent-%COMP%]{\r\n    font-size: 1.5em;\r\n    color: white;\r\n    text-decoration: none;\r\n}\r\n\r\n.block[_ngcontent-%COMP%]{\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    margin-top: 40px;\r\n}\r\n\r\n.block[_ngcontent-%COMP%]   .item[_ngcontent-%COMP%]{\r\n    width: 350px;\r\n    height: 250px;\r\n    position: relative;\r\n    border-radius: 10px;\r\n    margin:10px;\r\n    box-shadow: #131212 2px 3px 6px 0px\r\n}\r\n\r\n.item[_ngcontent-%COMP%]   img[_ngcontent-%COMP%]{\r\n    position: absolute;\r\n    top:0;\r\n    left:0;\r\n    width: 100%;\r\n    height: 100%;\r\n    object-fit: cover;\r\n    image-rendering: -webkit-optimize-contrast;\r\n    border-radius: 10px;\r\n}\r\n\r\n.item[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%]{\r\n    background: linear-gradient(45deg, #ffffffe8, #fff0f05c);\r\n    color: black;\r\n    position: absolute;\r\n    z-index: 2;\r\n    top: 10px;\r\n    height: 31px;\r\n    width: max-content;\r\n    border-radius: 0 10px 10px 0;\r\n    padding: 5px;\r\n    padding-left: 10px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n}\r\n\r\n.item[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%]   .username[_ngcontent-%COMP%]{\r\n    font-size: 1.3em;\r\n    font-weight: bold;\r\n    margin-top:5px;\r\n    margin-bottom: 5px;\r\n    margin-right: 10px;\r\n}\r\n\r\n.item[_ngcontent-%COMP%]   a[_ngcontent-%COMP%]{\r\n    position: absolute;\r\n    top:0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    z-index: 7;\r\n}\r\n\r\n.buscador[_ngcontent-%COMP%]{\r\n    width: max-content;\r\n    margin: auto;\r\n    display: block;\r\n}\r\n\r\n.buscador[_ngcontent-%COMP%]   input[_ngcontent-%COMP%]{\r\n    font-size: 1.3em;\r\n    padding: 10px;\r\n    border-radius: 10px;\r\n    border: gray 3px inset;\r\n    text-align: center;\r\n}\r\n\r\n.loading[_ngcontent-%COMP%]{\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: var(--main-brown);\r\n    z-index: 9;\r\n}\r\n\r\n.loading[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%]{\r\n    font-size: 6em;\r\n    position: absolute;\r\n    left: 44%;\r\n    top: 28%;\r\n    animation: infinite-rotate 2s linear infinite;\r\n    z-index: 10;\r\n}\r\n\r\n.loading[_ngcontent-%COMP%]   .load[_ngcontent-%COMP%]{\r\n    position: absolute;\r\n    left: 41%;\r\n    top: 52%;\r\n    z-index: 10;\r\n    animation: none;\r\n    font-size: 3em;\r\n\r\n}\r\n\r\n@keyframes infinite-rotate {  \r\n    0% { -webkit-transform: rotate(0deg); }\r\n    100% { -webkit-transform: rotate(360deg); }\r\n}\r\n\r\n.nousers[_ngcontent-%COMP%]{\r\n    display: block;\r\n    text-align: center;\r\n    color: white;\r\n    font-size: 2em;\r\n    margin-top: 86px;\r\n    margin-bottom: 133px;\r\n}"]
   });
   return DiscoverComponent;
