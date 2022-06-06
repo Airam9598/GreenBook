@@ -8,7 +8,7 @@ import { User } from 'src/app/services/User';
 })
 export class DiscoverComponent implements OnInit {
   db:DBconectService;
-  Users!:Array<User>;
+  Users:Array<User>=[];
   MainImg!:String;
   MainUser!:String;
   UsersAlt:Array<User>=[];

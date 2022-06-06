@@ -7,6 +7,8 @@ footer{
     min-height: 60px;
     padding: 10px;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center
 }
 footer div{
     height: 100%;
@@ -17,4 +19,113 @@ footer div{
     margin-right: 10px;
     font-size: 1.1em;
     text-align: center;
+    flex-direction: column;
+    width: 18%;
+    min-width: 150px;
+    margin-top: 11px;
+    /*box-shadow: white 0px 4px 2px -2px;*/
+}
+.image{
+    width: 10% !important;
+    min-width: 100px !important;
+}
+
+footer div span{
+    font-size: 2.4em;
+}
+
+footer div .icon{
+    background-image: url(/assets/ULPGC.svg);
+    background-size: contain;
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+}
+
+footer div p{
+    margin:0;
+    font-size: 1.2em;
+}
+
+footer div:hover p{
+    transform: translateY(-5px);
+    transition: 1s;
+    cursor: pointer;
+}
+
+.greeds{
+    position: fixed;
+    width: 50%;
+    height: 85%;
+    background: #191919;
+    z-index: 10;
+    top: 4%;
+    left: 24%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    /* align-items: center; */
+    padding: 30px 2px;
+    flex-direction: column;
+}
+.greeds p{
+    font-size: 1.5em;
+    color:  white;
+}
+
+.greeds a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.greeds ul{
+    display: block;
+    padding: 0;
+}
+
+.greeds li{
+    display: flex;
+    height: 31px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.greeds li:hover{
+    background-color: gray;
+    cursor: pointer;
+}
+
+.greeds label{
+    color: white;
+    font-size: 1.3em;
+    margin-top: 14px;
+    padding-bottom: 2px;
+    box-shadow: white 0px 3px 1px -1px;
+}
+
+.shadow{
+    position: fixed;
+    background-color: #00000091;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.exit{
+    position: absolute;
+    top: -14px;
+    right: -12px;
+    color: black;
+    background: white;
+    border-radius: 100%;
+    padding: 5px 9px;
+    font-size: 1.4em;
+    font-weight: bold;
+    cursor: pointer;
 }

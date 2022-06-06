@@ -24,9 +24,8 @@
 
   app-discover{
     min-height: 100%;
-    height: auto;
+    height: 100%;
     display: block;
-    height: fit-content;
   }
 
   app-routes{

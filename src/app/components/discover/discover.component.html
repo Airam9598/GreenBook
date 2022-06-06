@@ -20,6 +20,7 @@
             </div>
         </div>
     </div>
+    <div *ngIf="Users.length==0" class="nousers">No se ha encontrado ningún usuario</div>
 </div>
 
 <div *ngIf="loading==true" class="loading"> <p class="icon">🍃</p><p class="load">Cargando...</p></div>
