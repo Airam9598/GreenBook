@@ -6,11 +6,13 @@ export class Ruta{
     Description!:String;
     Flora!:Array<Flor>;
     img!:String;
+    Waypoint!:String;
     constructor(id:any,ruta:any){
         this.id=id;
         this.Name =ruta["Name"];
         this.Description =ruta["Description"];
         this.Flora=ruta["Flora"];
+        this.Waypoint=ruta["Waypoints"];
        /* if(ruta["Flora"]!=null){
             Promise.resolve(db.ObtenerFlora(ruta["Flora"])).then(items=>{
                 this.flora=items;

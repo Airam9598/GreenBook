@@ -84,7 +84,8 @@ async AgregarRuta(ruta:Ruta,flor:Flor,files:any,random:any,user:any){
       const docRef = addDoc(collection(db, "Rutas") , {
         Name: ruta.Name,
         Description: ruta.Description,
-        Flora: item.id
+        Flora: item.id,
+        Waypoints:""
       });
       return "agregado correctamente";
     } catch (e) {

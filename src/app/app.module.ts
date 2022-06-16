@@ -19,7 +19,8 @@ import { NewImageflowerComponent } from './components/new-imageflower/new-imagef
 import { FooterComponent } from './components/footer/footer.component';
 import { NgxPaginationModule } from "ngx-pagination";
 import { UsersListComponent } from './users-list/users-list.component';
-import { UserseditComponent } from './usersedit/usersedit.component'
+import { UserseditComponent } from './usersedit/usersedit.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -37,14 +38,15 @@ import { UserseditComponent } from './usersedit/usersedit.component'
     NewImageflowerComponent,
     FooterComponent,
     UsersListComponent,
-    UserseditComponent
+    UserseditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

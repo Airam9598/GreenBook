@@ -91,3 +91,11 @@
     color: var(--main-white);
     
   }
+
+  .leaflet-routing-container {
+    display:none !important;
+  }
+
+  .leaflet-marker-draggable{
+    display: none !important;
+  }

@@ -286,3 +286,14 @@
         margin-right: 20PX;
     }
 }
+
+
+#map{
+    height: 376px;
+    width: 50%;
+    display: block;
+    margin: auto;
+    border-radius: 5px;
+    border: 2px inset gray;
+    margin-top: 53px;
+}
