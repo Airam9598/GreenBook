@@ -60,6 +60,7 @@ table{
     margin-top: 40px;
     table-layout: fixed;
     border-radius: 5px;
+    position: relative;
 }
 
  td{
@@ -88,5 +89,21 @@ td a{
     margin-right: 10px;
     text-decoration: none;
     font-size: 1.2em;
+    cursor: pointer;
+}
+
+.addnew{
+    width: max-content;
+    margin: auto;
+    background: white;
+    border-radius: 5px;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-decoration: none;
     cursor: pointer;
 }

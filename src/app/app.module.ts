@@ -21,6 +21,7 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { UsersListComponent } from './users-list/users-list.component';
 import { UserseditComponent } from './usersedit/usersedit.component';
 import { HttpClientModule } from "@angular/common/http";
+import { FlowerListComponent } from './components/flower-list/flower-list.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { HttpClientModule } from "@angular/common/http";
     FooterComponent,
     UsersListComponent,
     UserseditComponent,
+    FlowerListComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,14 +2,17 @@
 <div class="fondo">
     <nav class="secondnav" *ngIf="admin==true && eID ==null">
         <ul>
-            <li class="right">
+            <li>
                 <a routerLink="/Create-route" routerLinkActive="active">Crear Ruta</a>
-                <a routerLink="/UsersList" routerLinkActive="active">Lista de Usuarios</a>
-                <a routerLink="/Registro" routerLinkActive="active">Añadir Usuario</a>
+                <a routerLink="/FlowerList" routerLinkActive="active">Flores</a>
+                <a routerLink="/UsersList" routerLinkActive="active">Usuarios</a>
+            </li>
+            <li class="right">
+                <a (click)="showsettings()">Ajustes</a>
             </li>
         </ul>
     </nav>
-    <div *ngIf="eID==null" class="user-block">
+    <div *ngIf="eID==null && settings==true" class="user-block">
         <img src="./assets/usuario.png">
         <div class="info">
             <strong>Correo Electrónico:</strong> {{email}}
@@ -31,7 +34,9 @@
     <div class="box">
         <div class="item" *ngFor="let item of images; let i = index">
             <img src="{{item.Img}}">
-            <p>♡ {{item.Like}}</p>
+            <p>♡ {{item.Likes}} <span>Ruta: {{item.NameRuta}}</span></p>
+            <a routerLink="/Route/{{item.Ruta}}" routerLinkActive="active"></a>
+            
         </div>
     </div>
 </div>  

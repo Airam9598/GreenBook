@@ -1,10 +1,9 @@
 .fondo{
-    min-height: 100%;
+    min-height: calc(100% - 232px);
+    padding-bottom: 20px;
     height: auto;
     background-color: var(--main-brown);
-    width: 100%;
-    padding-top: 100px;
-    padding-bottom: 20px;
+    padding-top: 120px;
 }
 
 .filtro{
@@ -131,4 +130,13 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.noroutes{
+    display: block;
+    text-align: center;
+    color: white;
+    font-size: 2em;
+    margin-top: 86px;
+    margin-bottom: 133px;
 }

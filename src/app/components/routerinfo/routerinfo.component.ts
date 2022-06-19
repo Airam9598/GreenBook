@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DBconectService } from 'src/app/services/dbconect.service';
 import { Ruta } from 'src/app/services/Ruta';
@@ -6,7 +6,7 @@ import { Flor } from 'src/app/services/Flor';
 import { FLowerImage } from 'src/app/services/FlowerImges';
 import { Router } from '@angular/router';
 import 'leaflet-routing-machine';
-import { HttpHeaders,HttpClient  } from '@angular/common/http';
+import { HttpClient  } from '@angular/common/http';
 declare let L:any;
 
 @Component({
@@ -14,143 +14,39 @@ declare let L:any;
   templateUrl: './routerinfo.component.html',
   styleUrls: ['./routerinfo.component.css']
 })
-export class RouterinfoComponent implements OnInit,AfterViewInit  {
+export class RouterinfoComponent implements OnInit  {
   eID:any;
   ruta:Ruta=new Ruta("","");
-  Image!:Array<FLowerImage>;
-  Imagelenght:number=0;
-  Description!:String;
-  Name!:String;
-  Userlikes!:any;
-  actimage!:String;
-  actid:number=0;
+  router!:Router;
+  map:any;
+  http:any;
+  db:any;
+  loading:boolean=true;
+  ImageList:any={};
+  ImageListAlt:any={};
+  actimage:String="";
   actuser!:String;
   actlike!:String;
-  loading:boolean=true;
+  Description!:String;
+  Name!:String;
+  Object=Object;
+  Userlikes!:any;
+
+
+
+  Imagelenght:number=0;
+  actid:number=0;
   UserId:any;
   Useradmin:any;
-  db:any;
+  
   flowid:any;
   UserName!:any;
   wait:boolean=false;
   page!:number;
-  router!:Router;
-  map:any;
-  http:any;
-
-  ngAfterViewInit(){
-   /* const map = L.map("map",{scrollWheelZoom:true}).setView([0, 0], );
-    var osm = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"),
-    satellite = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {});
-    var baseMaps = {
-      "OpenStreetMap": osm,
-      "Satélite": satellite,
-    };
-    function createCustomIcon (feature:any, latlng:any) {
-      let myIcon = L.icon({
-        iconUrl: 'https://cdn.onlinewebfonts.com/svg/img_509228.png',
-        shadowUrl: 'https://cdn.onlinewebfonts.com/svg/img_509228.png',
-        iconSize:     [0, 0],
-        shadowSize:   [0, 0], 
-        iconAnchor:   [0, 0],
-        shadowAnchor: [0, 0],  
-        popupAnchor:  [0, 0] 
-      })
-      return L.marker(latlng, { icon: myIcon })
-    }
-    
-    L.control.layers(baseMaps,{}, {position: 'bottomleft'}).addTo(map);
-    //map.addLayer(satellite);
-  console.log(this.ruta.Waypoint);    const url =this.ruta.Waypoint;
-    this.http.get(url).subscribe((res:any)=>{
-      var latlngs:any = [];
-      res.features.forEach((element:any)=>{
-        latlngs.push(L.latLng(element.geometry.coordinates[1],element.geometry.coordinates[0]))
-      });
-      var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-      map.fitBounds(polyline.getBounds());
-      
-      let myLayerOptions = {
-        pointToLayer: createCustomIcon
-      }
-      L.geoJson(res,myLayerOptions).addTo(map);
-    });
-
-    const basicBeachIcon = L.icon({
-      iconUrl: 'https://raw.githubusercontent.com/shacheeswadia/leaflet-map/main/beach-icon-chair.svg',
-      iconSize: [40, 40],
-    });
-
-   /* const marker1 = L.marker([-37.699450, 176.279420], {icon: basicBeachIcon})
-    .bindPopup('Whitehaven Beach, Whitsunday Island')
-    .addTo(map);
-const marker2 = L.marker([-27.643310, 153.305140], {icon: basicBeachIcon})
-    .bindPopup('Turquoise Bay Exmouth, Australia')
-    .addTo(map);
-const marker3 = L.marker([-33.956330, 122.150270], {icon: basicBeachIcon})
-    .bindPopup('Cape Le Grand National Park Esperance, Australia')
-    .addTo(map);
-const marker4 = L.marker([-34.962390, 117.391220], {icon: basicBeachIcon})
-    .bindPopup('Greens Pool Denmark, Australia')
-    .addTo(map);
-const marker5 = L.marker([-17.961210, 122.214820], {icon: basicBeachIcon})
-    .bindPopup('Cable Beach Broome, Australia')
-    .addTo(map);
-const marker6 = L.marker([-16.505960, 151.751520], {icon: basicBeachIcon})
-    .bindPopup('Matira Beach, Society Islands')
-    .addTo(map);
-const marker7 = L.marker([-22.594400, 167.484440], {icon: basicBeachIcon})
-    .bindPopup('Piscine Naturelle Ile Des Pins, New Caledonia')
-    .addTo(map);
-const marker8 = L.marker([-37.977000, 177.057000], {icon: basicBeachIcon})
-    .bindPopup('Ohope Beach Whakatane, New Zealand')
-    .addTo(map);
-const marker9 = L.marker([-41.037600, 173.017000], {icon: basicBeachIcon})
-    .bindPopup('Kaiteriteri Beach, New Zealand')
-    .addTo(map);
-const marker10 = L.marker([-37.670300, 176.212000], {icon: basicBeachIcon})
-    .bindPopup('Mt Maunganui Main Beach, New Zealand')
-    .addTo(map);
-    var states = [{
-      "type": "Feature",
-      "properties": {"party": "Republican"},
-      "geometry": {
-          "type": "Polygon",
-          "coordinates": [[
-              [-104.05, 48.99],
-              [-97.22,  48.98],
-              [-96.58,  45.94],
-              [-104.03, 45.94],
-              [-104.05, 48.99]
-          ]]
-      }
-  }, {
-      "type": "Feature",
-      "properties": {"party": "Democrat"},
-      "geometry": {
-          "type": "Polygon",
-          "coordinates": [[
-              [-109.05, 41.00],
-              [-102.06, 40.99],
-              [-102.03, 36.99],
-              [-109.04, 36.99],
-              [-109.05, 41.00]
-          ]]
-      }
-  }];
-    L.geoJSON(states, {
-      style: function(feature:any) {
-          switch (feature.properties.party) {
-              case 'Republican': return {color: "#ff0000"};
-              case 'Democrat':   return {color: "#0000ff"};
-              default: return {color: "#0000ff"};
-          }
-      }
-  }).addTo(map);
-*/
+  
+  
 
 
-  }
   constructor(private activateroute: ActivatedRoute,db:DBconectService,router:Router,http:HttpClient) { 
     this.eID=this.activateroute.snapshot.paramMap.get("id");
     this.db=db;
@@ -160,52 +56,16 @@ const marker10 = L.marker([-37.670300, 176.212000], {icon: basicBeachIcon})
     Promise.resolve(db.ObtenerRuta(this.eID)).then(item => {
       setTimeout(() => {
         this.ruta=item;
-        const map = L.map("map",{scrollWheelZoom:true}).setView([0, 0], 13);
-        var osm = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"),
-        satellite = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}");
-        map.addLayer(satellite);
-        var baseMaps = {
-          "OpenStreetMap": osm,
-          "Satélite": satellite,
-        };
-        function createCustomIcon (feature:any, latlng:any) {
-          let myIcon = L.icon({
-            iconUrl: 'https://cdn.onlinewebfonts.com/svg/img_509228.png',
-            shadowUrl: 'https://cdn.onlinewebfonts.com/svg/img_509228.png',
-            iconSize:     [0, 0],
-            shadowSize:   [0, 0], 
-            iconAnchor:   [0, 0],
-            shadowAnchor: [0, 0],  
-            popupAnchor:  [0, 0] 
-          })
-          return L.marker(latlng, { icon: myIcon })
-        }
-        L.control.layers(baseMaps,{}, {position: 'bottomleft'}).addTo(map);
-        const url =this.ruta.Waypoint;
-        this.http.get(url).subscribe((res:any)=>{
-          var latlngs:any = [];
-          res.features.forEach((element:any)=>{
-            latlngs.push(L.latLng(element.geometry.coordinates[1],element.geometry.coordinates[0]))
-          });
-          var polyline = L.polyline(latlngs, {color: '#ff8300'}).addTo(map);
-          map.fitBounds(polyline.getBounds());
-          
-          let myLayerOptions = {
-            pointToLayer: createCustomIcon
-          }
-          L.geoJson(res,myLayerOptions).addTo(map);
-        });
+        this.createMap();
+        this.loading=false;
+      },400);
+    });
+  }
 
-        const basicBeachIcon = L.icon({
-          iconUrl: 'https://raw.githubusercontent.com/shacheeswadia/leaflet-map/main/beach-icon-chair.svg',
-          iconSize: [40, 40],
-        });
-        try {
-          this.flowid=item.Flora[0].id;
-          this.Image=item.Flora[0].Img;
+       /* try {
+          //this.flowid=item.Flora[0].id;
           this.Imagelenght=Object.keys(this.Image).length;
-          this.Description=item.Flora[0].Description;
-          this.Name=item.Flora[0].Name;
+          //this.Name=item.Flora[0].Name;
           this.actimage=this.Image[this.actid].Img;
           this.actuser=this.Image[this.actid].User;
           this.actlike=this.Image[this.actid].Like;
@@ -233,20 +93,18 @@ const marker10 = L.marker([-37.670300, 176.212000], {icon: basicBeachIcon})
       //this.Description=item.flora[0].Description;
       //this.Name=item.flora[0].Name;
     });
-
-  }
+*/
+      
 
   ngOnInit(): void {}
 
-  public showflower(item:Flor){
+  /*public showflower(item:Flor){
         this.actid=0;
-        this.Image=item.Img;
         this.Imagelenght=Object.keys(this.Image).length;
         this.flowid=item.id;
         this.actimage=this.Image[this.actid].Img;
         this.actuser=this.Image[this.actid].User;
         this.actlike=this.Image[this.actid].Like;
-        this.Description=item.Description;
         this.Name=item.Name;
   }
 
@@ -260,31 +118,7 @@ const marker10 = L.marker([-37.670300, 176.212000], {icon: basicBeachIcon})
     }
   }
 
-  likes(){
-    if(!this.wait){
-      this.wait=true;
-      let find;
-      let key2:any;
-      Object.values(this.Userlikes).forEach((item:any,key:any)=>{
-        if(item==this.Image[this.actid].id){
-          find=true;
-          key2=key;
-        }
-      });
-      if(!find){
-        this.Userlikes[Object.keys(this.Userlikes).length]=this.Image[this.actid].id;
-        this.actlike=""+(parseInt(this.actlike.toString())+1);
-        this.db.LikeImage(this.UserId,this.Image[this.actid].id,parseInt(this.actlike.toString()));
-      }else{
-        this.Userlikes[key2]="";
-        this.actlike=""+(parseInt(this.actlike.toString())-1);
-        this.db.UnLikeImage(this.UserId,this.Image[this.actid].id,key2,parseInt(this.actlike.toString()));
-      }
-      setTimeout(()=>{
-        this.wait=false;
-      },2000);
-    }
-  }
+
 
   Deleteimage(){
     if(this.Image.length>1){
@@ -294,11 +128,112 @@ const marker10 = L.marker([-37.670300, 176.212000], {icon: basicBeachIcon})
     }
   }
 
-  Deleteflor(){
+  /*Deleteflor(){
     if(this.ruta.Flora.length>1){
       Promise.resolve(this.db.DeleteFlor(this.flowid,this.Name)).then(()=>{
         this.router.navigate(["/Route/"+this.eID]);
       });
     }
+  }*/
+
+  createMap(){
+    const map = L.map("map",{scrollWheelZoom:true}).setView([0, 0], 13);
+    var osm = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"),
+    satellite = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}");
+    map.addLayer(satellite);
+    var baseMaps = {
+      "OpenStreetMap": osm,
+      "Satélite": satellite,
+    };
+    function createCustomIcon (feature:any, latlng:any) {
+      let myIcon = L.icon({
+        iconUrl: 'https://cdn.onlinewebfonts.com/svg/img_509228.png',
+        shadowUrl: 'https://cdn.onlinewebfonts.com/svg/img_509228.png',
+        iconSize:     [0, 0],
+        shadowSize:   [0, 0], 
+        iconAnchor:   [0, 0],
+        shadowAnchor: [0, 0],  
+        popupAnchor:  [0, 0] 
+      })
+      return L.marker(latlng, { icon: myIcon })
+    }
+    L.control.layers(baseMaps,{}, {position: 'bottomleft'}).addTo(map);
+    const url =this.ruta.Waypoint;
+    this.http.get(url).subscribe((res:any)=>{
+      var latlngs:any = [];
+      res.features.forEach((element:any)=>{
+        latlngs.push(L.latLng(element.geometry.coordinates[1],element.geometry.coordinates[0]))
+      });
+
+      map.fitBounds(L.polyline(latlngs, {color: '#ff8300'}).addTo(map).getBounds());
+      
+      L.geoJson(res,{ pointToLayer: createCustomIcon}).addTo(map);
+
+      //load waypoint images
+      const basicBeachIcon = L.icon({
+        iconUrl: 'https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Icons%2Fflowermarker.png?alt=media&token=5ee151d3-1bfe-41bf-9041-4c52b3194313',
+        iconSize: [35, 50],
+      });
+      let markerOptions = {
+        clickable: false,
+        icon: basicBeachIcon
+      }
+      let marker:any;
+      if(this.ruta.Marks.length>0){
+
+        for(marker of this.ruta.Marks){
+          const mark=L.marker([marker["Lat"], marker["Lng"]], markerOptions).bindPopup('<img src="'+marker["Flor"][0].Img+'"> '+marker["Flor"][0]["Flor"]["Info"]).openPopup();
+          mark.addTo(map);
+          let num=0;
+          for(let flor of marker["Flor"]){
+            let images:any=[];
+            let key=marker["Lat"]+""+marker["Lng"]+""+num;
+            images.push([flor.Img, flor["Flor"]["Name"],flor.Likes,flor.User,flor["Flor"]["Info"]]);
+            num++;
+            this.ImageList[key]=images;
+            this.ImageListAlt[key]=images;
+          }
+          mark.on('mouseover',function(ev:any) {
+            mark.openPopup();
+          });
+
+          mark.on('mouseout',function(ev:any) {
+            map.closePopup();
+          });
+
+          mark.on('click',()=> {
+            this.ImageList=[];
+            let key=mark["_latlng"]["lat"]+""+mark["_latlng"]["lng"];
+            let num=0;
+            while(this.ImageListAlt[key+num]!=null){
+              this.ImageList[key+num]=this.ImageListAlt[key+num];
+              num++;
+            }
+          });
+        }
+      }
+    });
+  }
+
+  showImage(item:any){
+    for(let item2 of this.ImageList[item]){
+      this.actimage=item2[0];
+      this.actlike=item2[2],
+      this.actuser=item2[3];
+      this.Description=item2[4];
+      this.Name=item2[1];
+    }
+  }
+
+  showAll(){
+    this.ImageList={};
+    for(let item2 of Object.keys(this.ImageListAlt)){
+      this.ImageList[item2]=this.ImageListAlt[item2];
+      //this.actimage=item2[0];
+    }
+  }
+
+  close(){
+    this.actimage="";
   }
 }

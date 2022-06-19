@@ -58,7 +58,7 @@ export class NewImageflowerComponent implements OnInit {
   }
   async enviar_Datos(){
     if(this.foto.nativeElement.files.length>0){
-      this.db.subiendo=true;
+      //this.db.subiendo=true;
       this.Error=false;
       var fileList = this.files=this.foto.nativeElement.files;
       const random = Math.floor(Math.random() * 200);
@@ -69,7 +69,7 @@ export class NewImageflowerComponent implements OnInit {
         }) 
       }
       await this.db.Addimagen(this.fid,arra,this.name)?.then(item=>{
-        this.db.subiendo=false;
+        //this.db.subiendo=false;
         setTimeout(()=>{
           //this.router.navigate(["/Route/"+this.eID]);
         },2500);

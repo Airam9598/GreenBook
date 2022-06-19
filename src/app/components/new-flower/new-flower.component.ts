@@ -1,12 +1,8 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Ruta } from 'src/app/services/Ruta';
 import { DBconectService } from 'src/app/services/dbconect.service';
-import { ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { Flor } from 'src/app/services/Flor';
-import { FLowerImage } from 'src/app/services/FlowerImges';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-new-flower',
@@ -21,22 +17,26 @@ export class NewFlowerComponent implements OnInit {
   foto!: ElementRef;
   FormularioFlor:FormGroup;
   db:DBconectService;
-  files!:File;
-  subiendo:any=false;
+  subiendo:any=true;
   username!:string;
   adminuser:boolean=false;
   router:Router;
   Error:boolean=false;
   eID:any;
-  fid!:any;
+  FlowerData:any={};
   constructor(public formulario:FormBuilder,private db2:DBconectService,router:Router,private activateroute: ActivatedRoute) { 
-    this.FormularioFlor=this.formulario.group({Files:[''],FlowerName:[''],FlowerDescription:['']});
+    this.FormularioFlor=this.formulario.group({Files:[''],FlowerName:[''],FlowerDescription:[''],Tipo:['']});
     this.db=db2;
     this.router=router;
+    this.subiendo=true;
     this.eID=this.activateroute.snapshot.paramMap.get("id");
-    Promise.resolve(this.db.getFlowerid(this.eID)).then(item=>{
-      this.fid=item;
-    });
+    if(this.eID !=null){
+      Promise.resolve(this.db.GetFlowerData(this.eID)).then(item => {
+        this.FlowerData=item;
+        console.log(this.FlowerData);
+      });
+    }
+
     Promise.resolve(this.db.GetUser(this.db.getToken())).then(item=>{
       if(item ==null){
         this.db.deleteToken();
@@ -45,43 +45,44 @@ export class NewFlowerComponent implements OnInit {
         this.username=item["UserName"];
         this.adminuser=item["Admin"];
       }
+      this.subiendo=false;
     })
   }
 
   ngOnInit(): void {
   }
   async enviar_Datos(){
-    if(this.FormularioFlor.value["FlowerName"] !="" && this.FormularioFlor.value["FlowerDescription"] !="" && this.foto.nativeElement.files.length>0){
-      this.db.subiendo=true;
-      this.Error=false;
-      var fileList = this.files=this.foto.nativeElement.files;
-      const random = Math.floor(Math.random() * 200);
-      let arra:Array<FLowerImage>=[];
-      for(let file of fileList){
-        await this.db.AgregarImagen(new FLowerImage("",{User:this.username,Likes:0,Img:random+file.name}),random+file.name)?.then(item=>{
-          arra.push(new FLowerImage(item.id,{User:this.username,Likes:0,Img:random+file.name}));
-        }) 
-      }
-      let flor= new Flor("",{Name:this.FormularioFlor.value["FlowerName"],Description:this.FormularioFlor.value["FlowerDescription"]},arra);
-      await this.db.Addflower2(this.fid,flor)?.then(item=>{
-        this.db.subiendo=false;
-        setTimeout(()=>{
-          this.router.navigate(["/Route/"+this.eID]);
-        },2500);
-      });
+    if(this.eID !=null){
+        this.subiendo=true;
+        this.Error=false;
+        let fileList =this.foto.nativeElement.files;
+        await this.db.ModificarFlora(this.FormularioFlor.value["FlowerName"],this.FormularioFlor.value["FlowerDescription"],this.FormularioFlor.value["Tipo"],fileList,this.eID);
+        if(fileList.length>0){
+          Promise.resolve( this.db.subirImgFlora(fileList)).then(()=>{
+            this.subiendo=false;
+          })
+        }else{
+          this.subiendo=false;
+        }
 
-
-
-
-      if(fileList.length>0){
-        this.db.Subirrchivo(fileList,random);
-      }
     }else{
-      this.Error=true;
+      if(this.FormularioFlor.value["FlowerName"] !="" && this.FormularioFlor.value["FlowerDescription"] !="" && this.foto.nativeElement.files.length>0 && this.FormularioFlor.value["Tipo"] !=""){
+        this.subiendo=true;
+        this.Error=false;
+        let fileList =this.foto.nativeElement.files;
+
+        let flor= new Flor("",{Name:this.FormularioFlor.value["FlowerName"],Info:this.FormularioFlor.value["FlowerDescription"],Type:this.FormularioFlor.value["Tipo"],Img:"https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Img-Flor%2F"+fileList[0].name+"?alt=media&token=f03b7cf8-df71-44f2-83f5-c71c95c53a8d"});
+        await this.db.AgregarFlora(flor);
+        Promise.resolve( this.db.subirImgFlora(fileList)).then(()=>{
+          this.subiendo=false;
+        })
+      }else{
+        this.Error=true;
+      }
     }
   }
 
   cancel(){
-    this.router.navigate(["/User"]);
+    this.router.navigate(["/FlowerList"]);
   }
 }

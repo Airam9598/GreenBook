@@ -38,6 +38,16 @@ form input{
     box-shadow: #0000009c 2px 2px 5px 0px;
 }
 
+form select{
+    text-align: center;
+    font-size: 1.1em;
+    padding: 5px;
+    border-radius: 10px;
+    border-radius: 5px;
+    background-color: #e8e8e8;
+    box-shadow: #0000009c 2px 2px 5px 0px;
+}
+
 #create,#cancel{
     width: 46%;
     display: inline-block;

@@ -10,22 +10,17 @@
         <label for="descrip" class="form-label">Descripción</label>
         <input required type="text" class="form-control" style="text-align:center" formControlName="Description" id="descrip">
       </div>
-        <p>FLOR</p>
-        <div class="mb-3">
-          <label for="nombre" class="form-label">Nombre de la Flor</label>
-          <input required type="text" class="form-control" style="text-align:center" id="nombre" formControlName="FlowerName">
-        </div>
-        <div class="mb-3">
-          <label for="descrip" class="form-label">Descripción de la Flor</label>
-          <input required type="text" class="form-control" style="text-align:center" formControlName="FlowerDescription" id="descrip">
-        </div>
-        <div class="mb-3">
-          <label for="files" class="form-label">Imagen de la flor</label>
-          <input required multiple #foto type="file" id="files" name="files" formControlName="Files" accept="image/*">
+      <div class="mb-3">
+        <label for="files" class="form-label">Imagen de la ruta</label>
+        <input required #foto type="file" id="files" name="files" formControlName="Files" accept="image/*">
+      </div>
+      <div class="mb-3">
+        <label for="files" class="form-label">Waypoints de la ruta</label>
+        <input required #fotogeo (change)="imageRun($event)" type="file" id="filesgeo" name="filesgeo" formControlName="Filesgeo" accept=".geojson">
       </div>
       <p *ngIf="Error==true" class="error">🚫Faltan datos por rellenar</p>
       <button type="submit" class="btn btn-primary" id="create">Crear</button>
-      <button (click)="cancel()"  class="btn btn-danger" id="cancel"> Cancelar</button>
+      <button   class="btn btn-danger" id="cancel"> Cancelar</button>
   </form>
 </div>
-<div *ngIf="db.subiendo===true" style="background-color:black;    height: 100px;"></div>
+<div  style="background-color:black;    height: 100px;"></div>

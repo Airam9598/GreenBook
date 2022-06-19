@@ -1,6 +1,6 @@
 .fondo{
     min-height: 100%;
-    background-color: var(--main-white);
+    background-color: var(--main-brown);
     padding-top: 120px;
 }
 
@@ -14,6 +14,7 @@
     margin-right: auto;
     min-height: 200px;
     position: relative;
+    box-shadow: #201f1fd4 2px 3px 6px 2px;
 }
 
 .user-block img{
@@ -74,6 +75,7 @@
     flex-direction: column;
     box-shadow: #131212 2px 3px 6px 0px;
     position: relative;
+    transition: 0.7s;
 }
 .usuario{
     font-size: 2em;
@@ -109,6 +111,16 @@
     font-weight: bold;
     text-shadow: #000000b3 2px 2px 3px;
 }
+.box .item:hover{
+    transition: 0.5s;
+    transform: scale(0.95);
+}
+.box .item p span{
+    font-size: 0.6em;
+    width: 51%;
+    float: right;
+    margin-right: 18px;
+}
 
 .box{
     display: flex;
@@ -116,11 +128,16 @@
     flex-wrap: wrap;
 }
 
+.right{
+    float: right;
+}
+
 .secondnav{
     padding: 10px;
-    background: var(--main-brown);
+    background: var(--main-green);
     margin-bottom: 10px;
     color: white;
+    text-shadow: black 2px 2px 4px;
     font-size: 1.1em;
 }
 
@@ -136,6 +153,10 @@
     margin-right: 10px;
     text-decoration: none;
     font-size: 1.2em;
+}
+
+.secondnav li a:hover{
+    text-decoration: underline;
 }
 
 .error{
@@ -179,6 +200,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: #000000a3 1px 1px 2px 1px;
+    cursor: pointer;
+}
+
+.closeses:hover{
+    background: #e43c3c;
 }
 
 .closeses span{

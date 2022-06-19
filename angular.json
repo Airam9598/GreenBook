@@ -31,7 +31,6 @@
               "src/assets/js/leaflet/leaflet.css"
             ],
             "scripts": [
-              "src/script.js",
               "src/assets/js/leaflet/leaflet.js",
               "src/assets/js/leaflet/leaflet-omnivore.min.js"
             ]

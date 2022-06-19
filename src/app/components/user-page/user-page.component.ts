@@ -17,8 +17,9 @@ username!:string;
 email!:string;
 router:Router;
 admin!:boolean;
-images!:Array<FLowerImage>;
+images!:any;
 eID:any;
+settings:boolean=false;
 errormsg:string="";
 correctmsg:boolean=false;
   constructor(db:DBconectService,router:Router,private activateroute: ActivatedRoute,public formulario:FormBuilder) { 
@@ -27,7 +28,6 @@ correctmsg:boolean=false;
     this.eID=this.activateroute.snapshot.paramMap.get("id");
     this.Changepass=this.formulario.group({oldpass:[''],newpass1:[''],newpass2:['']});
     if(this.eID ==null){
-      console.log(this.db.getToken());
       Promise.resolve(this.db.GetUser(this.db.getToken())).then(item=>{
         if(item !=null){
           this.username=item["UserName"];
@@ -44,6 +44,7 @@ correctmsg:boolean=false;
     }else{
       Promise.resolve(this.db.getUserImages(this.eID)).then(item=>{
         this.images=item;
+        console.log(this.images);
       });
     }
   }
@@ -87,5 +88,7 @@ correctmsg:boolean=false;
       this.errormsg="🚫 Faltan datos";
     }
   }
-
+  showsettings(){
+    this.settings=!this.settings;
+  }
 }

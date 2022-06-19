@@ -20,10 +20,15 @@ export class DiscoverComponent implements OnInit {
     Promise.resolve(this.db.getUsers()).then(item=>{
       setTimeout(()=>{
         item.forEach(data=>{ this.UsersAlt.push(data); });
-        this.Users=item;
-        this.Users=this.Users.splice(this.Users.length-1, 1);
-        this.MainImg=item[0].Img.Img;
-        this.MainUser=item[0].UserName;
+        item.forEach(data=>{ this.Users.push(data); });
+        //this.Users=this.Users.splice(this.Users.length-1,1);
+        //this.Users=this.Users.splice(this.Users.length-1);
+        /*while(item[this.Users.length-1].Img[0].Img == "https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Img-Rutas%2Fdefaut.jpg?alt=media&token=06513a36-f8f5-4e57-ba38-f4c546af89b5"){
+          this.Users.pop();
+        }*/
+        this.MainImg=item[this.Users.length-1].Img[0].Img;
+        this.MainUser=item[this.Users.length-1].UserName;
+        this.Users.pop();
         setTimeout(()=>{
           this.loading=false;
         },100);

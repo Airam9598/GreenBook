@@ -22,8 +22,8 @@ export class RoutesComponent implements OnInit {
     Promise.resolve(db.ObtenerRutas()).then(items=>{
       setTimeout(() => {
         items.forEach(data=>{ this.rutasAlt.push(data); });
-        this.rutas=items;
-      },500);
+        items.forEach(data=>{ this.rutas.push(data); });
+      },100);
     });
     if(this.UserId ==null){
       if(db.getToken() !=""){
@@ -44,13 +44,13 @@ export class RoutesComponent implements OnInit {
   Discover(){
     this.rutas=[];
     if(this.busqueda==""){
-      this.rutasAlt.forEach(User=>{
-          this.rutas.push(User);
+      this.rutasAlt.forEach(ruta=>{
+          this.rutas.push(ruta);
       });
     }else{
-      this.rutasAlt.forEach(User=>{
-        if(User.Name.toLocaleLowerCase().includes(this.busqueda.toLocaleLowerCase())){
-          this.rutas.push(User);
+      this.rutasAlt.forEach(ruta=>{
+        if(ruta.Name.toLocaleLowerCase().includes(this.busqueda.toLocaleLowerCase())){
+          this.rutas.push(ruta);
         }
       });
     }

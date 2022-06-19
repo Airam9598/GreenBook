@@ -1,22 +1,30 @@
 <navbar></navbar>
 <div class="fondo">
-  <form [formGroup]="FormularioFlor" (ngSubmit)="enviar_Datos()" style="padding: 24px;">
-        <p>FLOR</p>
+  <form [formGroup]="FormularioFlor" (ngSubmit)="enviar_Datos()"  style="padding: 24px;"> 
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre de la Flor</label>
-          <input required type="text" class="form-control" style="text-align:center" id="nombre" formControlName="FlowerName">
+          <input required type="text" class="form-control" style="text-align:center" id="nombre" formControlName="FlowerName" value="{{FlowerData['Name']}}">
         </div>
         <div class="mb-3">
-          <label for="descrip" class="form-label">Descripción de la Flor</label>
-          <input required type="text" class="form-control" style="text-align:center" formControlName="FlowerDescription" id="descrip">
+          <label for="descrip" class="form-label">Información de la Flor</label>
+          <input required type="text" class="form-control" style="text-align:center" formControlName="FlowerDescription" id="descrip" value="{{FlowerData['Info']}}">
+        </div>
+        <div class="mb-3">
+          <label for="Tipo" class="form-label">Tipo de flor</label>
+          <select #tipo name="Tipo" id="Tipo" formControlName="Tipo" value="{{FlowerData['Type']}}">
+            <option value="Invasora">Invasora</option>
+            <option value="Autóctona">Autóctona</option>
+          </select>
         </div>
         <div class="mb-3">
           <label for="files" class="form-label">Imagen de la flor</label>
-          <input required multiple #foto type="file" id="files" name="files" formControlName="Files" accept="image/*">
-      </div>
+          <input required #foto type="file" id="files" name="files" formControlName="Files" accept="image/*">
+        </div>
       <p *ngIf="Error==true" class="error">🚫Faltan datos por rellenar</p>
-      <button type="submit" class="btn btn-primary" id="create">Crear</button>
+      <button *ngIf="eID ==null" type="submit" class="btn btn-primary" id="create">Crear</button>
+      <button *ngIf="eID !=null" type="submit" class="btn btn-primary" id="create">Modificar</button>
       <button (click)="cancel()"  class="btn btn-danger" id="cancel"> Cancelar</button>
   </form>
+
 </div>
-<div *ngIf="db.subiendo===true" class="loading"> <p class="icon">🍃</p><p class="load">Cargando...</p></div>
+<div class="loading" *ngIf="subiendo==true"> <p class="icon">🍃</p><p class="load">Cargando...</p></div>

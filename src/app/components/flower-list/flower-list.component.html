@@ -1,0 +1,22 @@
+<navbar></navbar>
+<div class="fondo">
+    <div class="buscador"><input [(ngModel)]="busqueda" (ngModelChange)="Discover()" type="text" placeholder="Buscar Flores 🔍"></div>
+    <table>
+        <a routerLink="/NewFlower" routerLinkActive="active" class="addnew">➕</a>
+        <tr class="table-header">
+            <td>Imagen</td>
+            <td>Nombres de la Flor</td>
+            <td>Tipo</td>
+            <td></td>
+        </tr>
+        <tr *ngFor="let item of Flower" >
+            <td><img src="{{item.Img}}"></td>
+            <td>{{item.Name}}</td>
+            <td>{{item.Type}}</td>
+            <td><a routerLink="/EditFlower/{{item.id}}" routerLinkActive="active">✏️</a> <a (click)="DeleteFlower(item.id)">❌</a></td>
+        </tr>
+    </table>
+</div>
+
+<div *ngIf="loading==true" class="loading"> <p class="icon">🍃</p><p class="load">Cargando...</p></div>
+<app-footer></app-footer>

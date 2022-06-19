@@ -12,7 +12,7 @@
     <div class="block">
         <div *ngFor="let item of Users" class="item">
             <a routerLink="../User/{{item.UserName}}" routerLinkActive="active"></a>
-            <img src="{{item.Img.Img}}">
+            <img src="{{item.Img[0].Img}}">
             <div class="text">
                 <p class="username">
                     {{item["UserName"]}}

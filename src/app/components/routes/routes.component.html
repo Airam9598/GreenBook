@@ -6,13 +6,14 @@
     <div class="block">
         <p class="title"> RUTAS DE SENDEROS</p>
         <div class="box">
-            <div class="item" style="animation-duration: 2s;" *ngFor="let item of rutas; let i = index">
+            <div class="item" style="animation-duration: 2s;" *ngFor="let item of rutas;">
                 <a *ngIf="Useradmin==true" class="delete" (click)="Deleteroute(item.id)" >X</a>
-                <img src="{{item.Flora[0].Img[0].Img}}">
+                <img src="{{item.Img}}">
                 <p>{{item.Name}}</p>
                 <a routerLink="/Route/{{item.id}}" routerLinkActive="active"></a>
             </div>
         </div>
+        <div *ngIf="rutas.length==0" class="noroutes">No se ha encontrado ninguna ruta</div>
     </div>
 </div>
 <app-footer></app-footer>

@@ -5,34 +5,37 @@
         <p class="text">{{ruta.Description}}</p>
     </div>
     <div id="map"></div>
-    <div class="box">
-      <a *ngIf="Useradmin==true" class="add" routerLink="/NewFlower/{{ruta.id}}" routerLinkActive="active">+</a>
+
+    <div *ngIf="Object.keys(ImageList).length>0" class="box">
+      <!-- | paginate: {itemsPerPage: 3, currentPage: page}"<a *ngIf="Useradmin==true" class="add" routerLink="/NewFlower/{{ruta.id}}" routerLinkActive="active">+</a>-->
         <p>FLORA</p>
-        <div id="{{item.id}}" class="item" *ngFor="let item of ruta.Flora | paginate: {itemsPerPage: 3, currentPage: page}" (click)="showflower(item)">
-          <a *ngIf="Useradmin==true" class="delete" (click)="Deleteflor()" >X</a>
-            <img src="{{item.Img[0].Img}}">
-            <p>{{item.Name}}</p>
+        <span class="showall" (click)="showAll()">Mostrar Todas</span>
+        <div (click)="showImage(item)" class="item" *ngFor="let item of Object.keys(ImageList)">
+            <img src="{{ImageList[item][0][0]}}">
+         <!-- <a *ngIf="Useradmin==true" class="delete" (click)="Deleteflor()" >X</a>-->
+            <p>{{ImageList[item][0][1]}}</p>
         </div>
-        <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
+        <!--<pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>-->
     </div>
-    <div class="blockimagen">
-      <a class="add" routerLink="/NewImageFlower/{{ruta.id}}/{{Name}}" routerLinkActive="active">+</a>
-      <a *ngIf="actuser==UserName" class="delete" (click)="Deleteimage()" >X</a>
-      <img class="imagen" src="{{actimage}}"> 
-      <span class="likes">
-        <a (click)="likes()" *ngIf="UserId != null">♡</a>
-        <a *ngIf="UserId == null">♡</a>
-          <p>{{actlike}}</p>
-        </span>
-      <span class="user">{{actuser}}</span>
-      <span *ngIf="actid<Imagelenght-1;" class="derecha" (click)="changeImg(1)">➜</span>
-      <span *ngIf="actid>0" class="izquierda" (click)="changeImg(-1)">➜</span>
-    </div>
-    
-    <div class="descripcion">
+    <div *ngIf="actimage!==''" class="backimagen">
+      <span class="close" (click)="close()">X</span>
+      <div class="blockimagen">
+        <!--<a class="add" routerLink="/NewImageFlower/{{ruta.id}}/{{Name}}" routerLinkActive="active">+</a>-->
+        <!--<a *ngIf="actuser==UserName" class="delete" (click)="Deleteimage()" >X</a>-->
+        <img class="imagen" src="{{actimage}}"> 
+       <!-- <span class="likes">
+          <a (click)="likes()" *ngIf="UserId != null">♡</a>
+          <a *ngIf="UserId == null">♡</a>
+            <p>{{actlike}}</p>
+          </span>-->
+        <span class="user">{{actuser}}</span>
+      <!-- <span *ngIf="actid<Imagelenght-1;" class="derecha" (click)="changeImg(1)">➜</span>
+        <span *ngIf="actid>0" class="izquierda" (click)="changeImg(-1)">➜</span>-->
+      </div>
+      <div class="descripcion">
         <p class="title">{{Name}}</p>
         <p class="text">{{Description}}</p>
-        <a class="read">Leer más -></a>
+    </div>
     </div>
 </div>
 <div *ngIf="loading==true" class="loading"> <p class="icon">🍃</p><p class="load">Cargando...</p></div>
