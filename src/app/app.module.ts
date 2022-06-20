@@ -22,6 +22,8 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { UserseditComponent } from './usersedit/usersedit.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FlowerListComponent } from './components/flower-list/flower-list.component';
+import { PhotoComponent } from './components/photo/photo.component';
+import { WebcamModule } from 'ngx-webcam';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { FlowerListComponent } from './components/flower-list/flower-list.compon
     UsersListComponent,
     UserseditComponent,
     FlowerListComponent,
+    PhotoComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { FlowerListComponent } from './components/flower-list/flower-list.compon
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    HttpClientModule
+    HttpClientModule,
+    WebcamModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -1,0 +1,38 @@
+
+<navbar></navbar>
+<div class="fondo">
+    <p class="error" *ngIf="!isCameraExist || geolocation==null">{{error}}</p>
+    <div *ngIf="isCameraExist && !imagetaken && geolocation != null">
+        <div style="text-align:center">
+            <webcam [height]="500" [width]="1000" [trigger]="triggerObservable" (imageCapture)="Takepicture($event)"
+                *ngIf="showWebcam" [switchCamera]="nextWebcamObservable"></webcam>
+                <div class="btn-group">
+                    <button *ngIf="showWebcam" class="picturetake" (click)="takeSnapshot()">📷</button>
+                    <!--<button class="button" (click)="changeWebCame(true)">Toggle Camera</button>-->
+                    <button class="hideshow" (click)="onOffWebCame()">Mostrar/Ocultar Cámara</button>
+                </div>
+
+        </div>
+    </div>
+    <div *ngIf="isCameraExist && imagetaken && geolocation != null" class="center">
+        <form class="center max">
+            <div class="imgbox">
+                <img src="{{image}}">
+                <button class="repeat" (click)="imagetaken=false; showWebcam = true"><span>🔃</span> Repetir</button>
+            </div>
+            <div>
+                <label class="title">Enviar Imagen</label><br>
+                <label>Seleccionar Flor</label><br>
+                <select>
+                    <option *ngFor="let flor of flowers" value="{{flor.id}}">
+                        {{flor.Name}}
+                    </option>
+                </select>
+                <br>
+                <input class="subir" type="submit" value="Subir">
+            </div>
+        </form>
+    </div>
+
+</div>
+<app-footer></app-footer>

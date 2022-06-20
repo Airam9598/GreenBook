@@ -110,3 +110,8 @@
     width: 50px;
     height: 50px;
   }
+
+  .webcam-wrapper{
+    border: gray 4px outset;
+    border-radius: 5px;
+  }

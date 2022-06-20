@@ -13,6 +13,7 @@ import { NewImageflowerComponent } from './components/new-imageflower/new-imagef
 import { UsersListComponent } from './users-list/users-list.component';
 import { UserseditComponent } from './usersedit/usersedit.component';
 import { FlowerListComponent } from './components/flower-list/flower-list.component';
+import { PhotoComponent } from './components/photo/photo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
@@ -31,6 +32,8 @@ const routes: Routes = [
   { path: 'UsersEdit/:id', component: UserseditComponent },
   { path: 'FlowerList', component: FlowerListComponent },
   { path: 'EditFlower/:id', component: NewFlowerComponent },
+  { path: 'EditRoute/:id', component: NewRouteComponent },
+  { path: 'Camera', component: PhotoComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,146 @@
+.fondo{
+    min-height: 100%;
+    background-color: var(--main-brown);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 67px;
+    height: auto;
+}
+
+form img{
+    width: 100%;
+    border-radius: 10px;
+    border: gray inset 2px;
+    display: block;
+    margin:auto;
+}
+
+form select{
+    text-align: center;
+    font-size: 1.1em;
+    padding: 5px;
+    border-radius: 10px;
+    border-radius: 5px;
+    background-color: #e8e8e8;
+    box-shadow: #0000009c 2px 2px 5px 0px;
+}
+
+form input{
+    text-align: center;
+    font-size: 1.1em;
+    padding: 5px;
+    border-radius: 10px;
+    border-radius: 5px;
+    background-color: #e8e8e8;
+    box-shadow: #0000009c 2px 2px 5px 0px;
+}
+
+.repeat{
+    font-size: 1.3em;
+    display: block;
+    background: var(--main-green);
+    border-radius: 10px 0px 10px 0px;
+    padding: 5px 13px;
+    cursor: pointer;
+    border: gray 2px outset;
+    margin: auto;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.repeat span{
+    font-size: 1.2em;
+}
+
+.repeat:hover{
+    background: #6a9433;
+}
+
+form div{
+    width: 66%;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    padding: 21px;
+    background: var(--main-green);
+    border-radius: 5px;
+    box-shadow: black 2px 2px 5px 0px;
+}
+
+label{
+    font-size: 1.6em;
+}
+
+.title{
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-weight: bold;
+}
+
+.subir{
+    background-color: var(--main-brown) !important;
+    padding: 5px 10px !important;
+    margin:auto;
+    display: block;
+    font-size: 1.3em !important;
+    font-weight: bold;
+    margin-top:20px;
+    cursor: pointer;
+}
+
+.imgbox{
+    position: relative;
+    width: 65% !important;
+    display: block !important;
+    padding: 0 !important;
+    cursor: default !important;
+    background: transparent !important;
+
+}
+
+.center{
+    display: block;
+    margin: auto;
+    width: 65%;
+    margin-top: 25px;
+}
+
+.max{
+    width: 100%;
+    margin-top: 0px;
+}
+
+.error{
+    font-size: 2.3em;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.picturetake{
+    background: white;
+    border: gray 2px outset;
+    border-radius: 100%;
+    width: 115px;
+    height: 115px;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.hideshow{
+    font-size: 1.2em;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 5px 22px;
+    background: var(--main-green);
+    cursor: pointer;
+}

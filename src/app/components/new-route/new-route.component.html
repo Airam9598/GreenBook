@@ -4,11 +4,11 @@
     <p>RUTA</p>
       <div class="mb-3">
         <label for="nombre" class="form-label">Nombre</label>
-        <input required type="text" class="form-control" style="text-align:center" id="nombre" formControlName="Name">
+        <input required type="text" class="form-control" style="text-align:center" id="nombre" formControlName="Name" value="{{RouteData['Name']}}">
       </div>
       <div class="mb-3">
         <label for="descrip" class="form-label">Descripción</label>
-        <input required type="text" class="form-control" style="text-align:center" formControlName="Description" id="descrip">
+        <input required type="text" class="form-control" style="text-align:center" formControlName="Description" id="descrip" value="{{RouteData['Description']}}" >
       </div>
       <div class="mb-3">
         <label for="files" class="form-label">Imagen de la ruta</label>
@@ -19,8 +19,9 @@
         <input required #fotogeo (change)="imageRun($event)" type="file" id="filesgeo" name="filesgeo" formControlName="Filesgeo" accept=".geojson">
       </div>
       <p *ngIf="Error==true" class="error">🚫Faltan datos por rellenar</p>
-      <button type="submit" class="btn btn-primary" id="create">Crear</button>
-      <button   class="btn btn-danger" id="cancel"> Cancelar</button>
+      <button *ngIf="eID ==null" type="submit" class="btn btn-primary" id="create">Crear</button>
+      <button *ngIf="eID !=null" type="submit" class="btn btn-primary" id="create">Modificar</button>
+      <button (click)="cancel()"  class="btn btn-danger" id="cancel"> Cancelar</button>
   </form>
 </div>
-<div  style="background-color:black;    height: 100px;"></div>
+<div *ngIf="subiendo==true" style="background-color:black;    height: 100px;"></div>

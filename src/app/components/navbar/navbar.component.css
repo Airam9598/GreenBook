@@ -39,6 +39,10 @@ nav ul li{
     border-radius: 5px;
     position: relative;
 }
+nav ul span{
+    font-size: 1.8em;
+    margin-top: -20px;
+}
 
 nav ul li a{
     position: absolute;

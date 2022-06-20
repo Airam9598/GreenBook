@@ -11,6 +11,7 @@
                 <img src="{{item.Img}}">
                 <p>{{item.Name}}</p>
                 <a routerLink="/Route/{{item.id}}" routerLinkActive="active"></a>
+                <a  class="edit" *ngIf="Useradmin==true" routerLink="/EditRoute/{{item.id}}" routerLinkActive="active">✏️</a>
             </div>
         </div>
         <div *ngIf="rutas.length==0" class="noroutes">No se ha encontrado ninguna ruta</div>

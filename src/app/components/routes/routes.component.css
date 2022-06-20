@@ -83,6 +83,25 @@
     z-index: 9;
 }
 
+.box .edit{
+    width: max-content !important;
+    height: max-content !important;
+    text-decoration: none;
+    font-size: 1.7em;
+    background: white;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 10px !important;
+    right: auto !important;
+    top: auto !important;
+    left: 10px !important;
+}
+
+.box .edit:hover , .box .delete:hover{
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+
 .box .item:hover img{
     transition: 0.5s;
     transform: scale(1.2);

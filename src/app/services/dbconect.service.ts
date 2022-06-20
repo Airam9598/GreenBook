@@ -197,6 +197,10 @@ async ObtenerRutas(){
     return new Ruta(idlocal,data);
   }
 
+  async GetRouteData(id:any){
+    return await (await getDoc(doc(db, 'Rutas', id))).data();
+  }
+
   async DeleteRuta(idrut:any){
     await deleteDoc(doc(db, "Rutas", idrut));
   }
@@ -213,6 +217,17 @@ async ObtenerRutas(){
     } catch (e) {
       return "Error al añadir";
     }
+  }
+
+  async ModificarRuta(Name:string,Description:string,file2:any,file:any,id:any){
+    let data:any={};
+    if(Name!="") data["Name"]=Name;
+    if(Description!="") data["Description"]=Description;
+    
+    if(file2.length>0) data["Img"]="https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Img-Rutas%2F"+file2[0].name+"?alt=media&token=e064b6ad-3835-4dae-a1be-339936df46d3";
+    if(file != null) if(file.length>0) data["Waypoints"]="https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Rutas%2F"+file[0].name+"?alt=media&token=669f5652-73d9-4588-a7e6-2191fc7dbb6d";
+    await setDoc(doc(db, "Rutas", id), data, { merge: true }); 
+    return true;
   }
 
   //FLORA
