@@ -17,6 +17,8 @@ export class PhotoComponent implements OnInit {
   isCameraExist = true;
   flowers:any;
   error="";
+  actflower:any;
+
   @Output() getPicture = new EventEmitter<WebcamImage>();
   private trigger: Subject<void> = new Subject<void>();
   private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
@@ -79,7 +81,9 @@ export class PhotoComponent implements OnInit {
   }
 
   Takepicture(webcamImage: WebcamImage) {
-    console.log(webcamImage);
+    navigator.geolocation.getCurrentPosition(resp => {
+      this.geolocation={lng: resp.coords.longitude, lat: resp.coords.latitude};
+    });
     this.image=webcamImage["_imageAsDataUrl"];
     this.showWebcam = false;
     this.imagetaken=true;
@@ -91,6 +95,14 @@ export class PhotoComponent implements OnInit {
 
   get nextWebcamObservable(): Observable<boolean | string> {
     return this.nextWebcam.asObservable();
+  }
+
+  changeflower(id:any){
+    this.actflower=id;
+  }
+
+  EnviarDatos(){
+    this.db.photoUpload(this.actflower,this.geolocation,this.image);
   }
 
 }

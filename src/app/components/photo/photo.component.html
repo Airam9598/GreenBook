@@ -15,19 +15,22 @@
         </div>
     </div>
     <div *ngIf="isCameraExist && imagetaken && geolocation != null" class="center">
-        <form class="center max">
+        <form (ngSubmit)="EnviarDatos()" class="center max">
             <div class="imgbox">
                 <img src="{{image}}">
                 <button class="repeat" (click)="imagetaken=false; showWebcam = true"><span>🔃</span> Repetir</button>
             </div>
             <div>
                 <label class="title">Enviar Imagen</label><br>
-                <label>Seleccionar Flor</label><br>
-                <select>
-                    <option *ngFor="let flor of flowers" value="{{flor.id}}">
-                        {{flor.Name}}
-                    </option>
-                </select>
+                <label>Identifica la flor:</label><br>
+                <input style="display:none" #flor value="{{actflower}}">
+                <div class="box">
+                    <div [ngStyle]="flor.id==actflower && {'background': '#4d6c24','padding': '10px','justify-content': 'center'} || null" (click)="changeflower(flor.id)" class="item" *ngFor="let flor of flowers">
+                        <img src="{{flor.Img}}">
+                        <p>{{flor.Name}}</p>
+    
+                    </div>
+                </div>
                 <br>
                 <input class="subir" type="submit" value="Subir">
             </div>

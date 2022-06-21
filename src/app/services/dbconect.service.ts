@@ -9,6 +9,7 @@ import { Flor } from './Flor';
 import { FLowerImage } from './FlowerImges';
 import { CookieService } from "ngx-cookie-service";
 import{User}  from './User';
+import { HttpClient  } from '@angular/common/http';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCCrrUzGAXswtU-0X-sHbk2UFcIkR3hZQM",
@@ -29,8 +30,10 @@ const querySnapshot = getDocs(collection(db, "Tareas"));
 export class DBconectService {
   user:Array<String>=[];
   cookies:CookieService;
-  constructor(cookies:CookieService) { 
+  http:any;
+  constructor(cookies:CookieService,http:HttpClient) { 
     this.cookies=cookies;
+    this.http=http;
   }
 
   /*AgregarTarea(ruta:Ruta):string{
@@ -166,7 +169,7 @@ AgregarImagen(flower:FLowerImage,name:string){
 
 
 ///RUTAS
-async ObtenerRutas(){
+async ObtenerRutas(data:any=null){
   const querySnapshot = await getDocs(collection(db, "Rutas"));
   let rutas:Array<Ruta> = [];
   await querySnapshot.forEach(async (doc2)=> {
@@ -176,7 +179,14 @@ async ObtenerRutas(){
        // data["Marks"][index]["Flor"][0]["Flor"]=  new Flor((await getDoc(doc(db, 'Flora', marker["Flor"][0].Flor))).id,(await getDoc(doc(db, 'Flora', marker["Flor"][0].Flor))).data());
       }
     }*/
-    rutas.push(new Ruta(doc2.id,doc2.data()));
+    if(doc2.id.toLocaleLowerCase()!="DEFAULT".toLocaleLowerCase() && data!=null){
+      rutas.push(new Ruta(doc2.id,doc2.data()));
+    }else if(doc2.id.toLocaleLowerCase()=="DEFAULT".toLocaleLowerCase() && data==null){
+
+    }else{
+      rutas.push(new Ruta(doc2.id,doc2.data()));
+    }
+    
   });
 
   return rutas;
@@ -322,6 +332,45 @@ async ObtenerRutas(){
     await reader.readAsDataURL(files[0]);
   }
 
+  //FOTO
+
+  async photoUpload(idflor:any,geo:any,image:any){
+    Promise.resolve(this.ObtenerRutas("data")).then(async item=>{
+      let find=false;
+      item.forEach(async ruta=>{
+        const url =ruta.Waypoint;
+        if(url!=""){
+          await this.http.get(url).subscribe((res:any)=>{
+            let latlngs:any = [];
+            res.features.forEach((element:any)=>{
+              latlngs.push([element.geometry.coordinates[1],element.geometry.coordinates[0]])
+            });
+            latlngs.forEach(async (geoloc:any)=>{
+              if(geoloc[0]>(geo["lng"]-10) && geoloc[0]<(geo["lng"]+10)){
+                find=true;
+                let obj:any={};
+                obj["Marks"]=await (await getDoc(doc(db, 'Rutas', ruta.id.toString()))).data();
+                obj["Marks"]=obj["Marks"]["Marks"];
+                console.log(obj["Marks"]);
+                obj["Marks"].push({Flor:[{Flor:idflor,Img:"",Likes:0,User:""}],Lat:geo["lat"],Lng:geo["lng"]});
+                await setDoc(doc(db, "Rutas", ruta.id.toString()), obj, { merge: true }); 
+              }
+            });
+          });
+        }
+         // console.log(ruta);
+        
+      });
+      if(!find){
+        let obj:any={};
+        obj["Marks"]=await (await getDoc(doc(db, 'Rutas', "DEFAULT"))).data();
+        obj["Marks"]=obj["Marks"]["Marks"];
+        console.log(obj["Marks"]);
+        obj["Marks"].push({Flor:[{Flor:idflor,Img:"",Likes:0,User:""}],Lat:geo["lat"],Lng:geo["lng"]});
+        await setDoc(doc(db, "Rutas", "DEFAULT"), obj, { merge: true }); 
+      }
+    })
+  }
 
   //USUARIOS
   async CheckUsuarios(email:string,pass:string){

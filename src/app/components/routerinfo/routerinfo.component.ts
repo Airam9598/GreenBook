@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DBconectService } from 'src/app/services/dbconect.service';
 import { Ruta } from 'src/app/services/Ruta';
-import { Flor } from 'src/app/services/Flor';
-import { FLowerImage } from 'src/app/services/FlowerImges';
 import { Router } from '@angular/router';
 import 'leaflet-routing-machine';
 import { HttpClient  } from '@angular/common/http';
