@@ -14,6 +14,7 @@ import { UsersListComponent } from './users-list/users-list.component';
 import { UserseditComponent } from './usersedit/usersedit.component';
 import { FlowerListComponent } from './components/flower-list/flower-list.component';
 import { PhotoComponent } from './components/photo/photo.component';
+import { GeneralMapComponent } from './components/general-map/general-map.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'EditFlower/:id', component: NewFlowerComponent },
   { path: 'EditRoute/:id', component: NewRouteComponent },
   { path: 'Camera', component: PhotoComponent },
+  { path: 'GlobalMap', component:  GeneralMapComponent},
 ];
 
 @NgModule({

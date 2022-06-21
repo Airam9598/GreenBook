@@ -246,3 +246,13 @@ label{
     box-shadow: black 2px 2px 5px -1px;
     max-width: 215px;
 }
+
+@media screen and (max-width: 700px) {
+    .picturetake{ 
+        align-items: center;
+    }
+    .center{
+        margin-top: 20px;
+    }
+    
+}

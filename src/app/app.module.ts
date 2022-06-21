@@ -24,6 +24,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FlowerListComponent } from './components/flower-list/flower-list.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { WebcamModule } from 'ngx-webcam';
+import { GeneralMapComponent } from './components/general-map/general-map.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { WebcamModule } from 'ngx-webcam';
     UserseditComponent,
     FlowerListComponent,
     PhotoComponent,
+    GeneralMapComponent,
   ],
   imports: [
     BrowserModule,

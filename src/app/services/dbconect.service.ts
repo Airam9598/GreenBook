@@ -174,7 +174,7 @@ async ObtenerRutas(data:any=null){
   let rutas:Array<Ruta> = [];
   await querySnapshot.forEach(async (doc2)=> {
     //let data=doc2.data();    
-   /* if(data["Marks"].length >0){
+   /*if(data["Marks"].length >0){
       /*for(let [index,marker] of data["Marks"].entries()){
        // data["Marks"][index]["Flor"][0]["Flor"]=  new Flor((await getDoc(doc(db, 'Flora', marker["Flor"][0].Flor))).id,(await getDoc(doc(db, 'Flora', marker["Flor"][0].Flor))).data());
       }
@@ -346,7 +346,8 @@ async ObtenerRutas(data:any=null){
               latlngs.push([element.geometry.coordinates[1],element.geometry.coordinates[0]])
             });
             latlngs.forEach(async (geoloc:any)=>{
-              if(geoloc[0]>(geo["lng"]-10) && geoloc[0]<(geo["lng"]+10)){
+              console.log(geoloc);
+              if(geoloc[0]>(geo["lat"]-5) && geoloc[0]<(geo["lat"]+5) && geoloc[1]>(geo["lng"]-5) && geoloc[1]<(geo["lng"]+5)){
                 find=true;
                 let obj:any={};
                 obj["Marks"]=await (await getDoc(doc(db, 'Rutas', ruta.id.toString()))).data();

@@ -118,3 +118,19 @@
     color: white;
     text-shadow: black 1px 1px 4px;
 }
+
+@media screen and (max-width: 700px) {
+    .fondo{
+        display: none;
+    }
+
+    .login{
+        width: 100%;
+    }
+    
+    .login .title{
+        font-size: 2em;
+        margin-top: 25px;
+        margin-bottom: 29px;
+    }
+}

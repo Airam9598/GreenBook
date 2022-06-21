@@ -33,7 +33,6 @@ export class NewFlowerComponent implements OnInit {
     if(this.eID !=null){
       Promise.resolve(this.db.GetFlowerData(this.eID)).then(item => {
         this.FlowerData=item;
-        console.log(this.FlowerData);
       });
     }
 

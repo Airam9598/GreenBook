@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { Observable, Subject } from 'rxjs';
 import { DBconectService } from 'src/app/services/dbconect.service';
@@ -18,13 +19,25 @@ export class PhotoComponent implements OnInit {
   flowers:any;
   error="";
   actflower:any;
-
+  username!:string;
   @Output() getPicture = new EventEmitter<WebcamImage>();
   private trigger: Subject<void> = new Subject<void>();
   private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
 
-  constructor(db:DBconectService) { 
+  constructor(db:DBconectService, router:Router) { 
     this.db=db;
+    if(this.db.getToken()!=""){
+      Promise.resolve(this.db.GetUser(this.db.getToken())).then(item=>{
+        if(item ==null){
+          this.db.deleteToken();
+          router.navigate(["/Login"]);
+        }else{
+          this.username=item["UserName"];
+        }
+      })
+    }else{
+      router.navigate(["/Login"]);
+    }
     Promise.resolve(this.db.getFlowers()).then(item=>{
       this.flowers=item;
     });

@@ -1,0 +1,21 @@
+#map{
+    height: 513px;
+    width: 79%;
+    display: block;
+    margin: auto;
+    border-radius: 5px;
+    border: 2px inset gray;
+    margin-top: 53px;
+}
+
+.fondo{
+    min-height: 100%;
+    background-color: var(--main-brown);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 67px;
+    height: auto;
+}
