@@ -329,5 +329,18 @@
         height: 129px;
     }
     
+    .descripcion{
+        width: 83%;
+        float: unset;
+        margin-right: 0;
+    }
+
+    .backimagen{
+        flex-direction: column;
+    }
+
+    .blockimagen{
+        height: 41%;
+    }
 }
 

@@ -107,3 +107,14 @@ td a{
     text-decoration: none;
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 700px) {
+    table{
+        OVERFLOW-Y: auto;
+        width: 100%;
+    }
+    .table-header{
+        display: revert;
+    }
+}

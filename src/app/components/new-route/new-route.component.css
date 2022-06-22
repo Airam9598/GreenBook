@@ -68,3 +68,25 @@ form input{
     color: white;
     text-shadow: black 1px 1px 4px;
 }
+@media screen and (max-width: 700px) {
+    form{
+        padding: 19px;
+        margin-top: 83px;
+        width: 86%;
+        margin-bottom: 20px;
+    }
+
+    form input{
+        font-size: 1em;
+        width: 100%;
+        margin-top: 7px;
+    }
+
+    #create{
+        margin-right: 11px;
+        width: 45%;
+    }
+    #cancel{
+        width: 45%;
+    }
+}

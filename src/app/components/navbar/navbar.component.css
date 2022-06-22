@@ -144,6 +144,9 @@ nav ul li:hover{
         justify-content: center;
         font-size: 1.5em;
     }
+    nav{
+        z-index: 3000;
+    }
 
     .logo{
         width: 236px;

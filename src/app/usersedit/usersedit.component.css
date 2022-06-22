@@ -118,3 +118,15 @@ label{
     font-size: 1.5em;
     margin-bottom: 13px;
 }
+
+@media screen and (max-width: 700px) {
+    .login .main{
+        width: 98%;
+    }
+    .login .title{
+        font-size: 1.6em;
+    }
+    label{
+        font-size: 1.3em;
+    }
+}

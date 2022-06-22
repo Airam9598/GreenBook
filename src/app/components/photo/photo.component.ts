@@ -20,12 +20,15 @@ export class PhotoComponent implements OnInit {
   error="";
   actflower:any;
   username!:string;
+  router:any;
+  subiendo=true;
   @Output() getPicture = new EventEmitter<WebcamImage>();
   private trigger: Subject<void> = new Subject<void>();
   private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
 
   constructor(db:DBconectService, router:Router) { 
     this.db=db;
+    this.router=router;
     if(this.db.getToken()!=""){
       Promise.resolve(this.db.GetUser(this.db.getToken())).then(item=>{
         if(item ==null){
@@ -46,6 +49,7 @@ export class PhotoComponent implements OnInit {
     });
     if(this.geolocation==null){
       this.error="📍 Es necesario habilitar la geolocalización";
+      this.subiendo=false;
     }
   }
 
@@ -57,18 +61,22 @@ export class PhotoComponent implements OnInit {
           this.isCameraExist = mediaDevices && mediaDevices.length > 0;
           if(this.geolocation==null){
             this.error="📍 Es necesario habilitar la geolocalización";
+            this.subiendo=false;
           }
         }else{
           if(mediaDevices[0].deviceId==""){
             this.isCameraExist=false;
             this.error="📷 Es necesario habilitar la cámara";
+            this.subiendo=false;
           }else{
             this.isCameraExist = mediaDevices && mediaDevices.length > 0;
             if(!this.isCameraExist){
               this.error="📷 Es necesario habilitar la cámara";
+              this.subiendo=false;
             }else{
               if(this.geolocation==null){
                 this.error="📍 Es necesario habilitar la geolocalización";
+                this.subiendo=false;
               }
             }
           }
@@ -115,8 +123,12 @@ export class PhotoComponent implements OnInit {
   }
 
   EnviarDatos(){
+    this.subiendo=true;
     let rand=Math.floor(Math.random() * 20000);
-    this.db.photoUpload(this.actflower,this.geolocation,this.image,this.username,rand);
+    this.db.photoUpload(this.actflower,this.geolocation,this.image,this.username,rand).then(()=>{
+      this.router.navigate(["/User"]);
+      this.subiendo=false;
+    })
   }
 
 }

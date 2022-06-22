@@ -11,11 +11,11 @@ import { Inject }  from '@angular/core';
 export class NavbarComponent implements OnInit {
 show:boolean=true;
 constructor(@Inject(DOCUMENT) document: Document) {
-    if(document.getElementById('menu')!=null){
+    /*if(document.getElementById('menu')!=null){
       this.show=false;
     }else{
       this.show=true;
-    }
+    }*/
 }
 
   ngOnInit(): void {

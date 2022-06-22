@@ -133,4 +133,8 @@
         margin-top: 25px;
         margin-bottom: 29px;
     }
+
+    .login .main{
+        width: 90%;
+    }
 }

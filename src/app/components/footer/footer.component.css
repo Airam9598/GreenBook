@@ -129,3 +129,10 @@ footer div:hover p{
     font-weight: bold;
     cursor: pointer;
 }
+@media screen and (max-width: 700px) {
+    .greeds{
+        width: 92%;
+        top: 4%;
+        left: 3%;
+    }
+}

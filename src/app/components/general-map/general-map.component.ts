@@ -47,7 +47,7 @@ username!:string;
 
     Promise.resolve(this.db.ObtenerRutas("data")).then(rutas=>{
       rutas.forEach((ruta:any)=>{
-        var pinAnchor = new L.Point(23, 47);
+        var pinAnchor = new L.Point(19, 5);
       var basicBeachIcon = new L.Icon({ iconUrl: "https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Icons%2Fflowermarker.png?alt=media&token=5ee151d3-1bfe-41bf-9041-4c52b3194313", iconAnchor: pinAnchor,iconSize: [35, 50] ,scrollWheelZoom:'center' });
         /*const basicBeachIcon = L.icon({
           iconUrl: 'https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Icons%2Fflowermarker.png?alt=media&token=5ee151d3-1bfe-41bf-9041-4c52b3194313',
@@ -75,6 +75,8 @@ username!:string;
                 });
       
                 mark.on('click',()=> {
+                  map.closePopup();
+                  mark.openPopup();
                 });
               })
             }

@@ -338,40 +338,43 @@ async ObtenerRutas(data:any=null){
     const storage = getStorage();
         const storageRef = ref(storage,"Img-Users/"+username+rand+".jpg");
         await uploadString(storageRef, image, 'data_url').then((snapshot) => {
-        });
-    Promise.resolve(this.ObtenerRutas("data")).then(async item=>{
-      let find=false;
-      item.forEach(async ruta=>{
-        const url =ruta.Waypoint;
-        if(url!=""){
-          await this.http.get(url).subscribe((res:any)=>{
-            let latlngs:any = [];
-            res.features.forEach((element:any)=>{
-              latlngs.push([element.geometry.coordinates[1],element.geometry.coordinates[0]])
-            });
-            latlngs.forEach(async (geoloc:any)=>{
-              if(geoloc[0]>(geo["lat"]-5) && geoloc[0]<(geo["lat"]+5) && geoloc[1]>(geo["lng"]-5) && geoloc[1]<(geo["lng"]+5)){
-                find=true;
-                let obj:any={};
-                obj["Marks"]=await (await getDoc(doc(db, 'Rutas', ruta.id.toString()))).data();
-                obj["Marks"]=obj["Marks"]["Marks"];
-                obj["Marks"].push({Flor:[{Flor:idflor,Img:"https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Img-Users%2F"+username+rand+"?alt=media&token=d5561492-ac95-4090-904b-6d5cdfd6d67c",Likes:0,User:username}],Lat:geo["lat"],Lng:geo["lng"]});
-                await setDoc(doc(db, "Rutas", ruta.id.toString()), obj, { merge: true }); 
+
+          Promise.resolve(this.ObtenerRutas("data")).then(async item=>{
+            let find=false;
+            item.forEach(async ruta=>{
+              const url =ruta.Waypoint;
+              if(url!=""){
+                await this.http.get(url).subscribe((res:any)=>{
+                  let latlngs:any = [];
+                  res.features.forEach((element:any)=>{
+                    latlngs.push([element.geometry.coordinates[1],element.geometry.coordinates[0]])
+                  });
+                  latlngs.forEach(async (geoloc:any)=>{
+                    if(geoloc[0]>(geo["lat"]-1) && geoloc[0]<(geo["lat"]+1) && geoloc[1]>(geo["lng"]-1) && geoloc[1]<(geo["lng"]+1)){
+                      find=true;
+                      let obj:any={};
+                      obj["Marks"]=await (await getDoc(doc(db, 'Rutas', ruta.id.toString()))).data();
+                      obj["Marks"]=obj["Marks"]["Marks"];
+                      obj["Marks"].push({Flor:[{Flor:idflor,Img:"https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Img-Users%2F"+username+rand+".jpg?alt=media&token=d5561492-ac95-4090-904b-6d5cdfd6d67c",Likes:0,User:username}],Lat:geo["lat"],Lng:geo["lng"]});
+                      await setDoc(doc(db, "Rutas", ruta.id.toString()), obj, { merge: true }); 
+                    }
+                  });
+                });
               }
+               // console.log(ruta);
+              
             });
-          });
-        }
-         // console.log(ruta);
+            if(!find){
+              let obj:any={};
+              obj["Marks"]=await (await getDoc(doc(db, 'Rutas', "DEFAULT"))).data();
+              obj["Marks"]=obj["Marks"]["Marks"];
+              obj["Marks"].push({Flor:[{Flor:idflor,Img:"https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Img-Users%2F"+username+rand+".jpg?alt=media&token=d5561492-ac95-4090-904b-6d5cdfd6d67c",Likes:0,User:username}],Lat:geo["lat"],Lng:geo["lng"]});
+              await setDoc(doc(db, "Rutas", "DEFAULT"), obj, { merge: true }); 
+            }
+          })
         
-      });
-      if(!find){
-        let obj:any={};
-        obj["Marks"]=await (await getDoc(doc(db, 'Rutas', "DEFAULT"))).data();
-        obj["Marks"]=obj["Marks"]["Marks"];
-        obj["Marks"].push({Flor:[{Flor:idflor,Img:"https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Img-Users%2F"+username+rand+"?alt=media&token=d5561492-ac95-4090-904b-6d5cdfd6d67c",Likes:0,User:username}],Lat:geo["lat"],Lng:geo["lng"]});
-        await setDoc(doc(db, "Rutas", "DEFAULT"), obj, { merge: true }); 
-      }
-    })
+        
+        });
   }
 
   //USUARIOS

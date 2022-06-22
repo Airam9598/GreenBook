@@ -35,8 +35,9 @@
     <div class="box">
         <div class="item" *ngFor="let item of images; let i = index">
             <img src="{{item.Img}}">
-            <p>♡ {{item.Likes}} <span>Ruta: {{item.NameRuta}}</span></p>
-            <a routerLink="/Route/{{item.Ruta}}" routerLinkActive="active"></a>
+            <p *ngIf="item.NameRuta!='Default'" >♡ {{item.Likes}} <span>Ruta: {{item.NameRuta}}</span></p>
+            <p *ngIf="item.NameRuta=='Default'" ><span>Ruta: Ninguna Ruta asignada</span></p>
+            <a *ngIf="item.NameRuta!='Default'" routerLink="/Route/{{item.Ruta}}" routerLinkActive="active"></a>
             
         </div>
     </div>

@@ -211,3 +211,24 @@
 .closeses span{
     font-size: 1.4em;
 }
+
+@media screen and (max-width: 700px) {
+
+    .box .item{
+        width: 215px;
+        height: 192pxpx;
+    }
+    
+    .user-block{
+        width: 95%;
+    }
+
+    .user-block img{
+        display: none;
+    }
+
+    .user-block .info{
+        width: 96%;
+        font-size: 1.1em;
+    }
+}
