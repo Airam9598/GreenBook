@@ -61,9 +61,23 @@ username!:string;
         if(ruta.Marks.length>0){
     
           for(marker of ruta.Marks){
-            console.log(marker["Lat"]+" "+marker["Lng"]);
-            const mark=L.marker(new L.LatLng(marker["Lat"], marker["Lng"]), markerOptions).bindPopup('<img src="'+marker["Flor"][0].Img+'"> '+marker["Flor"][0]["Flor"]["Info"]).openPopup();
-            mark.addTo(map);
+            for(let flor of marker["Flor"]){
+              let mark=L.marker(new L.LatLng(marker["Lat"], marker["Lng"]), markerOptions);
+              Promise.resolve(this.db.GetFlowerData(flor["Flor"])).then(item=>{
+                mark.bindPopup('<img src="'+flor.Img+'"> '+item["Info"]).openPopup();
+                mark.addTo(map);
+                mark.on('mouseover',function(ev:any) {
+                  mark.openPopup();
+                });
+      
+                mark.on('mouseout',function(ev:any) {
+                  map.closePopup();
+                });
+      
+                mark.on('click',()=> {
+                });
+              })
+            }
           }
         }
       })

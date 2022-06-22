@@ -1,11 +1,13 @@
 <nav>
-    <ul>
-        <li class="logo"> 
-            <a routerLink="/Home" routerLinkActive="active"></a>
-            <img src="https://airam9598.github.io/GreenBook/assets/logonew.png">
-            Green<p>Book</p>
-        </li>
-        
+    <div class="logo"> 
+        <a routerLink="/Home" routerLinkActive="active"></a>
+        <img src="https://airam9598.github.io/GreenBook/assets/logonew.png">
+        Green<p>Book</p>
+    </div>
+    <div (click)="showmenu()" id="menu" class="mobilemenuicon">
+        ☰
+    </div>
+    <ul id="menuul" *ngIf="show">
         <li class="right">
             <a routerLink="/Login" routerLinkActive="active"></a>
                 <img class="menuIcon increaseIcon" src="https://airam9598.github.io/GreenBook/assets/usuario.png">

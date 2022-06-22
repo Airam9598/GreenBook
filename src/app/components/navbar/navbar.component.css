@@ -77,7 +77,12 @@ nav ul li:hover{
 }
 
 .logo{
-    font-size: 1.7em;
+    font-size: 1.8em;
+    width: 320px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
 }
 
 .logo img{
@@ -94,4 +99,54 @@ nav ul li:hover{
 
 .right{
     float: right;
+}
+
+.mobilemenuicon{
+    display: none;
+}
+
+
+@media screen and (max-width: 900px) {
+
+    .mobilemenuicon{
+        height: 100%;
+        font-size: 2.8em;
+        float: right;
+        display: block;
+        width: max-content;
+        padding: 0px 15px;
+        margin-left: auto;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    nav ul{
+        flex-direction: column-reverse;
+        width: 100%;
+        position: absolute;
+        align-items: start;
+        justify-content: start;
+        background: var(--main-green);
+        height: max-content;
+        margin: 0;
+        margin-top: 78px;
+    }
+
+    nav ul li{
+        display: flex;
+        height: 91px;
+        align-items: center;
+        padding: 0 16px;
+        width: 100%;
+        transition: 0.8s;
+        cursor: pointer;
+        border-radius: 5px;
+        position: relative;
+        justify-content: center;
+        font-size: 1.5em;
+    }
+
+    .logo{
+        width: 236px;
+        font-size: 1.5em;
+    }
 }

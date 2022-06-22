@@ -115,7 +115,8 @@ export class PhotoComponent implements OnInit {
   }
 
   EnviarDatos(){
-    this.db.photoUpload(this.actflower,this.geolocation,this.image);
+    let rand=Math.floor(Math.random() * 20000);
+    this.db.photoUpload(this.actflower,this.geolocation,this.image,this.username,rand);
   }
 
 }

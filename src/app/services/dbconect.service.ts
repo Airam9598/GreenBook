@@ -334,7 +334,11 @@ async ObtenerRutas(data:any=null){
 
   //FOTO
 
-  async photoUpload(idflor:any,geo:any,image:any){
+  async photoUpload(idflor:any,geo:any,image:any,username:any,rand:any){
+    const storage = getStorage();
+        const storageRef = ref(storage,"Img-Users/"+username+rand+".jpg");
+        await uploadString(storageRef, image, 'data_url').then((snapshot) => {
+        });
     Promise.resolve(this.ObtenerRutas("data")).then(async item=>{
       let find=false;
       item.forEach(async ruta=>{
@@ -346,14 +350,12 @@ async ObtenerRutas(data:any=null){
               latlngs.push([element.geometry.coordinates[1],element.geometry.coordinates[0]])
             });
             latlngs.forEach(async (geoloc:any)=>{
-              console.log(geoloc);
               if(geoloc[0]>(geo["lat"]-5) && geoloc[0]<(geo["lat"]+5) && geoloc[1]>(geo["lng"]-5) && geoloc[1]<(geo["lng"]+5)){
                 find=true;
                 let obj:any={};
                 obj["Marks"]=await (await getDoc(doc(db, 'Rutas', ruta.id.toString()))).data();
                 obj["Marks"]=obj["Marks"]["Marks"];
-                console.log(obj["Marks"]);
-                obj["Marks"].push({Flor:[{Flor:idflor,Img:"",Likes:0,User:""}],Lat:geo["lat"],Lng:geo["lng"]});
+                obj["Marks"].push({Flor:[{Flor:idflor,Img:"https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Img-Users%2F"+username+rand+"?alt=media&token=d5561492-ac95-4090-904b-6d5cdfd6d67c",Likes:0,User:username}],Lat:geo["lat"],Lng:geo["lng"]});
                 await setDoc(doc(db, "Rutas", ruta.id.toString()), obj, { merge: true }); 
               }
             });
@@ -366,8 +368,7 @@ async ObtenerRutas(data:any=null){
         let obj:any={};
         obj["Marks"]=await (await getDoc(doc(db, 'Rutas', "DEFAULT"))).data();
         obj["Marks"]=obj["Marks"]["Marks"];
-        console.log(obj["Marks"]);
-        obj["Marks"].push({Flor:[{Flor:idflor,Img:"",Likes:0,User:""}],Lat:geo["lat"],Lng:geo["lng"]});
+        obj["Marks"].push({Flor:[{Flor:idflor,Img:"https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Img-Users%2F"+username+rand+"?alt=media&token=d5561492-ac95-4090-904b-6d5cdfd6d67c",Likes:0,User:username}],Lat:geo["lat"],Lng:geo["lng"]});
         await setDoc(doc(db, "Rutas", "DEFAULT"), obj, { merge: true }); 
       }
     })
