@@ -350,7 +350,7 @@ async ObtenerRutas(data:any=null){
                     latlngs.push([element.geometry.coordinates[1],element.geometry.coordinates[0]])
                   });
                   latlngs.forEach(async (geoloc:any)=>{
-                    if(geoloc[0]>(geo["lat"]-1) && geoloc[0]<(geo["lat"]+1) && geoloc[1]>(geo["lng"]-1) && geoloc[1]<(geo["lng"]+1)){
+                    if(geoloc[0]>(geo["lat"]-0.001) && geoloc[0]<(geo["lat"]+0.001) && geoloc[1]>(geo["lng"]-0.001) && geoloc[1]<(geo["lng"]+0.001)){
                       find=true;
                       let obj:any={};
                       obj["Marks"]=await (await getDoc(doc(db, 'Rutas', ruta.id.toString()))).data();
