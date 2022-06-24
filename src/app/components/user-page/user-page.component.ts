@@ -22,6 +22,7 @@ eID:any;
 settings:boolean=false;
 errormsg:string="";
 correctmsg:boolean=false;
+show=false;
   constructor(db:DBconectService,router:Router,private activateroute: ActivatedRoute,public formulario:FormBuilder) { 
     this.db=db;
     this.router=router;
@@ -90,5 +91,9 @@ correctmsg:boolean=false;
   }
   showsettings(){
     this.settings=!this.settings;
+  }
+
+  showmenu(){
+    this.show=!this.show;
   }
 }

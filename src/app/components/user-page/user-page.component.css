@@ -114,12 +114,14 @@
 .box .item:hover{
     transition: 0.5s;
     transform: scale(0.95);
+    cursor: pointer;
 }
 .box .item p span{
     font-size: 0.6em;
-    width: 51%;
+    width: 90%;
     float: right;
     margin-right: 18px;
+    margin-left: 18px;
 }
 
 .box{
@@ -129,7 +131,8 @@
 }
 
 .right{
-    float: right;
+    margin-right: 10px;
+    margin-left: auto;
 }
 
 .secondnav{
@@ -139,6 +142,10 @@
     color: white;
     text-shadow: black 2px 2px 4px;
     font-size: 1.1em;
+}
+
+.secondnav ul{
+    display: flex;
 }
 
 .secondnav li{
@@ -212,6 +219,10 @@
     font-size: 1.4em;
 }
 
+.secondnavmobile, .mobilemenuicon{
+    display: none;
+}
+
 @media screen and (max-width: 700px) {
 
     .box .item{
@@ -230,5 +241,70 @@
     .user-block .info{
         width: 96%;
         font-size: 1.1em;
+    }
+    .secondnav{
+        display: none;
+    }
+    .mobilemenuicon{
+        height: 100%;
+        font-size: 2.8em;
+        float: right;
+        display: block;
+        width: max-content;
+        padding: 0px 15px;
+        margin-left: auto;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    .secondnavmobile{
+        padding: 10px;
+        background: var(--main-green);
+        margin-bottom: 10px;
+        color: white;
+        text-shadow: black 2px 2px 4px;
+        font-size: 1.1em;
+        display: block;
+    }
+    
+    .secondnavmobile li{
+        display: BLOCK;
+        width: max-content;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: var(--main-green);
+    }
+
+    .secondnavmobile li:hover{
+        background-color: #5a8a1c;
+        transition: 0.2s;
+    }
+
+    .secondnavmobile li:hover a{
+        text-decoration: underline;
+    }
+    
+    .secondnavmobile ul{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0;
+    }
+    .secondnavmobile li a{
+        color: var(--main-white);
+        margin-left: 10px;
+        margin-right: 10px;
+        text-decoration: none;
+        font-size: 1.2em;
+    }
+    
+    .secondnavmobile li a:hover{
+        text-decoration: underline;
+    }
+    .right{
+        margin-left: unset;
+        margin-right: unset;
     }
 }

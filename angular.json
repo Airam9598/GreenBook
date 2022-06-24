@@ -32,7 +32,8 @@
             ],
             "scripts": [
               "src/assets/js/leaflet/leaflet.js",
-              "src/assets/js/leaflet/leaflet-omnivore.min.js"
+              "src/assets/js/leaflet/leaflet-omnivore.min.js",
+              "./node_modules/leaflet.heat/dist/leaflet-heat.js"
             ]
           },
           "configurations": {

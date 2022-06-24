@@ -7,7 +7,33 @@
     <div (click)="showmenu()" id="menu" class="mobilemenuicon">
         ☰
     </div>
-    <ul id="menuul" *ngIf="show">
+    <ul id="menuulmobile" *ngIf="show">
+        <li class="right">
+            <a routerLink="/Login" routerLinkActive="active"></a>
+                <img class="menuIcon increaseIcon" src="https://airam9598.github.io/GreenBook/assets/usuario.png">
+        </li>
+        <li class="right">
+            <a routerLink="/Routes" routerLinkActive="active"></a>
+            <img class="menuIcon increaseRoutes" src="https://airam9598.github.io/GreenBook/assets/route.png">
+            Rutas
+        </li>
+        <li class="right">
+            <a routerLink="/Discover" routerLinkActive="active"></a>
+            <img class="menuIcon increaseDiscover" src="https://airam9598.github.io/GreenBook/assets/discover.png">
+            Descubrir
+        </li>
+        <li class="right">
+            <a routerLink="/Home" routerLinkActive="active"></a>
+            <img class="menuIcon" src="https://airam9598.github.io/GreenBook/assets/home.png">
+            Inicio
+        </li>
+        <li class="right">
+            <a routerLink="/Camera" routerLinkActive="active"></a>
+        <span>📷</span>
+        </li>
+        
+    </ul>
+    <ul id="menuul">
         <li class="right">
             <a routerLink="/Login" routerLinkActive="active"></a>
                 <img class="menuIcon increaseIcon" src="https://airam9598.github.io/GreenBook/assets/usuario.png">

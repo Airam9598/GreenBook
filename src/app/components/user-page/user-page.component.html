@@ -1,9 +1,9 @@
 <navbar></navbar>
 <div class="fondo">
-    <nav class="secondnav" *ngIf="admin==true && eID ==null">
+    <nav class="secondnav">
         <ul>
-            <li>
-                <a routerLink="/Create-route" routerLinkActive="active">Crear Ruta</a>
+            <li *ngIf="admin==true && eID ==null">
+                <a  routerLink="/Create-route" routerLinkActive="active">Crear Ruta</a>
                 <a routerLink="/FlowerList" routerLinkActive="active">Flores</a>
                 <a routerLink="/UsersList" routerLinkActive="active">Usuarios</a>
                 <a routerLink="/GlobalMap" routerLinkActive="active">Mapa Global</a>
@@ -13,6 +13,18 @@
             </li>
         </ul>
     </nav>
+    <nav class="secondnavmobile">
+        <ul>
+            <li *ngIf="admin==true && eID ==null"> <a routerLink="/Create-route" routerLinkActive="active">Crear Ruta</a> </li>
+            <li *ngIf="admin==true && eID ==null"> <a routerLink="/FlowerList" routerLinkActive="active">Flores</a> </li>
+            <li *ngIf="admin==true && eID ==null"> <a routerLink="/UsersList" routerLinkActive="active">Usuarios</a> </li>
+            <li *ngIf="admin==true && eID ==null"> <a routerLink="/GlobalMap" routerLinkActive="active">Mapa Global</a></li>
+            <li class="right">
+                <a (click)="showsettings()">Ajustes</a>
+            </li>
+        </ul>
+    </nav>
+
     <div *ngIf="eID==null && settings==true" class="user-block">
         <img src="./assets/usuario.png">
         <div class="info">
@@ -35,7 +47,7 @@
     <div class="box">
         <div class="item" *ngFor="let item of images; let i = index">
             <img src="{{item.Img}}">
-            <p *ngIf="item.NameRuta!='Default'" >♡ {{item.Likes}} <span>Ruta: {{item.NameRuta}}</span></p>
+            <p *ngIf="item.NameRuta!='Default'" ><span>Ruta: {{item.NameRuta}}</span></p>
             <p *ngIf="item.NameRuta=='Default'" ><span>Ruta: Ninguna Ruta asignada</span></p>
             <a *ngIf="item.NameRuta!='Default'" routerLink="/Route/{{item.Ruta}}" routerLinkActive="active"></a>
             

@@ -24,6 +24,7 @@
     width: 71%;
     box-shadow: black 2px 2px 11px 0px;
     max-width: 452px;
+    padding: 5px;
 }
 
 .login .title{

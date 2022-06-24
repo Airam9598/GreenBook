@@ -1,5 +1,22 @@
 <navbar></navbar>
 <div class="fondo">
-
+    <div class="filtro">
+        <div class="filterblock">
+            <label for="Tipo"> Tipo de mapa</label>
+            <select (change)="changefiltro()" name="Tipo" id="Tipo" [(ngModel)]='type'>
+                <option value="heat">Mapa de calor</option>
+                <option value="mark" selected>Ubicaciones</option>
+            </select>
+        </div>
+        <div class="filterblock">
+            <label for="flowertype"> Tipo de flor</label>
+            <select (change)="changefiltro()" name="flowertype" id="flowertype" [(ngModel)]='flowertype'>
+                <option value="Invasora">Invasora</option>
+                <option value="Autóctona">Autóctona</option>
+                <option value="">Todas</option>
+            </select>
+        </div>
+        
+    </div>
     <div id="map"></div>
 </div>

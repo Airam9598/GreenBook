@@ -24,4 +24,4 @@
       <button (click)="cancel()"  class="btn btn-danger" id="cancel"> Cancelar</button>
   </form>
 </div>
-<div *ngIf="subiendo==true" style="background-color:black;    height: 100px;"></div>
+<div class="loading" *ngIf="subiendo==true"> <p class="icon">🍃</p><p class="load">Cargando...</p></div>

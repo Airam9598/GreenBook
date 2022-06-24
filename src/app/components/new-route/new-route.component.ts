@@ -78,10 +78,18 @@ imageRun(e:any){
       
         //const random = Math.floor(Math.random() * 200);
         this.subiendo=true;
-        await this.db.AgregarRuta(ruta);
-        await this.db.Subirrchivo(this.fotogeo,this.foto.nativeElement.files);
-        this.subiendo=false;
-        this.router.navigate(["/User"]);
+        
+        Promise.resolve(this.db.Subirrchivo(this.fotogeo,this.foto.nativeElement.files)).then(item=>{
+          setTimeout(()=>{
+            Promise.resolve(this.db.AgregarRuta(ruta)).then(()=>{
+              this.subiendo=false;
+              this.router.navigate(["/User"]);
+            })
+          },2000)
+          
+          
+        })
+        
       }else{
         this.Error=true;
         this.subiendo=false;

@@ -182,6 +182,7 @@ label{
     overflow-y: hidden;
     width: 85% !important;
     min-width: auto !important;
+    flex-direction: column;
 }
 
 
@@ -202,6 +203,7 @@ label{
     background: linear-gradient(43deg, var(--main-green), #4c6b23);
     box-shadow: 1px 1px 0px #999, 2px 2px 0px #999, 3px 3px 0px #999, 4px 4px 0px #999, 5px 5px 0px #999, 6px 6px 0px #999;
     cursor: pointer;
+    
 }
 
 .box .item:hover img{
@@ -233,7 +235,7 @@ label{
 
 .box .item p{
     color: var(--main-white);
-    font-size: 1.3em;
+    font-size: 1.2em;
     margin: 0;
     font-weight: bold;
     text-shadow: #000000ed 1px 1px 2px;
@@ -244,8 +246,50 @@ label{
     padding: 10px;
     border-radius: 5px 0px 25px 0px;
     box-shadow: black 2px 2px 5px -1px;
-    max-width: 215px;
+    max-width: 52%;
+    opacity: 1;
+    transition: 0.2s;
 }
+
+.box .item:hover p{
+    opacity: 0;
+    transition: 0.5s;
+}
+
+
+
+.loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-brown);
+    z-index: 9;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loading .icon{
+    font-size: 6em;
+    animation: infinite-rotate 2s linear infinite;
+    z-index: 10;
+    margin: 0;
+}
+.loading .load{
+    z-index: 10;
+    animation: none;
+    font-size: 3em;
+    margin: 0;
+}
+
+@keyframes infinite-rotate {  
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
 
 @media screen and (max-width: 700px) {
     .picturetake{ 
@@ -255,38 +299,4 @@ label{
         margin-top: 20px;
     }
     
-}
-
-
-.loading{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--main-brown);
-    z-index: 9;
-}
-
-.loading .icon{
-    font-size: 6em;
-    position: absolute;
-    left: 44%;
-    top: 28%;
-    animation: infinite-rotate 2s linear infinite;
-    z-index: 10;
-}
-.loading .load{
-    position: absolute;
-    left: 41%;
-    top: 52%;
-    z-index: 10;
-    animation: none;
-    font-size: 3em;
-
-}
-
-@keyframes infinite-rotate {  
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(360deg); }
 }

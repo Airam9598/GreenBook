@@ -68,6 +68,38 @@ form input{
     color: white;
     text-shadow: black 1px 1px 4px;
 }
+
+.loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-brown);
+    z-index: 9;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loading .icon{
+    font-size: 6em;
+    animation: infinite-rotate 2s linear infinite;
+    z-index: 10;
+    margin: 0;
+}
+.loading .load{
+    z-index: 10;
+    animation: none;
+    font-size: 3em;
+    margin: 0;
+}
+
+@keyframes infinite-rotate {  
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
 @media screen and (max-width: 700px) {
     form{
         padding: 19px;

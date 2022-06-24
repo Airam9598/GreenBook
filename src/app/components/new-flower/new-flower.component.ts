@@ -74,9 +74,11 @@ export class NewFlowerComponent implements OnInit {
         await this.db.AgregarFlora(flor);
         Promise.resolve( this.db.subirImgFlora(fileList)).then(()=>{
           this.subiendo=false;
+          this.router.navigate(["/User"]);
         })
       }else{
         this.Error=true;
+        this.subiendo=false;
       }
     }
   }

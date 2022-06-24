@@ -9,12 +9,13 @@
             <td>Tipo</td>
             <td></td>
         </tr>
-        <tr *ngFor="let item of Flower" >
+        <tr *ngFor="let item of Flower | paginate: {itemsPerPage: 10, currentPage: page}" >
             <td><img src="{{item.Img}}"></td>
             <td>{{item.Name}}</td>
             <td>{{item.Type}}</td>
             <td><a routerLink="/EditFlower/{{item.id}}" routerLinkActive="active">✏️</a> <a (click)="DeleteFlower(item.id)">❌</a></td>
         </tr>
+        <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
     </table>
 </div>
 

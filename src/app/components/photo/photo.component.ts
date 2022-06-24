@@ -47,10 +47,6 @@ export class PhotoComponent implements OnInit {
     navigator.geolocation.getCurrentPosition(resp => {
       this.geolocation={lng: resp.coords.longitude, lat: resp.coords.latitude};
     });
-    if(this.geolocation==null){
-      this.error="📍 Es necesario habilitar la geolocalización";
-      this.subiendo=false;
-    }
   }
 
 
@@ -62,6 +58,10 @@ export class PhotoComponent implements OnInit {
           if(this.geolocation==null){
             this.error="📍 Es necesario habilitar la geolocalización";
             this.subiendo=false;
+          }else{
+            setTimeout(()=>{
+              this.subiendo=false;
+            },1000)
           }
         }else{
           if(mediaDevices[0].deviceId==""){
@@ -77,6 +77,10 @@ export class PhotoComponent implements OnInit {
               if(this.geolocation==null){
                 this.error="📍 Es necesario habilitar la geolocalización";
                 this.subiendo=false;
+              }else{
+                setTimeout(()=>{
+                  this.subiendo=false;
+                },1000)
               }
             }
           }

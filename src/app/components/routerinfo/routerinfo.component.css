@@ -7,18 +7,10 @@
     height: auto;
     padding-bottom: 30px;
 }
-.loading{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--main-brown);
-    z-index: 9;
-}
+
 .backimagen{
     position: absolute;
-    top: 289px;
+    top: 246px;
     display: flex;
     background-color: #000000b5;
     height: 423px;
@@ -192,6 +184,7 @@
     position: relative;
     margin-left:10px;
     margin-right:10px;
+    cursor: pointer;
 }
 
 .box .item div{
@@ -269,7 +262,7 @@
     text-align: center;
     box-shadow: #000000c2 0px 1px 9px 3px;
     padding: 10px;
-    font-size: 1.2em;
+    font-size: 1em;
     color: var(--main-white);
 }
 
@@ -284,22 +277,31 @@
 }
 
 
+.loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-brown);
+    z-index: 9;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .loading .icon{
     font-size: 6em;
-    position: absolute;
-    left: 44%;
-    top: 28%;
     animation: infinite-rotate 2s linear infinite;
     z-index: 10;
+    margin: 0;
 }
 .loading .load{
-    position: absolute;
-    left: 41%;
-    top: 52%;
     z-index: 10;
     animation: none;
     font-size: 3em;
-
+    margin: 0;
 }
 
 @keyframes infinite-rotate {  
@@ -310,12 +312,12 @@
 
 #map{
     height: 376px;
-    width: 50%;
+    width: 90%;
     display: block;
     margin: auto;
     border-radius: 5px;
     border: 2px inset gray;
-    margin-top: 53px;
+    margin-top: 27px;
 }
 
 @media screen and (max-width: 700px) {
@@ -337,6 +339,7 @@
 
     .backimagen{
         flex-direction: column;
+        margin-top: 15px;
     }
 
     .blockimagen{

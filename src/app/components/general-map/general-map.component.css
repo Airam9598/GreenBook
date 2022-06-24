@@ -1,6 +1,6 @@
 #map{
     height: 513px;
-    width: 79%;
+    width: 98%;
     display: block;
     margin: auto;
     border-radius: 5px;
@@ -19,9 +19,47 @@
     padding-top: 67px;
     height: auto;
 }
+select{
+    text-align: center;
+    font-size: 1.1em;
+    padding: 5px;
+    border-radius: 10px;
+    border-radius: 5px;
+    background-color: #e8e8e8;
+    box-shadow: #0000009c 2px 2px 5px 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.filtro{
+    margin-top: 50px;
+    display: flex;
+    width: 98%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filterblock{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.filterblock label{
+    font-size: 1.2em;
+    color: #0f0f0f;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
 @media screen and (max-width: 800px) {
 
     #map{
        width: 99%;
+    }
+    .filterblock{
+        margin-top: 10px;
     }
 }

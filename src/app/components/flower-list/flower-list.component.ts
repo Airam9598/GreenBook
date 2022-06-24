@@ -15,6 +15,7 @@ export class FlowerListComponent implements OnInit {
   busqueda:string="";
   loading:boolean=true;
   router!:Router;
+  page!:any;
   constructor(db:DBconectService,router:Router) { 
     this.db=db;
     this.loading=true;

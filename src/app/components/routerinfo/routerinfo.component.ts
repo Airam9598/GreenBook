@@ -171,6 +171,7 @@ export class RouterinfoComponent implements OnInit  {
       const basicBeachIcon = L.icon({
         iconUrl: 'https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Icons%2Fflowermarker.png?alt=media&token=5ee151d3-1bfe-41bf-9041-4c52b3194313',
         iconSize: [35, 50],
+        iconAnchor: new L.Point(19, 5)
       });
       let markerOptions = {
         clickable: false,
@@ -180,12 +181,12 @@ export class RouterinfoComponent implements OnInit  {
       if(this.ruta.Marks.length>0){
 
         for(marker of this.ruta.Marks){
-          const mark=L.marker([marker["Lat"], marker["Lng"]], markerOptions).bindPopup('<img src="'+marker["Flor"][0].Img+'"> '+marker["Flor"][0]["Flor"]["Info"]).openPopup();
+          const mark=L.marker([marker["Lat"], marker["Lng"]], markerOptions).bindPopup('<img src="'+marker["Flor"][0].Img+'"> <div><strong>'+marker["Flor"][0]["Flor"]["Name"]+'</strong> <br> '+marker["Flor"][0]["Flor"]["Info"]+'</div>').openPopup();
           mark.addTo(map);
           let num=0;
           for(let flor of marker["Flor"]){
             let images:any=[];
-            let key=marker["Lat"]+""+marker["Lng"]+""+num;
+            let key=mark["_latlng"]["lat"]+""+mark["_latlng"]["lng"]+""+num;
             images.push([flor.Img, flor["Flor"]["Name"],flor.Likes,flor.User,flor["Flor"]["Info"]]);
             num++;
             this.ImageList[key]=images;

@@ -12,6 +12,7 @@ nav{
     width: 100%;
     top: 0;
     left: 0;
+    align-items: center;
 }
 
 nav ul{
@@ -54,7 +55,7 @@ nav ul li a{
 }
 
 nav ul li:hover{
-    background-color: #6c9932;
+    background-color: #557e1f;
     transition: 0.3s;
 }
 
@@ -78,11 +79,15 @@ nav ul li:hover{
 
 .logo{
     font-size: 1.8em;
-    width: 320px;
+    width: 300px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    position: relative;
+    height: 90%;
+    margin-left: 15px;
+    border-radius: 5px;
 }
 
 .logo img{
@@ -97,13 +102,30 @@ nav ul li:hover{
     text-shadow: #ffffffa6 2px 2px 3px;
 }
 
+.logo a{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.logo:hover{
+    background-color: #557e1f;
+    transition: 0.3s;
+}
+
+
 .right{
     float: right;
 }
 
-.mobilemenuicon{
+.mobilemenuicon, nav #menuulmobile{
     display: none;
 }
+
+
 
 
 @media screen and (max-width: 900px) {
@@ -120,6 +142,9 @@ nav ul li:hover{
         cursor: pointer;
     }
     nav ul{
+        display: none;
+    }
+    nav #menuulmobile{
         flex-direction: column-reverse;
         width: 100%;
         position: absolute;
@@ -128,14 +153,15 @@ nav ul li:hover{
         background: var(--main-green);
         height: max-content;
         margin: 0;
+        display: flex;
         margin-top: 78px;
     }
 
-    nav ul li{
+    nav #menuulmobile li{
         display: flex;
         height: 91px;
         align-items: center;
-        padding: 0 16px;
+        padding: 0;
         width: 100%;
         transition: 0.8s;
         cursor: pointer;

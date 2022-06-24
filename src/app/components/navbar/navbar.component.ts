@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common'; 
 import { Inject }  from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 
 
 @Component({
@@ -9,8 +10,10 @@ import { Inject }  from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-show:boolean=true;
-constructor(@Inject(DOCUMENT) document: Document) {
+app:any;
+show=false;
+constructor(@Inject(DOCUMENT) document: Document,app:AppComponent) {
+  this.app=app;
     /*if(document.getElementById('menu')!=null){
       this.show=false;
     }else{

@@ -215,18 +215,71 @@ async ObtenerRutas(data:any=null){
     await deleteDoc(doc(db, "Rutas", idrut));
   }
   async AgregarRuta(ruta:Ruta){
-    try {
-      const docRef = addDoc(collection(db, "Rutas") , {
-        Name: ruta.Name,
-        Description: ruta.Description,
-        Img:ruta.Img,
-        Waypoints:ruta.Waypoint,
-        Marks:[]
+    let marks:any=[];
+    await this.http.get(ruta.Waypoint).subscribe((res:any)=>{
+      let latlngs:any = [];
+      res.features.forEach((element:any)=>{
+        latlngs.push([element.geometry.coordinates[1],element.geometry.coordinates[0]])
       });
-      return "Agregado correctamente";
-    } catch (e) {
-      return "Error al añadir";
-    }
+      Promise.resolve(this.ObtenerRutas("data")).then(async item=>{
+        let find=false;
+        item.forEach(async ruta=>{
+          let marca:any;
+          for(marca of ruta.Marks){
+            latlngs.forEach(async (geoloc:any)=>{
+              if(marca["Lat"]>(geoloc[0]-0.001) && marca["Lat"]<(geoloc[0]+0.001) && marca["Lng"]>(geoloc[1]-0.001) && marca["Lng"]<(geoloc[1]+0.001)){
+               if(!marks.includes(marca)){
+                marks.push(marca);
+               }
+              }
+            });
+          }
+        });
+      });
+      setTimeout(()=>{
+        try {
+          const docRef = addDoc(collection(db, "Rutas") , {
+            Name: ruta.Name,
+            Description: ruta.Description,
+            Img:ruta.Img,
+            Waypoints:ruta.Waypoint,
+            Marks:marks
+          });
+          return "Agregado correctamente";
+        } catch (e) {
+          return "Error al añadir";
+        }
+      },2000)
+    })
+       /* if(url!=""){
+          await this.http.get(url).subscribe((res:any)=>{
+            let latlngs:any = [];
+            res.features.forEach((element:any)=>{
+              latlngs.push([element.geometry.coordinates[1],element.geometry.coordinates[0]])
+            });
+            latlngs.forEach(async (geoloc:any)=>{
+              if(geoloc[0]>(geo["lat"]-0.001) && geoloc[0]<(geo["lat"]+0.001) && geoloc[1]>(geo["lng"]-0.001) && geoloc[1]<(geo["lng"]+0.001)){
+                find=true;
+                let obj:any={};
+                obj["Marks"]=await (await getDoc(doc(db, 'Rutas', ruta.id.toString()))).data();
+                obj["Marks"]=obj["Marks"]["Marks"];
+                obj["Marks"].push({Flor:[{Flor:idflor,Img:"https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Img-Users%2F"+username+rand+".jpg?alt=media&token=d5561492-ac95-4090-904b-6d5cdfd6d67c",Likes:0,User:username}],Lat:geo["lat"],Lng:geo["lng"]});
+                await setDoc(doc(db, "Rutas", ruta.id.toString()), obj, { merge: true }); 
+              }
+            });
+          });
+        }
+         // console.log(ruta);
+        
+      });
+      if(!find){
+        let obj:any={};
+        obj["Marks"]=await (await getDoc(doc(db, 'Rutas', "DEFAULT"))).data();
+        obj["Marks"]=obj["Marks"]["Marks"];
+        obj["Marks"].push({Flor:[{Flor:idflor,Img:"https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Img-Users%2F"+username+rand+".jpg?alt=media&token=d5561492-ac95-4090-904b-6d5cdfd6d67c",Likes:0,User:username}],Lat:geo["lat"],Lng:geo["lng"]});
+        await setDoc(doc(db, "Rutas", "DEFAULT"), obj, { merge: true }); 
+      }
+    });*/
   }
 
   async ModificarRuta(Name:string,Description:string,file2:any,file:any,id:any){
