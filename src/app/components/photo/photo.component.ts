@@ -36,6 +36,11 @@ export class PhotoComponent implements OnInit {
           router.navigate(["/Login"]);
         }else{
           this.username=item["UserName"];
+          var constraints = { audio: false, video: { width: 1280, height: 720 } }; 
+          navigator.mediaDevices.getUserMedia(constraints)  
+          navigator.geolocation.getCurrentPosition(resp => {
+            this.geolocation={lng: resp.coords.longitude, lat: resp.coords.latitude};
+          });
         }
       })
     }else{
@@ -43,9 +48,6 @@ export class PhotoComponent implements OnInit {
     }
     Promise.resolve(this.db.getFlowers()).then(item=>{
       this.flowers=item;
-    });
-    navigator.geolocation.getCurrentPosition(resp => {
-      this.geolocation={lng: resp.coords.longitude, lat: resp.coords.latitude};
     });
   }
 
