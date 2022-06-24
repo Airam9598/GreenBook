@@ -8,11 +8,12 @@
             <td>Admin</td>
             <td></td>
         </tr>
-        <tr *ngFor="let item of Users" >
+        <tr *ngFor="let item of Users | paginate: {itemsPerPage: 10, currentPage: page}" >
             <td>{{item.UserName}}</td>
             <td>{{item.Admin}}</td>
             <td><a routerLink="/UsersEdit/{{item.id}}" routerLinkActive="active">✏️</a> <a (click)="DeleteUser(item.id)">❌</a></td>
         </tr>
+        <pagination-controls (pageChange)="page = $event" previousLabel="" nextLabel=""></pagination-controls>
     </table>
 </div>
 

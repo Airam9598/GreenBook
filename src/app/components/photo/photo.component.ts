@@ -51,6 +51,7 @@ export class PhotoComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log("hola");
     WebcamUtil.getAvailableVideoInputs()
       .then((mediaDevices: MediaDeviceInfo[]) => {
         if(mediaDevices && mediaDevices.length > 1){
@@ -134,5 +135,11 @@ export class PhotoComponent implements OnInit {
       this.subiendo=false;
     })
   }
+  reloadComponent() {
+    let currentUrl = this.router.url;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([currentUrl]);
+    }
 
 }

@@ -6,8 +6,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 67px;
+    padding-top: 90px;
     height: auto;
+    padding-bottom: 20px;
 }
 
 form img{
@@ -290,6 +291,14 @@ label{
     100% { -webkit-transform: rotate(360deg); }
 }
 
+.reload{
+    background: var(--main-green);
+    padding: 5px 18px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    box-shadow: black 2px 2px 6px 0px;
+    cursor: pointer;
+}
 
 @media screen and (max-width: 700px) {
     .picturetake{ 

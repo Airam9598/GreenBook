@@ -1,7 +1,7 @@
 
 <navbar></navbar>
 <div class="fondo">
-    <p class="error" *ngIf="!isCameraExist || geolocation==null">{{error}}</p>
+    <p class="error" *ngIf="!isCameraExist || geolocation==null">{{error}} <br><br><a class="reload" (click)="reloadComponent()">Recargar</a></p>
     <div *ngIf="isCameraExist && !imagetaken && geolocation != null">
         <div style="text-align:center">
             <webcam [height]="500" [width]="1000" [trigger]="triggerObservable" (imageCapture)="Takepicture($event)"
