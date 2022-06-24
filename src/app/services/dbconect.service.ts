@@ -674,7 +674,6 @@ async ObtenerRutas(data:any=null){
           let data2=data[key2]["Img"];
           Object.keys(data2).forEach((key:any)=>{
             if(data2[key]==id){
-              console.log("entra");
               data2[key]="";
             }
           });

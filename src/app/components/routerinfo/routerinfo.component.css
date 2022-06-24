@@ -335,6 +335,8 @@
         width: 83%;
         float: unset;
         margin-right: 0;
+        margin-top: 0;
+        padding: 8px 18px;
     }
 
     .backimagen{
@@ -343,7 +345,7 @@
     }
 
     .blockimagen{
-        height: 41%;
+        height: 49%;
     }
 }
 
