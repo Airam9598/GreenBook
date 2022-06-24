@@ -36,8 +36,8 @@ export class PhotoComponent implements OnInit {
           router.navigate(["/Login"]);
         }else{
           this.username=item["UserName"];
-          var constraints = { audio: false, video: { width: 1280, height: 720 } }; 
-          navigator.mediaDevices.getUserMedia(constraints)  
+         // var constraints = { audio: false, video: { width: 1280, height: 720 } }; 
+          navigator.mediaDevices.getUserMedia({});  
           navigator.geolocation.getCurrentPosition(resp => {
             this.geolocation={lng: resp.coords.longitude, lat: resp.coords.latitude};
           });
