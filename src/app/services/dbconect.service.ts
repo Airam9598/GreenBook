@@ -1,4 +1,4 @@
-import { TEMPORARY_NAME } from '@angular/compiler/src/render3/view/util';
+
 import { Injectable } from '@angular/core';
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
@@ -6,7 +6,6 @@ import { collection,getDoc, getDocs, addDoc,setDoc,doc, deleteDoc, query } from 
 import { getStorage, ref, listAll , uploadString} from "firebase/storage";
 import { Ruta } from './Ruta';
 import { Flor } from './Flor';
-import { FLowerImage } from './FlowerImges';
 import { CookieService } from "ngx-cookie-service";
 import{User}  from './User';
 import { HttpClient  } from '@angular/common/http';
@@ -153,19 +152,6 @@ async Addimagen(id:string,flower:any,pos:any){
   }
 }*/
 
-AgregarImagen(flower:FLowerImage,name:string){
-  try {
-    const docRef = addDoc(collection(db, "Imagenes") , {
-        User: flower.User,
-        Likes: flower.Like,
-        Img:name
-    });
-    return docRef;
-
-  } catch (e) {
-    return null;
-  }
-}
 
 
 ///RUTAS
@@ -520,9 +506,16 @@ async ObtenerRutas(data:any=null){
             doc2.data()["Marks"].forEach((item:any)=>{
               item.Flor.forEach((item2:any)=>{
                 if(item2.User==user){
-                  item2["Ruta"]=doc2.id;
-                  item2["NameRuta"]=doc2.data()["Name"];
-                  Arrimg.push(item2);
+                  let exists=false
+                  Arrimg.forEach((element:any)=>{
+                    if(element.Img==item2.Img && element.Flor==item2.Flor && element.User==item2.User) exists=true;
+                  })
+                  if(!exists){
+                    item2["Ruta"]=doc2.id;
+                    item2["NameRuta"]=doc2.data()["Name"];
+                    Arrimg.push(item2);
+                  }
+                  
                 }
               });
             })

@@ -9,7 +9,6 @@ import { NewRouteComponent } from './components/new-route/new-route.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NewFlowerComponent } from './components/new-flower/new-flower.component';
-import { NewImageflowerComponent } from './components/new-imageflower/new-imageflower.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UserseditComponent } from './usersedit/usersedit.component';
 import { FlowerListComponent } from './components/flower-list/flower-list.component';
@@ -28,7 +27,6 @@ const routes: Routes = [
   { path: 'User/:id', component: UserPageComponent },
   { path: 'Registro', component: RegisterComponent },
   { path: 'NewFlower', component: NewFlowerComponent },
-  { path: 'NewImageFlower/:id/:pos', component: NewImageflowerComponent },
   { path: 'UsersList', component: UsersListComponent },
   { path: 'UsersEdit/:id', component: UserseditComponent },
   { path: 'FlowerList', component: FlowerListComponent },

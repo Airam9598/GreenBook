@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DBconectService } from 'src/app/services/dbconect.service';
-import { FLowerImage } from 'src/app/services/FlowerImges';
 import * as crypto from 'crypto-js';
 import { FormBuilder, FormGroup } from '@angular/forms';
 

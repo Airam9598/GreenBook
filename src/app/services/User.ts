@@ -1,4 +1,3 @@
-import { FLowerImage } from "./FlowerImges";
 
 export class User{
     id!:String;

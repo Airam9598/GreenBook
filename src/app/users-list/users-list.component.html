@@ -2,11 +2,10 @@
 <div class="fondo">
     <div class="buscador"><input [(ngModel)]="busqueda" (ngModelChange)="Discover()" type="text" placeholder="Buscar Usuarios 🔍"></div>
     <table>
-        <a routerLink="/Registro" routerLinkActive="active" class="addnew">➕</a>
         <tr class="table-header">
             <td>Nombres de Usuarios</td>
             <td>Admin</td>
-            <td></td>
+            <td style="position: relative;"><a routerLink="/Registro" routerLinkActive="active" class="addnew">➕</a></td>
         </tr>
         <tr *ngFor="let item of Users | paginate: {itemsPerPage: 10, currentPage: page}" >
             <td>{{item.UserName}}</td>

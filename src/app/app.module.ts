@@ -15,7 +15,6 @@ import { UserPageComponent } from './components/user-page/user-page.component';
 import { CookieService } from 'ngx-cookie-service';
 import { RegisterComponent } from './components/register/register.component';
 import { NewFlowerComponent } from './components/new-flower/new-flower.component';
-import { NewImageflowerComponent } from './components/new-imageflower/new-imageflower.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgxPaginationModule } from "ngx-pagination";
 import { UsersListComponent } from './users-list/users-list.component';
@@ -39,7 +38,6 @@ import { GeneralMapComponent } from './components/general-map/general-map.compon
     UserPageComponent,
     RegisterComponent,
     NewFlowerComponent,
-    NewImageflowerComponent,
     FooterComponent,
     UsersListComponent,
     UserseditComponent,

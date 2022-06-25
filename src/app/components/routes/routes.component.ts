@@ -59,9 +59,16 @@ export class RoutesComponent implements OnInit {
   Deleteroute(id:any){
     this.db.DeleteRuta(id).then(()=>{
       setTimeout(()=>{
-        this.router.navigate(["/Routes/"]);
+        this.reloadComponent();
       },1000)
     });
+  }
+
+  reloadComponent() {
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
   }
 
 }

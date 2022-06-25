@@ -135,7 +135,7 @@ export class RouterinfoComponent implements OnInit  {
   }*/
 
   createMap(){
-    const map = L.map("map",{scrollWheelZoom:true}).setView([0, 0], 13);
+    const map = L.map("map",{scrollWheelZoom:true,minZoom: 8}).setView([0, 0], 13);
     var osm = L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"),
     satellite = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}");
     map.addLayer(satellite);

@@ -14,11 +14,6 @@ app:any;
 show=false;
 constructor(@Inject(DOCUMENT) document: Document,app:AppComponent) {
   this.app=app;
-    /*if(document.getElementById('menu')!=null){
-      this.show=false;
-    }else{
-      this.show=true;
-    }*/
 }
 
   ngOnInit(): void {

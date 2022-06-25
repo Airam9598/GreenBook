@@ -16,6 +16,14 @@
                 <option value="">Todas</option>
             </select>
         </div>
+        <div class="filterblock">
+            <!--<input (ngModelChange)="changefiltro()" name="flowername" id="flowername" [(ngModel)]='flowername'>-->
+            <label for="flowertype"> Seleccionar flor</label>
+            <select (change)="changefiltro()" name="flowername" id="flowername" [(ngModel)]='flowername'>
+                <option value="" selected>Todas</option>
+                <option *ngFor="let flor of flowers" value="{{flor.Name}}"><img src="{{flor.Img}}">{{flor.Name}}</option>
+            </select>
+        </div>
         
     </div>
     <div id="map"></div>
