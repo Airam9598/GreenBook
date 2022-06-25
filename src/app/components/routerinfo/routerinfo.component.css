@@ -10,12 +10,13 @@
 
 .backimagen{
     position: absolute;
-    top: 246px;
+    top: 0;
+    left: 0;
     display: flex;
     background-color: #000000b5;
-    height: 423px;
+    height: 100%;
     width: 100%;
-    z-index: 1000;
+    z-index: 3000;
     justify-content: center;
     align-items: center;
 }
@@ -30,13 +31,15 @@
 }
 
 .blockimagen{
-    width: auto;
+    width: 45%;
     position: relative;
     position: relative;
     margin: auto;
-    height: 95%;
+    height: max-content;
     margin-left: 11px;
     margin-right: 12px;
+    max-height: 95%;
+    overflow: hidden;
 }
 
 .blockimagen .add{
@@ -133,7 +136,7 @@
     transform: rotate(180deg);
 }
 .imagen{
-    height: 100%;
+    width: 100%;
     border-radius: 10px;
     image-rendering: -webkit-optimize-contrast;
     box-shadow: #131212 2px 3px 6px 0px;
@@ -142,7 +145,7 @@
 .descripcion{
     display: block;
     background: var(--main-brown);
-    width: 50%;
+    width: 45%;
     float: right;
     margin-top: 30px;
     margin-bottom: 20px;
@@ -318,14 +321,10 @@
     border-radius: 5px;
     border: 2px inset gray;
     margin-top: 27px;
+    position: relative;
 }
 
 
-@media screen and (max-width: 386px) {
-    .backimagen{
-        margin-top: 59px !important;
-    }
-}
 
 @media screen and (max-width: 700px) {
 
@@ -348,7 +347,6 @@
 
     .backimagen{
         flex-direction: column;
-        margin-top: 15px;
     }
 
     .blockimagen{
