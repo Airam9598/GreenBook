@@ -85,7 +85,7 @@ imageRun(e:any){
               this.subiendo=false;
               this.router.navigate(["/User"]);
             })
-          },2000)
+          },3000)
           
           
         })

@@ -201,42 +201,49 @@ async ObtenerRutas(data:any=null){
     await deleteDoc(doc(db, "Rutas", idrut));
   }
   async AgregarRuta(ruta:Ruta){
-    let marks:any=[];
-    await this.http.get(ruta.Waypoint).subscribe((res:any)=>{
-      let latlngs:any = [];
-      res.features.forEach((element:any)=>{
-        latlngs.push([element.geometry.coordinates[1],element.geometry.coordinates[0]])
-      });
-      Promise.resolve(this.ObtenerRutas("data")).then(async item=>{
-        let find=false;
-        item.forEach(async ruta=>{
-          let marca:any;
-          for(marca of ruta.Marks){
-            latlngs.forEach(async (geoloc:any)=>{
-              if(marca["Lat"]>(geoloc[0]-0.001) && marca["Lat"]<(geoloc[0]+0.001) && marca["Lng"]>(geoloc[1]-0.001) && marca["Lng"]<(geoloc[1]+0.001)){
-               if(!marks.includes(marca)){
-                marks.push(marca);
-               }
-              }
-            });
-          }
+    try {
+      let marks:any=[];
+      await this.http.get(ruta.Waypoint).subscribe((res:any)=>{
+        let latlngs:any = [];
+        res.features.forEach((element:any)=>{
+          latlngs.push([element.geometry.coordinates[1],element.geometry.coordinates[0]])
         });
-      });
-      setTimeout(()=>{
-        try {
-          const docRef = addDoc(collection(db, "Rutas") , {
-            Name: ruta.Name,
-            Description: ruta.Description,
-            Img:ruta.Img,
-            Waypoints:ruta.Waypoint,
-            Marks:marks
+        Promise.resolve(this.ObtenerRutas("data")).then(async item=>{
+          item.forEach(async ruta=>{
+            let marca:any;
+            for(marca of ruta.Marks){
+              latlngs.forEach(async (geoloc:any)=>{
+                if(marca["Lat"]>(geoloc[0]-0.001) && marca["Lat"]<(geoloc[0]+0.001) && marca["Lng"]>(geoloc[1]-0.001) && marca["Lng"]<(geoloc[1]+0.001)){
+                if(!marks.includes(marca)){
+                  marks.push(marca);
+                }
+                }
+              });
+            }
           });
-          return "Agregado correctamente";
-        } catch (e) {
-          return "Error al añadir";
-        }
-      },2000)
-    })
+        });
+        setTimeout(()=>{
+          try {
+            const docRef = addDoc(collection(db, "Rutas") , {
+              Name: ruta.Name,
+              Description: ruta.Description,
+              Img:ruta.Img,
+              Waypoints:ruta.Waypoint,
+              Marks:marks
+            });
+            return "correct";
+          } catch (e) {
+            return "Error al añadir";
+          }
+        },2000)
+      })
+    } catch (error) {
+
+      setTimeout(()=>{
+        this.AgregarRuta(ruta);
+      },3000)
+      
+    }
        /* if(url!=""){
           await this.http.get(url).subscribe((res:any)=>{
             let latlngs:any = [];
