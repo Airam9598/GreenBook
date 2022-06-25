@@ -35,8 +35,6 @@ footer div span{
 }
 
 footer div .icon{
-    background-image: url(/assets/ULPGC.svg);
-    background-size: contain;
     width: 60px;
     height: 60px;
     background-repeat: no-repeat;

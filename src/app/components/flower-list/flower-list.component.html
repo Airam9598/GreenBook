@@ -6,7 +6,7 @@
             <td>Imagen</td>
             <td>Nombres de la Flor</td>
             <td>Tipo</td>
-            <td style="position: relative"><a routerLink="/NewFlower" routerLinkActive="active" class="addnew">➕</a></td>
+            <td style="position: relative;margin-right: 0;width: auto;margin-left: auto;"><a routerLink="/NewFlower" routerLinkActive="active" class="addnew">➕</a></td>
         </tr>
         <tr *ngFor="let item of Flower | paginate: {itemsPerPage: 10, currentPage: page}" >
             <td><img src="{{item.Img}}"></td>

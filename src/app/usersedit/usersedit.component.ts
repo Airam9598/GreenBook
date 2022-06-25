@@ -24,7 +24,6 @@ export class UserseditComponent implements OnInit {
     this.eID=this.activateroute.snapshot.paramMap.get("id");
     Promise.resolve(this.db.GetUserData(this.eID)).then(item => {
       this.UserData=item;
-      console.log(this.UserData);
     });
   }
 
