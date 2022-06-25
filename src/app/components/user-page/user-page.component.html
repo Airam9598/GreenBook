@@ -2,10 +2,10 @@
 <div class="fondo">
     <nav class="secondnav">
         <ul>
-            <li *ngIf="admin==true && eID ==null">
-                <a  routerLink="/Create-route" routerLinkActive="active">Crear Ruta</a>
-                <a routerLink="/FlowerList" routerLinkActive="active">Flores</a>
-                <a routerLink="/UsersList" routerLinkActive="active">Usuarios</a>
+            <li>
+                <a *ngIf="admin==true && eID ==null" routerLink="/Create-route" routerLinkActive="active">Crear Ruta</a>
+                <a *ngIf="admin==true && eID ==null" routerLink="/FlowerList" routerLinkActive="active">Flores</a>
+                <a *ngIf="admin==true && eID ==null" routerLink="/UsersList" routerLinkActive="active">Usuarios</a>
                 <a routerLink="/GlobalMap" routerLinkActive="active">Mapa Global</a>
             </li>
             <li class="right">
@@ -18,7 +18,7 @@
             <li *ngIf="admin==true && eID ==null"> <a routerLink="/Create-route" routerLinkActive="active">Crear Ruta</a> </li>
             <li *ngIf="admin==true && eID ==null"> <a routerLink="/FlowerList" routerLinkActive="active">Flores</a> </li>
             <li *ngIf="admin==true && eID ==null"> <a routerLink="/UsersList" routerLinkActive="active">Usuarios</a> </li>
-            <li *ngIf="admin==true && eID ==null"> <a routerLink="/GlobalMap" routerLinkActive="active">Mapa Global</a></li>
+            <li><a routerLink="/GlobalMap" routerLinkActive="active">Mapa Global</a></li>
             <li class="right">
                 <a (click)="showsettings()">Ajustes</a>
             </li>

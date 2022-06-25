@@ -3,5 +3,15 @@
     <div class="ticket">
         <a routerLink="/Routes" routerLinkActive="active">Rutas</a>
     </div>
-    <div class="title"> <p>Descubre como se distribuye la flora a los largo de Gran Canaria</div>
+    <div class="title"> <p>Descubre como se distribuye la flora a los largo de Gran Canaria</p></div>
+    <div class="boxpos">
+        <div class="box">
+            <p class="titulo">Nuevas rutas</p>
+            <div class="item" style="animation-duration: 2s;" *ngFor="let item of rutas | paginate: {itemsPerPage: 3, currentPage: 0}">
+                <img src="{{item.Img}}">
+                <p>{{item.Name}}</p>
+                <a routerLink="/Route/{{item.id}}" routerLinkActive="active"></a>
+            </div>
+        </div>
+    </div>
 </div>

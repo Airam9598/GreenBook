@@ -1,8 +1,8 @@
 
 import { Injectable } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { collection,getDoc, getDocs, addDoc,setDoc,doc, deleteDoc, query } from "firebase/firestore";
+import { getFirestore,collection,getDoc, getDocs, addDoc,setDoc,doc, deleteDoc, query } from "firebase/firestore";
 import { getStorage, ref, listAll , uploadString} from "firebase/storage";
 import { Ruta } from './Ruta';
 import { Flor } from './Flor';
@@ -22,7 +22,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const querySnapshot = getDocs(collection(db, "Tareas"));
 @Injectable({
   providedIn: 'root'
 })
@@ -229,7 +228,8 @@ async ObtenerRutas(data:any=null){
               Description: ruta.Description,
               Img:ruta.Img,
               Waypoints:ruta.Waypoint,
-              Marks:marks
+              Marks:marks,
+              Fecha:new Date()
             });
             return "correct";
           } catch (e) {

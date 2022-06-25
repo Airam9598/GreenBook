@@ -8,8 +8,15 @@ import { DBconectService } from 'src/app/services/dbconect.service';
 })
 export class HomeComponent implements OnInit {
 db:DBconectService;
+rutas:any=[];
   constructor(db:DBconectService) {
     this.db=db;
+    Promise.resolve(db.ObtenerRutas()).then(items=>{
+      setTimeout(() => {
+        items.forEach(data=>{ this.rutas.push(data); });
+        this.rutas=this.rutas.sort((a:any, b:any) => b.Fecha.seconds - a.Fecha.seconds);
+      },100);
+    });
    }
 
   ngOnInit(): void {

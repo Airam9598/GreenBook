@@ -13,29 +13,12 @@ export class GeneralMapComponent implements OnInit,AfterViewInit {
 ruta=new Ruta("","");
 map:any;
 db:any;
-username!:string;
 flowertype:any="";
 type:any="heat";
 flowername:any="";
 flowers:any=[];
   constructor(db:DBconectService,router:Router) { 
    this.db=db;
-
-    if(this.db.getToken()!=""){
-      Promise.resolve(this.db.GetUser(this.db.getToken())).then(item=>{
-        if(item ==null){
-          this.db.deleteToken();
-          router.navigate(["/Login"]);
-        }else{
-          this.username=item["UserName"];
-          Promise.resolve(this.db.getFlowers()).then(item=>{
-            this.flowers=item;
-          });
-        }
-      })
-    }else{
-      router.navigate(["/Login"]);
-    }
   }
 
   ngOnInit(): void {

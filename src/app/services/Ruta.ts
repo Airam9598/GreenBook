@@ -1,4 +1,5 @@
 
+import { Timestamp } from "firebase/firestore";
 import { Flor } from "./Flor";
 export class Ruta{
     id!:String;
@@ -8,6 +9,7 @@ export class Ruta{
     Img!:String;
     Waypoint!:String;
     Marks!:Array<Object>;
+    Fecha!:Timestamp;
     constructor(id:any,ruta:any){
         this.id=id;
         this.Name =ruta["Name"];
@@ -15,5 +17,6 @@ export class Ruta{
         this.Waypoint=ruta["Waypoints"];
         this.Img=ruta["Img"];
         this.Marks=ruta["Marks"];
+        this.Fecha=ruta["Fecha"];
     }
 }
