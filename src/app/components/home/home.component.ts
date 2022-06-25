@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { DBconectService } from 'src/app/services/dbconect.service';
 
 @Component({
@@ -6,20 +6,23 @@ import { DBconectService } from 'src/app/services/dbconect.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,AfterViewInit {
 db:DBconectService;
 rutas:any=[];
   constructor(db:DBconectService) {
     this.db=db;
-    Promise.resolve(db.ObtenerRutas()).then(items=>{
+   }
+
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit(){
+    Promise.resolve(this.db.ObtenerRutas()).then(items=>{
       setTimeout(() => {
         this.rutas=items;
         this.rutas=this.rutas.sort((a:any, b:any) => b.Fecha.seconds - a.Fecha.seconds);
       },100);
     });
-   }
-
-  ngOnInit(): void {
   }
 
 }
