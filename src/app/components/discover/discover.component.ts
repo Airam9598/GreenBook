@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DBconectService } from 'src/app/services/dbconect.service';
-import { User } from 'src/app/services/User';
+import { User } from 'src/app/modules/User';
 @Component({
   selector: 'app-discover',
   templateUrl: './discover.component.html',
@@ -31,9 +31,7 @@ export class DiscoverComponent implements OnInit {
       
     })
   }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   Discover(){
     this.Users=[];

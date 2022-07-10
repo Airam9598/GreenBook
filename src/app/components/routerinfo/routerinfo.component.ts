@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DBconectService } from 'src/app/services/dbconect.service';
-import { Ruta } from 'src/app/services/Ruta';
+import { Ruta } from 'src/app/modules/Ruta';
 import { Router } from '@angular/router';
 import 'leaflet-routing-machine';
 import { HttpClient  } from '@angular/common/http';
@@ -51,7 +51,7 @@ export class RouterinfoComponent implements OnInit  {
     this.router=router;
     this.http=http;
     
-    Promise.resolve(db.ObtenerRuta(this.eID)).then(item => {
+    Promise.resolve(db.getRoute(this.eID)).then(item => {
       setTimeout(() => {
         this.ruta=item;
         this.createMap();

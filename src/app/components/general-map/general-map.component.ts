@@ -2,7 +2,7 @@ import { Component, DoBootstrap, OnInit,AfterViewInit } from '@angular/core';
 import { DBconectService } from 'src/app/services/dbconect.service';
 import 'leaflet-routing-machine';
 declare let L:any;
-import { Ruta } from 'src/app/services/Ruta';
+import { Ruta } from 'src/app/modules/Ruta';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-general-map',

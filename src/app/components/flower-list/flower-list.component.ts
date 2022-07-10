@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DBconectService } from 'src/app/services/dbconect.service';
-import { Flor } from 'src/app/services/Flor';
+import { Flor } from 'src/app/modules/Flor';
 
 @Component({
   selector: 'app-flower-list',
@@ -35,7 +35,7 @@ export class FlowerListComponent implements OnInit {
     })
   }
 
-  Discover(){
+  filter(){
     this.Flower=[];
     if(this.busqueda==""){
       this.FlowerAlt.forEach(Flor=>{

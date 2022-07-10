@@ -17,7 +17,7 @@ rutas:any=[];
   }
 
   ngAfterViewInit(){
-    Promise.resolve(this.db.ObtenerRutas()).then(items=>{
+    Promise.resolve(this.db.getRoutes()).then(items=>{
       setTimeout(() => {
         this.rutas=items;
         this.rutas=this.rutas.sort((a:any, b:any) => b.Fecha.seconds - a.Fecha.seconds);

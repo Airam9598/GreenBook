@@ -51,7 +51,6 @@ export class PhotoComponent implements OnInit {
     });
   }
 
-
   ngOnInit(): void {
     console.log("hola");
     WebcamUtil.getAvailableVideoInputs()
@@ -124,12 +123,10 @@ export class PhotoComponent implements OnInit {
   get nextWebcamObservable(): Observable<boolean | string> {
     return this.nextWebcam.asObservable();
   }
-
   changeflower(id:any){
     this.actflower=id;
   }
-
-  EnviarDatos(){
+  send_info(){
     this.subiendo=true;
     let rand=Math.floor(Math.random() * 20000);
     this.db.photoUpload(this.actflower,this.geolocation,this.image,this.username,rand).then(()=>{
@@ -143,5 +140,4 @@ export class PhotoComponent implements OnInit {
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([currentUrl]);
   }
-
 }

@@ -307,5 +307,26 @@ label{
     .center{
         margin-top: 20px;
     }
+    .box .item p{
+        color: var(--main-white);
+        font-size: 1.2em;
+        margin: 0;
+        font-weight: bold;
+        text-shadow: #000000ed 1px 1px 2px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #84ba3ede;
+        padding: 10px;
+        border-radius: 5px 0px 25px 0px;
+        box-shadow: black 2px 2px 5px -1px;
+        max-width: 100%;
+        width: auto;
+        opacity: 1;
+        transition: 0.2s;
+    }
+    .box{
+        background-color: var(--main-brown) !important;
+    }
     
 }

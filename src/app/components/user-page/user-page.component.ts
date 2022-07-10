@@ -44,7 +44,6 @@ show=false;
     }else{
       Promise.resolve(this.db.getUserImages(this.eID)).then(item=>{
         this.images=item;
-        console.log(this.images);
       });
     }
   }

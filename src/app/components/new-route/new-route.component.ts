@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Ruta } from 'src/app/services/Ruta';
+import { Ruta } from 'src/app/modules/Ruta';
 import { DBconectService } from 'src/app/services/dbconect.service';
 import { ElementRef } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';

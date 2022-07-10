@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
   constructor(public formulario:FormBuilder,private db2:DBconectService,router:Router) { 
     this.Formulariologin=this.formulario.group({Email:[''],Pass:['']});
     this.db=db2;
-    crypto
     this.router=router
     if(this.db.getToken()!=""){
       router.navigate(["/User"]);
@@ -28,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  async enviar_Datos(){
+  async send_info(){
     this.errormsg="";
     if(this.Formulariologin.value["Email"]!= "" && this.Formulariologin.value["Pass"]!= ""){
       let pass= crypto.SHA3(this.Formulariologin.value["Pass"]);

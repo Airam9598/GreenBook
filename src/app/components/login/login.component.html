@@ -5,7 +5,7 @@
     </div>
     <div class="main">
         <p class="title">Inicio de Sesión</p>
-        <form [formGroup]="Formulariologin" (ngSubmit)="enviar_Datos()" id="access">
+        <form [formGroup]="Formulariologin" (ngSubmit)="send_info()" id="access">
             <input required type="email" id="user"  formControlName="Email" placeholder="Correo Electrónico">
             <input required type="password" id="password" formControlName="Pass" placeholder="Contraseña">
             <p *ngIf="errormsg!=''" class="error">{{errormsg}}</p>

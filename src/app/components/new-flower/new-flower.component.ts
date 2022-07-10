@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DBconectService } from 'src/app/services/dbconect.service';
 import { Router,ActivatedRoute } from '@angular/router';
-import { Flor } from 'src/app/services/Flor';
+import { Flor } from 'src/app/modules/Flor';
 
 @Component({
   selector: 'app-new-flower',

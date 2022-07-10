@@ -15,7 +15,7 @@
         </div>
     </div>
     <div *ngIf="isCameraExist && imagetaken && geolocation != null" class="center">
-        <form (ngSubmit)="EnviarDatos()" class="center max">
+        <form (ngSubmit)="send_info()" class="center max">
             <div class="imgbox">
                 <img src="{{image}}">
                 <button class="repeat" (click)="imagetaken=false; showWebcam = true"><span>🔃</span> Repetir</button>

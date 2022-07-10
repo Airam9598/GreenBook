@@ -4,10 +4,10 @@ import { DatePipe } from '@angular/common';
 import { initializeApp } from "firebase/app";
 import { getFirestore,collection,getDoc, getDocs, addDoc,setDoc,doc, deleteDoc, query } from "firebase/firestore";
 import { getStorage, ref, listAll , uploadString} from "firebase/storage";
-import { Ruta } from './Ruta';
-import { Flor } from './Flor';
+import { Ruta } from 'src/app/modules/Ruta';
+import { Flor } from 'src/app/modules/Flor';
 import { CookieService } from "ngx-cookie-service";
-import{User}  from './User';
+import{User}  from 'src/app/modules/User';
 import { HttpClient  } from '@angular/common/http';
 
 const firebaseConfig = {
@@ -33,29 +33,8 @@ export class DBconectService {
     this.cookies=cookies;
     this.http=http;
   }
-
-  /*AgregarTarea(ruta:Ruta):string{
-    try {
-      const docRef = addDoc(collection(db, "Tareas") , {
-        Titulo: ruta.Titulo,
-        Descripcion: ruta.Descripcion,
-        Estado: ruta.Estado
-      });
-      return "agregado correctamente";
-    } catch (e) {
-      return "Error adding document";
-    }
-  }*/
-/*async ModificarTarea(ruta:Ruta){
-  await setDoc(doc(db, "Tareas", ruta.id.toString()), {
-    Titulo: ruta.Titulo.toString(),
-    Descripcion: ruta.Descripcion.toString(),
-    Estado: ruta.Estado.toString(),
-  });
-}*/
-
 // Get a non-default Storage bucket
-async ObtenerImagen(){
+/*async ObtenerImagen(){
   const storage= getStorage(app, "gs://greenbook-f6fe4.appspot.com");
   const listRef = ref(storage, '');
 
@@ -67,7 +46,7 @@ async ObtenerImagen(){
       });
     });
     return "hola";
-}
+}*/
 
 async getFlowerid(id:any){
   const querySnapshot = await getDocs(collection(db, "Rutas"));
@@ -154,7 +133,7 @@ async Addimagen(id:string,flower:any,pos:any){
 
 
 ///RUTAS
-async ObtenerRutas(data:any=null){
+async getRoutes(data:any=null){
   const querySnapshot = await getDocs(collection(db, "Rutas"));
   let rutas:Array<Ruta> = [];
   await querySnapshot.forEach(async (doc2)=> {
@@ -177,7 +156,7 @@ async ObtenerRutas(data:any=null){
   return rutas;
 }
 
-  async ObtenerRuta(id:string){
+  async getRoute(id:string){
     let data:any=(await getDoc(doc(db, 'Rutas', id))).data();
     let idlocal=(await getDoc(doc(db, 'Rutas', id))).id
     if(data["Marks"].length>0){
@@ -196,7 +175,7 @@ async ObtenerRutas(data:any=null){
     return await (await getDoc(doc(db, 'Rutas', id))).data();
   }
 
-  async DeleteRuta(idrut:any){
+  async deleteroute(idrut:any){
     await deleteDoc(doc(db, "Rutas", idrut));
   }
   async AgregarRuta(ruta:Ruta){
@@ -207,7 +186,7 @@ async ObtenerRutas(data:any=null){
         res.features.forEach((element:any)=>{
           latlngs.push([element.geometry.coordinates[1],element.geometry.coordinates[0]])
         });
-        Promise.resolve(this.ObtenerRutas("data")).then(async item=>{
+        Promise.resolve(this.getRoutes("data")).then(async item=>{
           item.forEach(async ruta=>{
             let marca:any;
             for(marca of ruta.Marks){
@@ -385,7 +364,7 @@ async ObtenerRutas(data:any=null){
         const storageRef = ref(storage,"Img-Users/"+username+rand+".jpg");
         await uploadString(storageRef, image, 'data_url').then((snapshot) => {
 
-          Promise.resolve(this.ObtenerRutas("data")).then(async item=>{
+          Promise.resolve(this.getRoutes("data")).then(async item=>{
             let find=false;
             item.forEach(async ruta=>{
               const url =ruta.Waypoint;
@@ -622,7 +601,7 @@ async ObtenerRutas(data:any=null){
 
   }*/
 
-
+/*
 
   async LikeImage(iduser:string,idimage:string,number:number){
     const querySnapshot = await getDocs(collection(db, "Usuarios"));
@@ -661,7 +640,7 @@ async ObtenerRutas(data:any=null){
       }
     });
   }
-
+*/
 
 
   async Deleteimage(id:any,idflow:any,name:any){
