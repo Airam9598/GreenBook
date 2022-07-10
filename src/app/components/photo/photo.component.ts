@@ -37,7 +37,7 @@ export class PhotoComponent implements OnInit {
         }else{
           this.username=item["UserName"];
          // var constraints = { audio: false, video: { width: 1280, height: 720 } }; 
-          navigator.mediaDevices.getUserMedia({});  
+          //navigator.mediaDevices.getUserMedia({});  
           navigator.geolocation.getCurrentPosition(resp => {
             this.geolocation={lng: resp.coords.longitude, lat: resp.coords.latitude};
           });
@@ -52,7 +52,6 @@ export class PhotoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("hola");
     WebcamUtil.getAvailableVideoInputs()
       .then((mediaDevices: MediaDeviceInfo[]) => {
         if(mediaDevices && mediaDevices.length > 1){

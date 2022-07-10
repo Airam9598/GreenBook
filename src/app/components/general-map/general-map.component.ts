@@ -49,7 +49,7 @@ flowers:any=[];
           }
         })
       }
-      Promise.resolve(this.db.ObtenerRutas("data")).then(rutas=>{
+      Promise.resolve(this.db.getRoutes("data")).then(rutas=>{
         let llatlngmark:any=[];
         rutas.forEach((ruta:any)=>{
         var basicBeachIcon = new L.Icon({ iconUrl: "https://firebasestorage.googleapis.com/v0/b/greenbook-f6fe4.appspot.com/o/Icons%2Fflowermarker.png?alt=media&token=5ee151d3-1bfe-41bf-9041-4c52b3194313", iconAnchor: new L.Point(19, 5),iconSize: [35, 50] ,scrollWheelZoom:'center' });

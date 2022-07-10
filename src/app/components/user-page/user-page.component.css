@@ -110,6 +110,12 @@
     margin-left: 15px;
     font-weight: bold;
     text-shadow: #000000b3 2px 2px 3px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin: 0;
 }
 .box .item:hover{
     transition: 0.5s;
