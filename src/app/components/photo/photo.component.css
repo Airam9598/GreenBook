@@ -247,7 +247,8 @@ label{
     padding: 10px;
     border-radius: 5px 0px 25px 0px;
     box-shadow: black 2px 2px 5px -1px;
-    max-width: 52%;
+    max-width: 100%;
+    width: auto;
     opacity: 1;
     transition: 0.2s;
 }
