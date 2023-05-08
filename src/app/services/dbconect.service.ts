@@ -11,12 +11,12 @@ import{User}  from 'src/app/modules/User';
 import { HttpClient  } from '@angular/common/http';
 
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "m",
-  messagingSenderId: "",
-  appId: ""
+ apiKey: "AIzaSyCCrrUzGAXswtU-0X-sHbk2UFcIkR3hZQM",
+  authDomain: "greenbook-f6fe4.firebaseapp.com",
+  projectId: "greenbook-f6fe4",
+  storageBucket: "greenbook-f6fe4.appspot.com",
+  messagingSenderId: "260743889843",
+  appId: "1:260743889843:web:bf016ccce3035f77a581c6"
 };
 
 // Initialize Firebase
